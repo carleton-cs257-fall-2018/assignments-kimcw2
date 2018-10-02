@@ -6,7 +6,8 @@ import requests
 import sys
 
 if len(sys.argv) > 0:
-    print("\nUsage: This program allows user to search artists and take the corresponding ID number to gain more information \n", file=sys.stderr)
+    print("\nUsage: This program allows user to search artists and take the corresponding ID number to gain more information")
+    print("No need to put in any arguments.", file = sys.stderr)
 
 print("Please answer the following questions")
 

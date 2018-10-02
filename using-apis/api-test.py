@@ -5,7 +5,7 @@ CS 257 Assignment Using APIs - Chae Kim
 import requests
 import sys
 
-if len(sys.argv) > 0:
+if len(sys.argv) > 1:
     print("\nUsage: This program allows user to search artists and take the corresponding ID number to gain more information")
     print("No need to put in any arguments.\n", file = sys.stderr)
 

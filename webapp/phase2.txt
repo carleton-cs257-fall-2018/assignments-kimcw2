@@ -1,7 +1,18 @@
 ﻿Partners: Dawson d’Almeida, Justin Washington, Chae Kim
 
 
-Our data set is a comprehensive set of wine reviews with information including: the winery, the country, the description of the wine, the designation (vineyard within the winery where the grapes are made), points (based on WineEnthusiast ratings), price, province, region 1, region 2 (a more specific region), taster name and twitter handle, title of the review, variety of wine and winery.
+Our data set is a comprehensive set of wine reviews with information including: 
+* the winery 
+* the country 
+* the description of the wine 
+* the designation (vineyard within the winery where the grapes are made) 
+* points (based on WineEnthusiast ratings) 
+* Price of the bottle
+* Province
+* region 1 (and region 2, a more specific region)
+* taster name and twitter handle
+* title of the review
+* variety of wine and winery
 
 
 Access: https://www.kaggle.com/zynicide/wine-reviews (using winemag-data-130k-v2.csv)
@@ -10,17 +21,18 @@ Access: https://www.kaggle.com/zynicide/wine-reviews (using winemag-data-130k-v2
 User Stories:
 
 
-* Sandra is looking for wines from a specific wines in Sicily and Sardinia for her trip this summer
+* Bronk wants to get all info from a specific review as a printed dictionary
+* Sandra is looking for a list of wines from a specific wines in Sicily and Sardinia for her trip this summer
 * Konrad is interested in finding the highest rated AND most expensive wine in the whole wide world
-* Jeff, a winery baws, wants to find a twitter handle for a taster of his wine
+* Jeff, the CEO of a winery, wants to find a twitter handle for a taster of his wine
 * Ally wants a review for a bottle of wine she knows only the name of
 * Penelope wants to find out what types of grapes are used in the Nicosia winery
 * Justin wants to know how many different kinds of wines are made in Quinta dos Avidagos winery
 * Dawson wants to know what different wineries are in California
 * Chae wants to find which taster wrote the most reviews on wineries in Italy
 * Chadwick wants to a list of descending ratings for wineries in a specific region
-* Fruglemumps is hosting a wine party with a specified budget and wants as many unique wines as possible
-* ThatsSoRaven wants to check the regional availability of a Chardonnay 
+* King Henry III is hosting a wine party with a specified budget and wants as many unique wines as possible
+* Raven wants to check the regional availability of a Chardonnay 
 * Ernie is interested in writing a homework assignment using the csv file we used
 * Bryan wants to tweet to his favorite wine taster.  What’s the handle name?
 * Jaddy wants to know all the different reviews written by his favorite wine taster, using his twitter handle.

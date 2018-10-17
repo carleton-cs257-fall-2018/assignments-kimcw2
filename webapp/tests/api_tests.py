@@ -3,16 +3,16 @@
 	Muyang Shi, Justin T. Washington, Chae Kim 18 Sept 2018
 '''
 
-import booksdatasource
 import unittest
 
 class booksdatasourcetest(unittest.TestCase):
 	def setUp(self):
-		self.books_data_source = booksdatasource.BooksDataSource('books.csv', 'authors.csv', 'books_authors.csv')
+		#self.wine_data_source = winedatasource.WineDataSource('winemag-data-130k-v2.csv')
+                pass
 	def tearDown(self):
 		pass
 
-	#Testing the book(self, book_id) method
+	#Testing the  method
 	def test_book(self):
 		self.assertEqual(self.books_data_source.book(41),
 			{'id':41,'title':'Middlemarch','publication-year':1871})

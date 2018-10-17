@@ -1,0 +1,19 @@
+CREATE TABLE winery_info (
+	country		TEXT,
+	province	TEXT,
+	region_1	TEXT,
+	region_2	TEXT,
+	winery		TEXT	
+);
+
+CREATE TABLE wine_info (
+description		TEXT,
+	designation		TEXT,
+	points			INT,
+	price			INT,
+	taster_name		TEXT,
+	taster_twitter_handle	TEXT,
+	title 			TEXT,
+	variety 		TEXT,
+	winery			TEXT	
+);

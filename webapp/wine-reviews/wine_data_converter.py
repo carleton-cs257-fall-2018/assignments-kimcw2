@@ -102,7 +102,7 @@ def save_varieties_table(variety_dict, csv_file_name):
     output_file = open(csv_file_name, 'w', encoding='utf-8')
     writer = csv.writer(output_file)
     for variety in variety_dict:
-        variety_row = [variety, variety_dict[variety]]
+        variety_row = [variety_dict[variety], variety]
         writer.writerow(variety_row)
     output_file.close()
 
@@ -114,7 +114,7 @@ def save_countries_table(country_dict, csv_file_name):
     output_file = open(csv_file_name, 'w', encoding='utf-8')
     writer = csv.writer(output_file)
     for country in country_dict:
-        country_row = [country, country_dict[country]]
+        country_row = [country_dict[country], country]
         writer.writerow(country_row)
     output_file.close()
 

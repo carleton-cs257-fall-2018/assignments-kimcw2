@@ -81,7 +81,7 @@ def get_wines():
           variety_name: reject any wine not of this variety
           taster_name: reject any wine not tasted by this taster
           region: reject any wine not from this region
-          description: reject any wine that does not have specified 
+          description: reject any wine that does not have specified
                        words in its description
           vineyard: reject any wine not from this vineyard
           country_name: reject any wine not from this country
@@ -115,18 +115,18 @@ def get_wines():
             continue
         if country_name is not None and get_country_id(country_name) != wines['country_id']:
             continue
-        wines_list.append(wine)
+        bad_wines_list.append(wine)
 
     return json.dumps(bad_wines_list)
 
-            
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print('Usage: {0} host port'.format(sys.argv[0]))
         print('  Example: {0} perlman.mathcs.carleton.edu 5101'.format(sys.argv[0]))
         exit()
-    
+
     host = sys.argv[1]
     port = int(sys.argv[2])
     app.run(host=host, port=port, debug=True)

@@ -144,6 +144,7 @@ def get_wines():
     description = flask.request.args.get('description', default='%')
     vineyard = flask.request.args.get('vineyard', default='%')
     country_name = flask.request.args.get('country', default='%')
+    order_by = flask.request.args.get('orderby', default='points')
     #points = flask.request.args.get('points', type=int)
     #price = flask.request.args.get('price', type=int)
 
@@ -168,7 +169,8 @@ def get_wines():
                     AND wineries.region LIKE '%{3}%'
                     AND wines.description LIKE '%{4}%'
                     AND wines.designation LIKE '%{5}%'
-                    AND countries.name LIKE '%{6}%'""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name)
+                    AND countries.name LIKE '%{6}%'
+                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by)
 
     
     wines_list = []

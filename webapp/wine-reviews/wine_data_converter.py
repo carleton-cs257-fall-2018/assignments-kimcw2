@@ -34,7 +34,13 @@ def load_from_books_csv_file(csv_file_name):
     country_dict = {}
     variety_dict = {}
 
+    skip_first = True
+
     for row in reader:
+        if skip_first:
+            skip_first = False
+            continue
+
         pass_winery = True
         assert len(row) == 14
         country = row[1].strip()
@@ -46,6 +52,15 @@ def load_from_books_csv_file(csv_file_name):
         variety = row[12].strip()
         if variety == "":
             variety = "no_winery_specified"
+
+        # using negative numbers to indicated lack of info
+        price = row[5].strip()
+        if price == "":
+            price = -1
+        points = row[4].strip()
+        if points == "":
+            points = -1
+
         id = row[0]
 
         if winery not in winery_dict:
@@ -59,7 +74,7 @@ def load_from_books_csv_file(csv_file_name):
         single_winery_info = {'id': winery_dict[winery], 'country_id': country_dict[country], 'province': row[6], 'region': row[7], 'name': winery}
         if not pass_winery:
             winery_info.append(single_winery_info)
-        single_wine_info = {'winery_id': winery_dict[winery], 'description':row[2], 'designation': row[3], 'points':row[4], 'price':row[5], 'taster_name':row[9],
+        single_wine_info = {'winery_id': winery_dict[winery], 'description':row[2], 'designation': row[3], 'points':points, 'price':price, 'taster_name':row[9],
                             'taster_twitter_handle':row[10], 'title':row[11], 'variety_id':variety_dict[variety]}
         wine_info.append(single_wine_info)
 

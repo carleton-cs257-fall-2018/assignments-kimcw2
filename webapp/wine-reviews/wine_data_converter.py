@@ -35,23 +35,46 @@ def load_from_books_csv_file(csv_file_name):
 
     single_winery_info = {}
     single_wine_info = {}
+    single_country_info = {}
+    single_variety_info = {}
+
     wine_info = []
     winery_info = []
-    winery_list = []
+    country_info = []
+    variety_info = []
+
+    winery_dict = {}
+    country_dict = {}
+    variety_dict = {}
+
     for row in reader:
         assert len(row) == 14
-        winery = row[13]
+        country = row[1].strip()
+        if country == "":
+            country = "no_country_specified"
+        winery = row[13].strip()
+        if winery == "":
+            winery = "no_winery_specified"
+        variety = row[12].strip()
+        if variety == "":
+            variety = "no_winery_specified"
         id = row[0]
-        if winery not in winery_list:
-            winery_list.append(winery)
-            single_winery_info = {'id': id, 'country': row[1], 'province': row[6], 'region_1': row[7], 'region_2': row[8], 'winery': winery}
-            winery_info.append(single_winery_info)
-        single_wine_info = {'id': id, 'description':row[2], 'designation': row[3], 'points':row[4], 'price':row[5], 'taster_name':row[9],
-                            'taster_twitter_handle':row[10], 'title':row[11], 'variety':row[12], 'winery':winery}
+
+        if winery not in winery_dict:
+            winery_dict[winery] = id
+        if country not in country_dict:
+            country_dict[country] = id
+        if variety not in variety_dict:
+            variety_dict[variety] = id
+
+        single_winery_info = {'id': winery_dict[winery], 'country_id': country_dict[country], 'province': row[6], 'region': row[7], 'name': winery}
+        winery_info.append(single_winery_info)
+        single_wine_info = {'winery_id': winery_dict[winery], 'description':row[2], 'designation': row[3], 'points':row[4], 'price':row[5], 'taster_name':row[9],
+                            'taster_twitter_handle':row[10], 'title':row[11], 'variety_id':variety_dict[variety]}
         wine_info.append(single_wine_info)
 
     csv_file.close()
-    return (wine_info, winery_info, winery_list)
+    return (wine_info, winery_info, country_dict, variety_dict)
 
 """
 def authors_from_authors_string(authors_string):
@@ -97,7 +120,7 @@ def save_wine_table(wine_info, csv_file_name):
     output_file = open(csv_file_name, 'w', encoding='utf-8')
     writer = csv.writer(output_file)
     for wine in wine_info:
-        wine_row = [wine['id'], wine['description'], wine['designation'], wine['points'], wine['price'], wine['taster_name'], wine['taster_twitter_handle'], wine['title'], wine['variety'], wine['winery']]
+        wine_row = [wine['description'], wine['designation'], wine['points'], wine['price'], wine['taster_name'], wine['taster_twitter_handle'], wine['title'], wine['variety_id'], wine['winery_id']]
         writer.writerow(wine_row)
     output_file.close()
 
@@ -107,8 +130,28 @@ def save_winery_table(winery_info, csv_file_name):
     output_file = open(csv_file_name, 'w', encoding='utf-8')
     writer = csv.writer(output_file)
     for winery in winery_info:
-        winery_row = [winery['id'], winery['country'], winery['province'], winery['region_1'], winery['region_2'], winery['winery']]
+        winery_row = [winery['id'], winery['country_id'], winery['province'], winery['region'], winery['name']]
         writer.writerow(winery_row)
+    output_file.close()
+
+def save_varieties_table(variety_dict, csv_file_name):
+    ''' Save the winery_info table in CSV form, with each row containing
+        (//TODO FILL IN) '''
+    output_file = open(csv_file_name, 'w', encoding='utf-8')
+    writer = csv.writer(output_file)
+    for variety in variety_dict:
+        variety_row = [variety, variety_dict[variety]]
+        writer.writerow(variety_row)
+    output_file.close()
+
+def save_countries_table(country_dict, csv_file_name):
+    ''' Save the winery_info table in CSV form, with each row containing
+        (//TODO FILL IN) '''
+    output_file = open(csv_file_name, 'w', encoding='utf-8')
+    writer = csv.writer(output_file)
+    for country in country_dict:
+        country_row = [country, country_dict[country]]
+        writer.writerow(country_row)
     output_file.close()
 
 """
@@ -125,8 +168,12 @@ def save_linking_table(books_authors, csv_file_name):
 
 if __name__ == '__main__':
     print("Loading and parsing file information...")
-    wine_info, winery_info, winery_list = load_from_books_csv_file('winemag-data-130k-v2.csv')
+    wine_info, winery_info, country_dict, variety_dict  = load_from_books_csv_file('winemag-data-130k-v2.csv')
     print("Starting to save wine table")
-    save_wine_table(wine_info, 'wine.csv')
+    save_wine_table(wine_info, 'wine2.csv')
     print("Starting to save winery table")
-    save_winery_table(winery_info, 'winery.csv')
+    save_winery_table(winery_info, 'winery2.csv')
+    print("Starting to save country table")
+    save_countries_table(country_dict, 'country2.csv')
+    print("Starting to save variety table")
+    save_varieties_table(variety_dict, 'variety2.csv')

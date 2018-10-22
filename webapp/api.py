@@ -45,7 +45,7 @@ def hello():
 def get_countries():
     ''' Returns all countries '''
     query = '''SELECT id, name FROM countries'''
-    to_dump_countries[]
+    to_dump_countries=[]
     connection = get_connection()
     if connection is not None:
         try:
@@ -62,7 +62,7 @@ def get_countries():
 def get_regions():
     ''' Returns all regions '''
     query = '''SELECT DISTINCT region FROM wineries'''
-    to_dump_regions[]
+    to_dump_regions=[]
     connection = get_connection()
     if connection is not None:
         try:
@@ -77,7 +77,7 @@ def get_regions():
 def get_varieties():
     ''' Returns all varieties '''
     query = '''SELECT id, name FROM varieties'''
-    to_dump_varieties[]
+    to_dump_varieties=[]
     connection = get_connection()
     if connection is not None:
         try:

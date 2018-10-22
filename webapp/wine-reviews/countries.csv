@@ -1,45 +1,44 @@
-name,id
-Italy,0
-Portugal,1
-US,2
-Spain,5
-France,7
-Germany,8
-Argentina,16
-Chile,36
-Australia,77
-Austria,93
-South Africa,125
-New Zealand,174
-Israel,202
-Hungary,219
-Greece,271
-Romania,306
-Mexico,378
-Canada,454
-Georgia,913
-Turkey,1187
-Czech Republic,2272
-Slovenia,2292
-no_country_specified,3131
-Luxembourg,3576
-Croatia,4007
-Uruguay,4051
-England,4073
-Lebanon,4896
-Serbia,5085
-Brazil,5852
-Moldova,5996
-Morocco,6008
-Peru,6565
-India,6673
-Bulgaria,6970
-Cyprus,7568
-Armenia,8170
-Switzerland,14187
-Bosnia and Herzegovina,16467
-Ukraine,19530
-Slovakia,22687
-Macedonia,25466
-China,109989
-Egypt,110246
+0,Italy
+1,Portugal
+2,US
+5,Spain
+7,France
+8,Germany
+16,Argentina
+36,Chile
+77,Australia
+93,Austria
+125,South Africa
+174,New Zealand
+202,Israel
+219,Hungary
+271,Greece
+306,Romania
+378,Mexico
+454,Canada
+913,Georgia
+1187,Turkey
+2272,Czech Republic
+2292,Slovenia
+3131,no_country_specified
+3576,Luxembourg
+4007,Croatia
+4051,Uruguay
+4073,England
+4896,Lebanon
+5085,Serbia
+5852,Brazil
+5996,Moldova
+6008,Morocco
+6565,Peru
+6673,India
+6970,Bulgaria
+7568,Cyprus
+8170,Armenia
+14187,Switzerland
+16467,Bosnia and Herzegovina
+19530,Ukraine
+22687,Slovakia
+25466,Macedonia
+109989,China
+110246,Egypt

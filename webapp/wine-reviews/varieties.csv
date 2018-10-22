@@ -1,709 +1,708 @@
-name,id
-White Blend,0
-Portuguese Red,1
-Pinot Gris,2
-Riesling,3
-Pinot Noir,4
-Tempranillo-Merlot,5
-Frappato,6
-Gewürztraminer,7
-Cabernet Sauvignon,10
-Nerello Mascalese,13
-Chardonnay,14
-Malbec,16
-Tempranillo Blend,18
-Meritage,19
-Red Blend,20
-Merlot,23
-Nero d'Avola,24
-Chenin Blanc,29
-Gamay,30
-Sauvignon Blanc,34
-Viognier-Chardonnay,36
-Primitivo,38
-Catarratto,40
-Inzolia,46
-Petit Verdot,51
-Monica,52
-Bordeaux-style White Blend,53
-Grillo,57
-Sangiovese,61
-Cabernet Franc,62
-Champagne Blend,63
-Bordeaux-style Red Blend,67
-Aglianico,72
-Petite Sirah,74
-Touriga Nacional,79
-Carmenère,80
-Albariño,81
-Petit Manseng,82
-Rosé,83
-Zinfandel,84
-Vernaccia,88
-Rosato,89
-Grüner Veltliner,93
-Viognier,94
-Vermentino,107
-Grenache Blanc,116
-Syrah,117
-Nebbiolo,120
-Shiraz-Cabernet Sauvignon,123
-Pinot Blanc,128
-Alsace white blend,131
-Barbera,140
-Rhône-style Red Blend,149
-Portuguese White,151
-Graciano,154
-Tannat-Cabernet,166
-Sauvignon,175
-Sangiovese Grosso,182
-Torrontés,183
-Prugnolo Gentile,195
-G-S-M,204
-Verdejo,212
-Fumé Blanc,218
-Furmint,219
-Pinot Bianco,221
-Bonarda,231
-Shiraz,232
-Montepulciano,234
-Moscato,237
-Grenache,238
-Ugni Blanc-Colombard,240
-Syrah-Viognier,256
-Blaufränkisch,269
-Friulano,270
-Assyrtico,271
-Carignan-Grenache,287
-Sagrantino,291
-Savagnin,292
-Cabernet Sauvignon-Syrah,295
-Prosecco,315
-Vignoles,325
-Sparkling Blend,339
-Muscat,345
-Muscadelle,346
-Shiraz-Viognier,349
-Garganega,368
-Pinot Grigio,376
-Tempranillo,426
-Zierfandler,435
-Cortese,436
-Mencía,438
-Zweigelt,441
-Melon,447
-Rhône-style White Blend,448
-Vidal,454
-Cannonau,479
-Verdelho,501
-Marsanne,520
-Scheurebe,527
-Kerner,542
-Syrah-Grenache,559
-Dolcetto,572
-Vilana,596
-Glera,617
-Viura,635
-Garnacha Tintorera,667
-Pinot Nero,682
-Roter Veltliner,697
-Pinotage,699
-Sémillon,722
-Pinot Noir-Gamay,741
-Antão Vaz,745
-Cabernet Sauvignon-Carmenère,761
-Verdejo-Viura,763
-Verduzzo,777
-Verdicchio,808
-Silvaner,811
-Colombard,819
-Carricante,844
-Sylvaner,846
-Fiano,856
-Früburgunder,864
-Sousão,874
-Roussanne,902
-Avesso,907
-Cinsault,911
-Chinuri,913
-Tinta Miúda,923
-Muscat Blanc à Petits Grains,925
-Portuguese Sparkling,927
-Monastrell,941
-Xarel-lo,952
-Greco,956
-Trebbiano,964
-"Corvina, Rondinella, Molinara",980
-Port,986
-Chenin Blanc-Chardonnay,993
-Insolia,1022
-Merlot-Malbec,1038
-Ribolla Gialla,1054
-Cabernet Sauvignon-Merlot,1063
-Duras,1121
-Weissburgunder,1153
-Roditis,1155
-Traminer,1159
-Papaskarasi,1187
-Tannat-Syrah,1192
-Marsanne-Roussanne,1198
-Charbono,1225
-Merlot-Argaman,1265
-Prié Blanc,1297
-Sherry,1305
-Provence red blend,1330
-Tannat,1332
-Zibibbo,1349
-Falanghina,1350
-Garnacha,1357
-Negroamaro,1363
-Mourvèdre,1374
-Syrah-Cabernet,1379
-Müller-Thurgau,1391
-Pinot Meunier,1395
-Cabernet Sauvignon-Sangiovese,1435
-Austrian Red Blend,1442
-Teroldego,1460
-Pansa Blanca,1545
-Muskat Ottonel,1631
-Sauvignon Blanc-Semillon,1649
-Claret,1659
-Semillon-Sauvignon Blanc,1666
-Bical,1700
-Moscatel,1718
-Rosado,1822
-Viura-Chardonnay,1833
-Baga,1884
-Malvasia Bianca,1907
-Gelber Muskateller,1922
-Malbec-Merlot,1944
-Monastrell-Syrah,1988
-Malbec-Tannat,1991
-Malbec-Cabernet Franc,1992
-Turbiana,2022
-Refosco,2023
-Alvarinho,2094
-Manzoni,2102
-Aragonês,2104
-Agiorgitiko,2166
-Malagousia,2183
-Assyrtiko,2185
-Ruché,2257
-Welschriesling,2272
-Tinta de Toro,2285
-Cabernet Moravia,2288
-Rieslaner,2299
-Traminette,2342
-Chambourcin,2379
-Nero di Troia,2411
-Lambrusco di Sorbara,2444
-Cesanese,2448
-Feteasca Neagra,2501
-Lagrein,2526
-Tinta Fina,2534
-St. Laurent,2547
-Marsanne-Viognier,2580
-Cabernet Sauvignon-Shiraz,2596
-Syrah-Cabernet Sauvignon,2612
-Gewürztraminer-Riesling,2616
-Pugnitello,2643
-Cerceal,2651
-Touriga Nacional Blend,2652
-Austrian white blend,2665
-Tocai,2712
-Tinta Roriz,2792
-Chardonnay-Viognier,2796
-Fernão Pires,2866
-Cabernet Franc-Cabernet Sauvignon,2876
-Grenache-Syrah,2885
-Seyval Blanc,2922
-Muscat Canelli,2929
-Cabernet Merlot,2956
-Tempranillo-Cabernet Sauvignon,2970
-Arinto,3031
-Aragonez,3049
-Merlot-Cabernet Franc,3078
-Syrah-Petite Sirah,3113
-Cabernet Blend,3159
-Maturana,3210
-Pecorino,3226
-Rotgipfler,3234
-Kinali Yapincak,3343
-Cabernet Franc-Carmenère,3422
-Magliocco,3510
-Gamay Noir,3561
-Sauvignon Gris,3635
-Spätburgunder,3715
-Picpoul,3733
-Vidal Blanc,3778
-Albanello,3786
-White Port,3882
-Arneis,3989
-Malvasia,4007
-Plavac Mali,4019
-Lemberger,4042
-Saperavi,4048
-Altesse,4060
-Blanc du Bois,4180
-Provence white blend,4197
-Nosiola,4209
-Dornfelder,4215
-Roussanne-Viognier,4238
-Ojaleshi,4243
-Godello,4252
-Mondeuse,4278
-Perricone,4331
-Pedro Ximénez,4334
-Auxerrois,4349
-Syrah-Merlot,4440
-Albana,4441
-Muskat,4489
-Lambrusco,4539
-Cabernet Sauvignon-Malbec,4638
-Tinto Fino,4774
-Malbec-Cabernet Sauvignon,4784
-Moschofilero,4788
-Grechetto,4795
-Encruzado,4902
-Carignano,4915
-Cabernet Franc-Merlot,4918
-Torbato,4921
-Syrah-Petit Verdot,4958
-Garnacha Blanca,4966
-Pallagrello,4996
-Morava,5085
-Syrah-Mourvèdre,5307
-Aleatico,5368
-Carcajolu,5415
-Kisi,5416
-Shiraz-Grenache,5618
-Palomino,5627
-Grenache-Carignan,5707
-Nascetta,5737
-Siria,5828
-Malbec-Syrah,5949
-Asprinio,5961
-Feteascǎ Regalǎ,5996
-Lambrusco Grasparossa,6174
-Marselan,6181
-Tocai Friulano,6189
-Schiava,6230
-Alfrocheiro,6233
-Chardonnay-Semillon,6312
-Corvina,6406
-Norton,6517
-Alicante Bouschet,6528
-Tokaji,6575
-Moscadello,6741
-Cabernet Sauvignon-Tempranillo,6812
-Carignan,6864
-Loureiro-Arinto,6961
-Cabernet-Syrah,7014
-Sauvignon Blanc-Chardonnay,7055
-Symphony,7077
-Edelzwicker,7293
-Madeira Blend,7408
-Black Muscat,7444
-Grenache Noir,7451
-Durella,7524
-Xinomavro,7679
-Tinto del Pais,7690
-Merlot-Cabernet Sauvignon,7714
-Cercial,7720
-Johannisberg Riesling,7845
-Petite Verdot,7925
-Passerina,7954
-Valdiguié,8024
-Colombard-Sauvignon Blanc,8054
-Kangoun,8170
-Loureiro,8171
-Posip,8275
-Uva di Troia,8708
-Gros and Petit Manseng,8755
-Jacquère,8757
-Kalecik Karasi,8778
-Karasakiz,8782
-Mourvèdre-Syrah,8806
-Negrette,8969
-Zierfandler-Rotgipfler,9054
-Clairette,9066
-Raboso,9137
-País,9139
-Mauzac,9292
-Pinot Auxerrois,9434
-Chenin Blanc-Sauvignon Blanc,9625
-Diamond,9859
-Marzemino,9879
-Tinta Barroca,9957
-Chardonnay-Sauvignon Blanc,10065
-Castelão,10145
-Trebbiano Spoletino,10270
-Teran,10290
-Trepat,10488
-Freisa,10600
-Neuburger,10720
-Sämling,10872
-Chasselas,10882
-Hárslevelü,10992
-Trincadeira,11023
-Merlot-Tannat,11049
-Rkatsiteli,11111
-Melnik,11150
-Siegerrebe,11165
-Trousseau Gris,11170
-Grenache Blend,11196
-Gros Manseng,11446
-Portuguese Rosé,11592
-Brachetto,11599
-Mantonico,11628
-Ekigaïna,11639
-Muskateller,11682
-Aligoté,11798
-Sangiovese Cabernet,11940
-Touriga Nacional-Cabernet Sauvignon,11990
-Muscat Blanc,12000
-Argaman,12102
-Viognier-Roussanne,12309
-Pallagrello Bianco,12346
-Bobal,12380
-Malvasia Istriana,12419
-Cabernet Sauvignon-Cabernet Franc,12593
-Baco Noir,12690
-Veltliner,12715
-Tempranillo-Tannat,12718
-Morillon,12809
-Touriga Franca,12832
-Picolit,12871
-Barbera-Nebbiolo,13175
-Prieto Picudo,13408
-Gaglioppo,13591
-Tokay,13660
-Sacy,13838
-Piedirosso,13967
-Piquepoul Blanc,14015
-Mansois,14043
-Chardonnay-Sauvignon,14063
-Tempranillo-Garnacha,14074
-Carmenère-Cabernet Sauvignon,14109
-Chenin Blanc-Viognier,14255
-Susumaniello,14277
-Vitovska,14464
-Orange Muscat,14718
-Grauburgunder,15025
-Carignane,15292
-Moscatel Roxo,15365
-Tannat-Merlot,15548
-Nerello Cappuccio,15678
-Counoise,15759
-Macabeo,15812
-Mazuelo,15822
-Sauvignon-Sémillon,15994
-Tinta del Pais,16315
-Vranec,16467
-Mavrud,16736
-Cesanese d'Affile,16819
-Moscato Giallo,16932
-Debit,17260
-Verdil,17542
-Cabernet,17869
-Verduzzo Friulano,17876
-Treixadura,17881
-Loin de l'Oeil,18096
-Coda di Volpe,18127
-Grenache-Mourvèdre,18390
-Forcallà,18607
-Viura-Verdejo,18622
-Bombino Bianco,18840
-Pinot-Chardonnay,18899
-Syrah-Tempranillo,19083
-Cabernet Sauvignon-Barbera,19126
-Merlot-Cabernet,19229
-Muscat d'Alexandrie,19700
-Jaen,19717
-Tinta del Toro,19766
-Timorasso,19794
-Pigato,19798
-Sangiovese-Cabernet Sauvignon,19800
-Shiraz-Cabernet,20017
-Viognier-Gewürztraminer,20030
-Prunelard,20059
-Sauvignon Blanc-Chenin Blanc,20091
-Gros Plant,20298
-Malbec-Petit Verdot,20345
-Colombard-Ugni Blanc,20463
-Grignolino,21314
-Garnacha-Syrah,21348
-Rufete,21356
-Tempranillo-Shiraz,21774
-Mtsvane,22033
-Chardonnay-Pinot Gris,22044
-Marawi,22074
-Chardonnay-Pinot Blanc,22164
-Mataro,22179
-Tinta Cao,22311
-Blauer Portugieser,22398
-Ugni Blanc,22676
-Groppello,22708
-Semillon-Chardonnay,22743
-Irsai Oliver,22970
-Alvarelhão,23091
-Poulsard,23136
-Grenache-Shiraz,23157
-Baga-Touriga Nacional,23475
-Carineña,23892
-Pignoletto,23911
-Muscatel,24277
-Mavrodaphne,24320
-Ciliegiolo,24547
-Viognier-Grenache Blanc,24634
-Greco Bianco,24644
-Cabernet Sauvignon-Merlot-Shiraz,24646
-Sciaccerellu,25186
-Zelen,25841
-Alicante,26011
-Emir,26227
-Rosenmuskateller,26404
-Tsolikouri,26486
-Narince,26491
-Malbec-Cabernet,26535
-Touriga,26818
-Grecanico,26965
-Carmenère-Syrah,27219
-Madeleine Angevine,27399
-Mavroudi,28320
-Pinot Blanc-Pinot Noir,28656
-Muscat Hamburg,28793
-Tempranillo Blanco,28920
-Casavecchia,29170
-Pinot Gris-Gewürztraminer,29253
-White Riesling,29870
-Tinto Velasco,29930
-Hondarrabi Zuri,30108
-Nuragus,30529
-Xynisteri,30663
-Kadarka,30835
-Sauvignon Musqué,30848
-Roussanne-Marsanne,31190
-Incrocio Manzoni,31388
-Terrantez,31417
-Bual,31425
-Okuzgozu,31596
-Rivaner,31733
-Doña Blanca,32235
-Graševina,32354
-Lambrusco Salamino,32573
-Sangiovese-Syrah,32800
-Tannat-Cabernet Franc,33051
-Thrapsathiri,33080
-Fer Servadou,33166
-Mission,33443
-Kekfrankos,33725
-Cococciola,33755
-Blauburgunder,33796
-Marquette,33925
-Romorantin,34625
-Verdejo-Sauvignon Blanc,34816
-Braucol,34978
-Malvasia-Viura,35498
-Savatiano,35702
-Cabernet Franc-Malbec,35978
-Pallagrello Nero,36173
-Rebula,36436
-Vespolina,36922
-Shiraz-Malbec,37036
-Rebo,37106
-Macabeo-Chardonnay,37718
-Tempranillo-Malbec,38757
-Tamjanika,38927
-Trousseau,39386
-Bacchus,40162
-Syrah-Malbec,40175
-Syrah-Cabernet Franc,40193
-Macabeo-Moscatel,40455
-Cariñena-Garnacha,40631
-Plyto,40679
-Códega do Larinho,41661
-Sideritis,42052
-Çalkarası,42302
-Azal,42306
-Moscatel Graúdo,42463
-Viosinho,43029
-Moschofilero-Chardonnay,43258
-Paralleda,43389
-Rara Neagra,43481
-Malvasia di Candia,43743
-Maria Gomes,43949
-Molinara,43957
-Malvar,43991
-Airen,43996
-Erbaluce,44270
-Muscat of Alexandria,44419
-Verdosilla,44845
-Abouriou,45401
-Pinot Noir-Syrah,45451
-Nielluciu,45676
-Malbec-Bonarda,45889
-Vespaiolo,46141
-Malbec-Carménère,46367
-Biancolella,46603
-Sauvignon Blanc-Verdejo,47088
-Aidani,47420
-Garnacha-Monastrell,47619
-Vinhão,48086
-Souzao,48420
-Roter Traminer,48648
-Moscatel de Alejandría,48860
-Rolle,50074
-Tinta Francisca,50267
-Malvasia Nera,50679
-Orangetraube,50888
-Riesling-Chardonnay,51348
-Žilavka,51421
-Portuguiser,51794
-Listán Negro,51796
-Pinotage-Merlot,52271
-Muscadine,52711
-Maria Gomes-Bical,52754
-Grolleau,53872
-Zlahtina,54607
-Syrah-Grenache-Viognier,54908
-Jacquez,55292
-Gouveio,55674
-Canaiolo,55926
-Carignan-Syrah,56129
-Bombino Nero,56546
-Chardonnay-Riesling,56716
-Malagouzia-Chardonnay,56862
-Mavrotragano,57687
-Bovale,57785
-Frankovka,58185
-Shiraz-Roussanne,58956
-Cabernet-Shiraz,59977
-Syrah-Carignan,60111
-Elbling,60707
-Gragnano,60873
-Garnacha Blend,62596
-Pinot Blanc-Chardonnay,62720
-Schwartzriesling,63249
-Petit Meslier,63460
-Bastardo,63588
-Vidadillo,64405
-Misket,65157
-Chardonnay Weissburgunder,65796
-Other,65939
-Robola,67407
-Merlot-Shiraz,67554
-Malagouzia,67572
-Folle Blanche,67671
-Malbec Blend,68337
-Merlot-Syrah,68339
-Tamianka,68340
-Cabernet Pfeffer,69577
-Morio Muskat,70019
-Rabigato,70163
-Babić,70169
-Roviello,70878
-Yapincak,71275
-Sauvignonasse,71813
-Viognier-Marsanne,71924
-Mandilaria,71954
-Meseguera,72268
-Alvarinho-Chardonnay,72363
-Saperavi-Merlot,72430
-Pinot Blanc-Viognier,72459
-Teroldego Rotaliano,72507
-Biancu Gentile,73001
-Garnacha-Tempranillo,73297
-Xinisteri,73397
-Sauvignon Blanc-Sauvignon Gris,73417
-Trebbiano di Lugana,73534
-Albarossa,73732
-Ryzlink Rýnský,73770
-Verdeca,74455
-Cabernet Sauvignon Grenache,74981
-Tămâioasă Românească,75106
-Black Monukka,76095
-Merlot-Grenache,76447
-Vranac,79270
-Tempranillo-Syrah,79526
-Chardonel,79914
-Silvaner-Traminer,80811
-Uvalino,81692
-Merseguera-Sauvignon Blanc,82101
-Cabernet-Malbec,82920
-Boğazkere,83723
-Gelber Traminer,83924
-Vermentino Nero,84175
-Cayuga,84372
-Tinta Amarela,84427
-Tinta Negra Mole,85620
-Moscato Rosa,85693
-Chelois,86263
-Sauvignon Blanc-Assyrtiko,86757
-no_winery_specified,86909
-Muscadel,87079
-Shiraz-Tempranillo,87123
-Roussanne-Grenache Blanc,87544
-Biancale,88160
-Ansonica,88287
-Syrah-Bonarda,89367
-Durif,89519
-Franconia,91085
-Malbec-Tempranillo,91423
-Nasco,92121
-Monastrell-Petit Verdot,92918
-Sirica,93077
-Vital,93558
-Espadeiro,95603
-Apple,95706
-Pinot Grigio-Sauvignon Blanc,96127
-Blatina,96759
-Karalahna,96937
-Feteasca,96948
-Sercial,97609
-Valvin Muscat,98794
-Malvasia Fina,99350
-Roditis-Moschofilero,99438
-St. Vincent,100078
-Chancellor,100471
-Premsal,101010
-Jampal,101362
-Tokay Pinot Gris,102095
-Colorino,103230
-Picapoll,103326
-Blauburger,103967
-Tinta Madeira,105081
-Centesimino,105149
-Grenache Gris,105349
-Trajadura,106464
-Merlot-Petite Verdot,106954
-Ramisco,107854
-Catalanesca,108036
-Garnacha-Cabernet,108768
-Garnacha-Cariñena,109917
-Gamza,109985
-Cabernet Franc-Lemberger,111277
-Chardonnay-Albariño,111845
-Shiraz-Mourvèdre,112463
-Mavrokalavryta,112614
-Favorita,113053
-Babosa Negro,113067
-Tintilia,113278
-Dafni,113898
-Petit Courbu,114407
-Kotsifali,116303
-Parraleta,116516
-Moscato di Noto,116787
-Roscetto,116970
-Torontel,118316
-Otskhanuri Sapere,119787
-Viognier-Valdiguié,120171
-Trollinger,120427
-Tsapournakos,120799
-Francisa,122726
-Kuntra,123319
-Pignolo,126782
-Caprettone,127085
-Ondenc,127521
-Athiri,127959
-Bobal-Cabernet Sauvignon,129187
+0,White Blend
+1,Portuguese Red
+2,Pinot Gris
+3,Riesling
+4,Pinot Noir
+5,Tempranillo-Merlot
+6,Frappato
+7,Gewürztraminer
+10,Cabernet Sauvignon
+13,Nerello Mascalese
+14,Chardonnay
+16,Malbec
+18,Tempranillo Blend
+19,Meritage
+20,Red Blend
+23,Merlot
+24,Nero d'Avola
+29,Chenin Blanc
+30,Gamay
+34,Sauvignon Blanc
+36,Viognier-Chardonnay
+38,Primitivo
+40,Catarratto
+46,Inzolia
+51,Petit Verdot
+52,Monica
+53,Bordeaux-style White Blend
+57,Grillo
+61,Sangiovese
+62,Cabernet Franc
+63,Champagne Blend
+67,Bordeaux-style Red Blend
+72,Aglianico
+74,Petite Sirah
+79,Touriga Nacional
+80,Carmenère
+81,Albariño
+82,Petit Manseng
+83,Rosé
+84,Zinfandel
+88,Vernaccia
+89,Rosato
+93,Grüner Veltliner
+94,Viognier
+107,Vermentino
+116,Grenache Blanc
+117,Syrah
+120,Nebbiolo
+123,Shiraz-Cabernet Sauvignon
+128,Pinot Blanc
+131,Alsace white blend
+140,Barbera
+149,Rhône-style Red Blend
+151,Portuguese White
+154,Graciano
+166,Tannat-Cabernet
+175,Sauvignon
+182,Sangiovese Grosso
+183,Torrontés
+195,Prugnolo Gentile
+204,G-S-M
+212,Verdejo
+218,Fumé Blanc
+219,Furmint
+221,Pinot Bianco
+231,Bonarda
+232,Shiraz
+234,Montepulciano
+237,Moscato
+238,Grenache
+240,Ugni Blanc-Colombard
+256,Syrah-Viognier
+269,Blaufränkisch
+270,Friulano
+271,Assyrtico
+287,Carignan-Grenache
+291,Sagrantino
+292,Savagnin
+295,Cabernet Sauvignon-Syrah
+315,Prosecco
+325,Vignoles
+339,Sparkling Blend
+345,Muscat
+346,Muscadelle
+349,Shiraz-Viognier
+368,Garganega
+376,Pinot Grigio
+426,Tempranillo
+435,Zierfandler
+436,Cortese
+438,Mencía
+441,Zweigelt
+447,Melon
+448,Rhône-style White Blend
+454,Vidal
+479,Cannonau
+501,Verdelho
+520,Marsanne
+527,Scheurebe
+542,Kerner
+559,Syrah-Grenache
+572,Dolcetto
+596,Vilana
+617,Glera
+635,Viura
+667,Garnacha Tintorera
+682,Pinot Nero
+697,Roter Veltliner
+699,Pinotage
+722,Sémillon
+741,Pinot Noir-Gamay
+745,Antão Vaz
+761,Cabernet Sauvignon-Carmenère
+763,Verdejo-Viura
+777,Verduzzo
+808,Verdicchio
+811,Silvaner
+819,Colombard
+844,Carricante
+846,Sylvaner
+856,Fiano
+864,Früburgunder
+874,Sousão
+902,Roussanne
+907,Avesso
+911,Cinsault
+913,Chinuri
+923,Tinta Miúda
+925,Muscat Blanc à Petits Grains
+927,Portuguese Sparkling
+941,Monastrell
+952,Xarel-lo
+956,Greco
+964,Trebbiano
+980,"Corvina, Rondinella, Molinara"
+986,Port
+993,Chenin Blanc-Chardonnay
+1022,Insolia
+1038,Merlot-Malbec
+1054,Ribolla Gialla
+1063,Cabernet Sauvignon-Merlot
+1121,Duras
+1153,Weissburgunder
+1155,Roditis
+1159,Traminer
+1187,Papaskarasi
+1192,Tannat-Syrah
+1198,Marsanne-Roussanne
+1225,Charbono
+1265,Merlot-Argaman
+1297,Prié Blanc
+1305,Sherry
+1330,Provence red blend
+1332,Tannat
+1349,Zibibbo
+1350,Falanghina
+1357,Garnacha
+1363,Negroamaro
+1374,Mourvèdre
+1379,Syrah-Cabernet
+1391,Müller-Thurgau
+1395,Pinot Meunier
+1435,Cabernet Sauvignon-Sangiovese
+1442,Austrian Red Blend
+1460,Teroldego
+1545,Pansa Blanca
+1631,Muskat Ottonel
+1649,Sauvignon Blanc-Semillon
+1659,Claret
+1666,Semillon-Sauvignon Blanc
+1700,Bical
+1718,Moscatel
+1822,Rosado
+1833,Viura-Chardonnay
+1884,Baga
+1907,Malvasia Bianca
+1922,Gelber Muskateller
+1944,Malbec-Merlot
+1988,Monastrell-Syrah
+1991,Malbec-Tannat
+1992,Malbec-Cabernet Franc
+2022,Turbiana
+2023,Refosco
+2094,Alvarinho
+2102,Manzoni
+2104,Aragonês
+2166,Agiorgitiko
+2183,Malagousia
+2185,Assyrtiko
+2257,Ruché
+2272,Welschriesling
+2285,Tinta de Toro
+2288,Cabernet Moravia
+2299,Rieslaner
+2342,Traminette
+2379,Chambourcin
+2411,Nero di Troia
+2444,Lambrusco di Sorbara
+2448,Cesanese
+2501,Feteasca Neagra
+2526,Lagrein
+2534,Tinta Fina
+2547,St. Laurent
+2580,Marsanne-Viognier
+2596,Cabernet Sauvignon-Shiraz
+2612,Syrah-Cabernet Sauvignon
+2616,Gewürztraminer-Riesling
+2643,Pugnitello
+2651,Cerceal
+2652,Touriga Nacional Blend
+2665,Austrian white blend
+2712,Tocai
+2792,Tinta Roriz
+2796,Chardonnay-Viognier
+2866,Fernão Pires
+2876,Cabernet Franc-Cabernet Sauvignon
+2885,Grenache-Syrah
+2922,Seyval Blanc
+2929,Muscat Canelli
+2956,Cabernet Merlot
+2970,Tempranillo-Cabernet Sauvignon
+3031,Arinto
+3049,Aragonez
+3078,Merlot-Cabernet Franc
+3113,Syrah-Petite Sirah
+3159,Cabernet Blend
+3210,Maturana
+3226,Pecorino
+3234,Rotgipfler
+3343,Kinali Yapincak
+3422,Cabernet Franc-Carmenère
+3510,Magliocco
+3561,Gamay Noir
+3635,Sauvignon Gris
+3715,Spätburgunder
+3733,Picpoul
+3778,Vidal Blanc
+3786,Albanello
+3882,White Port
+3989,Arneis
+4007,Malvasia
+4019,Plavac Mali
+4042,Lemberger
+4048,Saperavi
+4060,Altesse
+4180,Blanc du Bois
+4197,Provence white blend
+4209,Nosiola
+4215,Dornfelder
+4238,Roussanne-Viognier
+4243,Ojaleshi
+4252,Godello
+4278,Mondeuse
+4331,Perricone
+4334,Pedro Ximénez
+4349,Auxerrois
+4440,Syrah-Merlot
+4441,Albana
+4489,Muskat
+4539,Lambrusco
+4638,Cabernet Sauvignon-Malbec
+4774,Tinto Fino
+4784,Malbec-Cabernet Sauvignon
+4788,Moschofilero
+4795,Grechetto
+4902,Encruzado
+4915,Carignano
+4918,Cabernet Franc-Merlot
+4921,Torbato
+4958,Syrah-Petit Verdot
+4966,Garnacha Blanca
+4996,Pallagrello
+5085,Morava
+5307,Syrah-Mourvèdre
+5368,Aleatico
+5415,Carcajolu
+5416,Kisi
+5618,Shiraz-Grenache
+5627,Palomino
+5707,Grenache-Carignan
+5737,Nascetta
+5828,Siria
+5949,Malbec-Syrah
+5961,Asprinio
+5996,Feteascǎ Regalǎ
+6174,Lambrusco Grasparossa
+6181,Marselan
+6189,Tocai Friulano
+6230,Schiava
+6233,Alfrocheiro
+6312,Chardonnay-Semillon
+6406,Corvina
+6517,Norton
+6528,Alicante Bouschet
+6575,Tokaji
+6741,Moscadello
+6812,Cabernet Sauvignon-Tempranillo
+6864,Carignan
+6961,Loureiro-Arinto
+7014,Cabernet-Syrah
+7055,Sauvignon Blanc-Chardonnay
+7077,Symphony
+7293,Edelzwicker
+7408,Madeira Blend
+7444,Black Muscat
+7451,Grenache Noir
+7524,Durella
+7679,Xinomavro
+7690,Tinto del Pais
+7714,Merlot-Cabernet Sauvignon
+7720,Cercial
+7845,Johannisberg Riesling
+7925,Petite Verdot
+7954,Passerina
+8024,Valdiguié
+8054,Colombard-Sauvignon Blanc
+8170,Kangoun
+8171,Loureiro
+8275,Posip
+8708,Uva di Troia
+8755,Gros and Petit Manseng
+8757,Jacquère
+8778,Kalecik Karasi
+8782,Karasakiz
+8806,Mourvèdre-Syrah
+8969,Negrette
+9054,Zierfandler-Rotgipfler
+9066,Clairette
+9137,Raboso
+9139,País
+9292,Mauzac
+9434,Pinot Auxerrois
+9625,Chenin Blanc-Sauvignon Blanc
+9859,Diamond
+9879,Marzemino
+9957,Tinta Barroca
+10065,Chardonnay-Sauvignon Blanc
+10145,Castelão
+10270,Trebbiano Spoletino
+10290,Teran
+10488,Trepat
+10600,Freisa
+10720,Neuburger
+10872,Sämling
+10882,Chasselas
+10992,Hárslevelü
+11023,Trincadeira
+11049,Merlot-Tannat
+11111,Rkatsiteli
+11150,Melnik
+11165,Siegerrebe
+11170,Trousseau Gris
+11196,Grenache Blend
+11446,Gros Manseng
+11592,Portuguese Rosé
+11599,Brachetto
+11628,Mantonico
+11639,Ekigaïna
+11682,Muskateller
+11798,Aligoté
+11940,Sangiovese Cabernet
+11990,Touriga Nacional-Cabernet Sauvignon
+12000,Muscat Blanc
+12102,Argaman
+12309,Viognier-Roussanne
+12346,Pallagrello Bianco
+12380,Bobal
+12419,Malvasia Istriana
+12593,Cabernet Sauvignon-Cabernet Franc
+12690,Baco Noir
+12715,Veltliner
+12718,Tempranillo-Tannat
+12809,Morillon
+12832,Touriga Franca
+12871,Picolit
+13175,Barbera-Nebbiolo
+13408,Prieto Picudo
+13591,Gaglioppo
+13660,Tokay
+13838,Sacy
+13967,Piedirosso
+14015,Piquepoul Blanc
+14043,Mansois
+14063,Chardonnay-Sauvignon
+14074,Tempranillo-Garnacha
+14109,Carmenère-Cabernet Sauvignon
+14255,Chenin Blanc-Viognier
+14277,Susumaniello
+14464,Vitovska
+14718,Orange Muscat
+15025,Grauburgunder
+15292,Carignane
+15365,Moscatel Roxo
+15548,Tannat-Merlot
+15678,Nerello Cappuccio
+15759,Counoise
+15812,Macabeo
+15822,Mazuelo
+15994,Sauvignon-Sémillon
+16315,Tinta del Pais
+16467,Vranec
+16736,Mavrud
+16819,Cesanese d'Affile
+16932,Moscato Giallo
+17260,Debit
+17542,Verdil
+17869,Cabernet
+17876,Verduzzo Friulano
+17881,Treixadura
+18096,Loin de l'Oeil
+18127,Coda di Volpe
+18390,Grenache-Mourvèdre
+18607,Forcallà
+18622,Viura-Verdejo
+18840,Bombino Bianco
+18899,Pinot-Chardonnay
+19083,Syrah-Tempranillo
+19126,Cabernet Sauvignon-Barbera
+19229,Merlot-Cabernet
+19700,Muscat d'Alexandrie
+19717,Jaen
+19766,Tinta del Toro
+19794,Timorasso
+19798,Pigato
+19800,Sangiovese-Cabernet Sauvignon
+20017,Shiraz-Cabernet
+20030,Viognier-Gewürztraminer
+20059,Prunelard
+20091,Sauvignon Blanc-Chenin Blanc
+20298,Gros Plant
+20345,Malbec-Petit Verdot
+20463,Colombard-Ugni Blanc
+21314,Grignolino
+21348,Garnacha-Syrah
+21356,Rufete
+21774,Tempranillo-Shiraz
+22033,Mtsvane
+22044,Chardonnay-Pinot Gris
+22074,Marawi
+22164,Chardonnay-Pinot Blanc
+22179,Mataro
+22311,Tinta Cao
+22398,Blauer Portugieser
+22676,Ugni Blanc
+22708,Groppello
+22743,Semillon-Chardonnay
+22970,Irsai Oliver
+23091,Alvarelhão
+23136,Poulsard
+23157,Grenache-Shiraz
+23475,Baga-Touriga Nacional
+23892,Carineña
+23911,Pignoletto
+24277,Muscatel
+24320,Mavrodaphne
+24547,Ciliegiolo
+24634,Viognier-Grenache Blanc
+24644,Greco Bianco
+24646,Cabernet Sauvignon-Merlot-Shiraz
+25186,Sciaccerellu
+25841,Zelen
+26011,Alicante
+26227,Emir
+26404,Rosenmuskateller
+26486,Tsolikouri
+26491,Narince
+26535,Malbec-Cabernet
+26818,Touriga
+26965,Grecanico
+27219,Carmenère-Syrah
+27399,Madeleine Angevine
+28320,Mavroudi
+28656,Pinot Blanc-Pinot Noir
+28793,Muscat Hamburg
+28920,Tempranillo Blanco
+29170,Casavecchia
+29253,Pinot Gris-Gewürztraminer
+29870,White Riesling
+29930,Tinto Velasco
+30108,Hondarrabi Zuri
+30529,Nuragus
+30663,Xynisteri
+30835,Kadarka
+30848,Sauvignon Musqué
+31190,Roussanne-Marsanne
+31388,Incrocio Manzoni
+31417,Terrantez
+31425,Bual
+31596,Okuzgozu
+31733,Rivaner
+32235,Doña Blanca
+32354,Graševina
+32573,Lambrusco Salamino
+32800,Sangiovese-Syrah
+33051,Tannat-Cabernet Franc
+33080,Thrapsathiri
+33166,Fer Servadou
+33443,Mission
+33725,Kekfrankos
+33755,Cococciola
+33796,Blauburgunder
+33925,Marquette
+34625,Romorantin
+34816,Verdejo-Sauvignon Blanc
+34978,Braucol
+35498,Malvasia-Viura
+35702,Savatiano
+35978,Cabernet Franc-Malbec
+36173,Pallagrello Nero
+36436,Rebula
+36922,Vespolina
+37036,Shiraz-Malbec
+37106,Rebo
+37718,Macabeo-Chardonnay
+38757,Tempranillo-Malbec
+38927,Tamjanika
+39386,Trousseau
+40162,Bacchus
+40175,Syrah-Malbec
+40193,Syrah-Cabernet Franc
+40455,Macabeo-Moscatel
+40631,Cariñena-Garnacha
+40679,Plyto
+41661,Códega do Larinho
+42052,Sideritis
+42302,Çalkarası
+42306,Azal
+42463,Moscatel Graúdo
+43029,Viosinho
+43258,Moschofilero-Chardonnay
+43389,Paralleda
+43481,Rara Neagra
+43743,Malvasia di Candia
+43949,Maria Gomes
+43957,Molinara
+43991,Malvar
+43996,Airen
+44270,Erbaluce
+44419,Muscat of Alexandria
+44845,Verdosilla
+45401,Abouriou
+45451,Pinot Noir-Syrah
+45676,Nielluciu
+45889,Malbec-Bonarda
+46141,Vespaiolo
+46367,Malbec-Carménère
+46603,Biancolella
+47088,Sauvignon Blanc-Verdejo
+47420,Aidani
+47619,Garnacha-Monastrell
+48086,Vinhão
+48420,Souzao
+48648,Roter Traminer
+48860,Moscatel de Alejandría
+50074,Rolle
+50267,Tinta Francisca
+50679,Malvasia Nera
+50888,Orangetraube
+51348,Riesling-Chardonnay
+51421,Žilavka
+51794,Portuguiser
+51796,Listán Negro
+52271,Pinotage-Merlot
+52711,Muscadine
+52754,Maria Gomes-Bical
+53872,Grolleau
+54607,Zlahtina
+54908,Syrah-Grenache-Viognier
+55292,Jacquez
+55674,Gouveio
+55926,Canaiolo
+56129,Carignan-Syrah
+56546,Bombino Nero
+56716,Chardonnay-Riesling
+56862,Malagouzia-Chardonnay
+57687,Mavrotragano
+57785,Bovale
+58185,Frankovka
+58956,Shiraz-Roussanne
+59977,Cabernet-Shiraz
+60111,Syrah-Carignan
+60707,Elbling
+60873,Gragnano
+62596,Garnacha Blend
+62720,Pinot Blanc-Chardonnay
+63249,Schwartzriesling
+63460,Petit Meslier
+63588,Bastardo
+64405,Vidadillo
+65157,Misket
+65796,Chardonnay Weissburgunder
+65939,Other
+67407,Robola
+67554,Merlot-Shiraz
+67572,Malagouzia
+67671,Folle Blanche
+68337,Malbec Blend
+68339,Merlot-Syrah
+68340,Tamianka
+69577,Cabernet Pfeffer
+70019,Morio Muskat
+70163,Rabigato
+70169,Babić
+70878,Roviello
+71275,Yapincak
+71813,Sauvignonasse
+71924,Viognier-Marsanne
+71954,Mandilaria
+72268,Meseguera
+72363,Alvarinho-Chardonnay
+72430,Saperavi-Merlot
+72459,Pinot Blanc-Viognier
+72507,Teroldego Rotaliano
+73001,Biancu Gentile
+73297,Garnacha-Tempranillo
+73397,Xinisteri
+73417,Sauvignon Blanc-Sauvignon Gris
+73534,Trebbiano di Lugana
+73732,Albarossa
+73770,Ryzlink Rýnský
+74455,Verdeca
+74981,Cabernet Sauvignon Grenache
+75106,Tămâioasă Românească
+76095,Black Monukka
+76447,Merlot-Grenache
+79270,Vranac
+79526,Tempranillo-Syrah
+79914,Chardonel
+80811,Silvaner-Traminer
+81692,Uvalino
+82101,Merseguera-Sauvignon Blanc
+82920,Cabernet-Malbec
+83723,Boğazkere
+83924,Gelber Traminer
+84175,Vermentino Nero
+84372,Cayuga
+84427,Tinta Amarela
+85620,Tinta Negra Mole
+85693,Moscato Rosa
+86263,Chelois
+86757,Sauvignon Blanc-Assyrtiko
+86909,no_winery_specified
+87079,Muscadel
+87123,Shiraz-Tempranillo
+87544,Roussanne-Grenache Blanc
+88160,Biancale
+88287,Ansonica
+89367,Syrah-Bonarda
+89519,Durif
+91085,Franconia
+91423,Malbec-Tempranillo
+92121,Nasco
+92918,Monastrell-Petit Verdot
+93077,Sirica
+93558,Vital
+95603,Espadeiro
+95706,Apple
+96127,Pinot Grigio-Sauvignon Blanc
+96759,Blatina
+96937,Karalahna
+96948,Feteasca
+97609,Sercial
+98794,Valvin Muscat
+99350,Malvasia Fina
+99438,Roditis-Moschofilero
+100078,St. Vincent
+100471,Chancellor
+101010,Premsal
+101362,Jampal
+102095,Tokay Pinot Gris
+103230,Colorino
+103326,Picapoll
+103967,Blauburger
+105081,Tinta Madeira
+105149,Centesimino
+105349,Grenache Gris
+106464,Trajadura
+106954,Merlot-Petite Verdot
+107854,Ramisco
+108036,Catalanesca
+108768,Garnacha-Cabernet
+109917,Garnacha-Cariñena
+109985,Gamza
+111277,Cabernet Franc-Lemberger
+111845,Chardonnay-Albariño
+112463,Shiraz-Mourvèdre
+112614,Mavrokalavryta
+113053,Favorita
+113067,Babosa Negro
+113278,Tintilia
+113898,Dafni
+114407,Petit Courbu
+116303,Kotsifali
+116516,Parraleta
+116787,Moscato di Noto
+116970,Roscetto
+118316,Torontel
+119787,Otskhanuri Sapere
+120171,Viognier-Valdiguié
+120427,Trollinger
+120799,Tsapournakos
+122726,Francisa
+123319,Kuntra
+126782,Pignolo
+127085,Caprettone
+127521,Ondenc
+127959,Athiri
+129187,Bobal-Cabernet Sauvignon

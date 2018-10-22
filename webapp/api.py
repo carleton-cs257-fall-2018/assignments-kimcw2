@@ -8,71 +8,88 @@ import json
 
 app = flask.Flask(__name__)
 
-# Who needs a database when you can just hard-code some actors and movies?
-actors = [
-    {'last_name': 'Pickford', 'first_name': 'Mary'},
-    {'last_name': 'Rains', 'first_name': 'Claude'},
-    {'last_name': 'Lorre', 'first_name': 'Peter'},
-    {'last_name': 'Greenstreet', 'first_name': 'Sydney'},
-    {'last_name': 'Bergman', 'first_name': 'Ingrid'},
-    {'last_name': 'Grant', 'first_name': 'Cary'},
-    {'last_name': 'Colbert', 'first_name': 'Claudette'},
-    {'last_name': 'McDormand', 'first_name': 'Frances'},
-    {'last_name': 'Wiig', 'first_name': 'Kristen'},
-    {'last_name': 'Adams', 'first_name': 'Amy'}
-]
+def get_connection():
+    '''
+    Returns a connection to the database described
+    in the config module. Returns None if the
+    connection attempt fails.
+    '''
+    connection = None
+    try:
+        connection = psycopg2.connect(database='washingtonj',
+                                      user='washingtonj',
+                                      password='suckmy@ss123')
+    except Exception as e:
+        print(e, file=sys.stderr)
+    return connection
 
-movies = [
-    {'title': 'Casablanca', 'year': 1942, 'genre': 'drama'},
-    {'title': 'North By Northwest', 'year': 1959, 'genre': 'thriller'},
-    {'title': 'Alien', 'year': 1979, 'genre': 'scifi'},
-    {'title': 'Bridesmaids', 'year': 2011, 'genre': 'comedy'},
-    {'title': 'Arrival', 'year': 2016, 'genre': 'scifi'},
-    {'title': 'It Happened One Night', 'year': 1934, 'genre': 'comedy'},
-    {'title': 'Fargo', 'year': 1996, 'genre': 'thriller'},
-    {'title': 'Clueless', 'year': 1995, 'genre': 'comedy'}
-]
+def get_select_query_results(connection, query, parameters=None):
+    '''
+    Executes the specified query with the specified tuple of
+    parameters. Returns a cursor for the query results.
+    Raises an exception if the query fails for any reason.
+    '''
+    cursor = connection.cursor()
+    if parameters is not None:
+        cursor.execute(query, parameters)
+    else:
+        cursor.execute(query)
+    return cursor
 
-def get_winery_id(winery_name):
-    for winery in wineries:
-        if winery_name == winery['name']:
-            return(winery['winery_id'])
-    return -1
-
-def get_variety_id(variety_name):
-    for variety in varieties:
-        if variety_name == variety['name']:
-            return(variety['variety_id'])
-    return -1
-
-def get_country_id(country_name):
-    for country in countries:
-        if country_name == country['name']:
-            return(country['country_id'])
-    return -1
-
+#~~~~~~~~APP ROUTES~~~~~~~~~#
 @app.route('/')
 def hello():
     return 'Franzia is the best wine'
-"""
+
 @app.route('/countries')
 def get_countries():
-    ''' Returns the first matching actor, or an empty dictionary if there's no match. '''
-    actor_dictionary = {}
-    lower_last_name = last_name.lower()
-    for actor in actors:
-        if actor['last_name'].lower().startswith(lower_last_name):
-            actor_dictionary = actor
-            break
-    return json.dumps(actor_dictionary)
+    ''' Returns all countries '''
+    query = '''SELECT id, name FROM countries'''
+    to_dump_countries[]
+    connection = get_connection()
+    if connection is not None:
+        try:
+            for row in get_select_query_results(connection, query):
+                country = {'id':row[0],
+                          'name':row[1]}
+                to_dump_countries.append(country)
+        except Exception as e:
+            print(e, file=sys.stderr)
+        connection.close()
+    return json.dumps(to_dump_countries)
 
 @app.route('/regions')
 def get_regions():
-    return json.dumps(actor_dictionary)
+    ''' Returns all regions '''
+    query = '''SELECT DISTINCT region FROM wineries'''
+    to_dump_regions[]
+    connection = get_connection()
+    if connection is not None:
+        try:
+            for row in get_select_query_results(connection, query):
+                to_dump_regions.append(row)
+        except Exception as e:
+            print(e, file=sys.stderr)
+        connection.close()
+    return json.dumps(to_dump_regions)
+
 @app.route('/varieties')
 def get_varieties():
-    return json.dumps(actor_dictionary)
-"""
+    ''' Returns all varieties '''
+    query = '''SELECT id, name FROM varieties'''
+    to_dump_varieties[]
+    connection = get_connection()
+    if connection is not None:
+        try:
+            for row in get_select_query_results(connection, query):
+                variety = {'id':row[0],
+                          'name':row[1]}
+                to_dump_varieties.append(variety)
+        except Exception as e:
+            print(e, file=sys.stderr)
+        connection.close()
+    return json.dumps(to_dump_varieties)
+
 
 @app.route('/wines')
 def get_wines():
@@ -89,36 +106,63 @@ def get_wines():
         it meets the corresponding constraint. (That is, accept a movie unless
         it is explicitly rejected by a GET parameter.)
     '''
-    bad_wines_list = []
-    winery_name = flask.request.args.get('winery')
-    variety_name = flask.request.args.get('variety')
-    taster_name = flask.request.args.get('taster')
-    region = flask.request.args.get('region')
-    description = flask.request.args.get('description')
-    vineyard = flask.request.args.get('vineyard')
-    country_name = flask.request.args.get('country')
+
+    winery_name = flask.request.args.get('winery', default='%')
+    variety_name = flask.request.args.get('variety', default='%')
+    taster_name = flask.request.args.get('taster', default='%')
+    region = flask.request.args.get('region', default='%')
+    description = flask.request.args.get('description', default='%')
+    vineyard = flask.request.args.get('vineyard', default='%')
+    country_name = flask.request.args.get('country', default='%')
     #points = flask.request.args.get('points', type=int)
     #price = flask.request.args.get('price', type=int)
 
-    for wine in wines:
-        if winery_name is not None and get_winery_id(winery_name) != wines['winery_id']:
-            continue
-        if variety_name is not None and get_variety_id(variety_name) != wines['variety_id']:
-            continue
-        if taster_name is not None and taster_name != wines['taster_name']:
-            continue
-        if region is not None and region != wines['region']:
-            continue
-        if description is not None and description not in wines['vineyard']:
-            continue
-        if vineyard is not None and vineyard != wines['vineyard']:
-            continue
-        if country_name is not None and get_country_id(country_name) != wines['country_id']:
-            continue
-        wines_list.append(wine)
+    query = '''SELECT countries.name, 
+                      wines.description, 
+                      wines.designation,
+                      wines.points, 
+                      wines.price, 
+                      wineries.province, 
+                      wineries.region, 
+                      wines.taster_name, 
+                      wines.taster_twitter_handle, 
+                      wines.title, varieties.name, 
+                      wineries.name
+                FROM wines 
+                    JOIN wineries ON wineries.id = wines.winery_id 
+                    JOIN varieties ON varieties.id = wines.variety_id 
+                    JOIN countries ON countries.id = wineries.country_id
+                WHERE wineries.name LIKE {0}
+                    AND varieties.name LIKE {1}
+                    AND wines.taster_name LIKE {2}
+                    AND wineries.region LIKE {3}
+                    AND wines.description LIKE {4}
+                    AND wines.designation LIKE {5}
+                    AND countries.name LIKE {6}'''.format(winery_name, variety_name, taster_name, region, description, vineyard, country_name)
 
-    return json.dumps(bad_wines_list)
-
+    
+    wines_list = []
+    connection = get_connection()
+    if connection is not None:
+        try:
+            for row in get_select_query_results(connection, query):
+                wine = {'country':row[0],
+                        'description':row[1],
+                        'designation':row[2], 
+                        'points':row[3],
+                        'price':row[4], 
+                        'province':row[5], 
+                        'region':row[6], 
+                        'taster_name':row[7], 
+                        'taster_twitter_handle':row[8], 
+                        'title':row[9], 
+                        'variety':row[10], 
+                        'winery':row[11]}
+                wines_list.append(wine)
+        except Exception as e:
+            print(e, file=sys.stderr)
+        connection.close()
+    return json.dumps(wines_list)
             
 
 if __name__ == '__main__':

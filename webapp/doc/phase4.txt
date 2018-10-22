@@ -1,13 +1,23 @@
-SQL CREATE STATEMENTS
-CREATE TABLE winery_info (
-	country	TEXT,
-	province	TEXT,
-	region_1	TEXT,
-	region_2	TEXT,
-	winery		TEXT	
+﻿SQL CREATE STATEMENTS
+CREATE TABLE countries (
+	country_id	SERIAL,
+	name		TEXT
 );
 
-CREATE TABLE wine_info (
+CREATE TABLE varieties (
+	variety_id	SERIAL,
+	name		TEXT
+);
+
+CREATE TABLE wineries (
+	winery_id	SERIAL,
+country_id	INT,
+	province	TEXT,
+	region		TEXT,
+	name		TEXT	
+);
+
+CREATE TABLE wines (
 description		TEXT,
 	designation		TEXT,
 	points			INT,
@@ -15,54 +25,72 @@ description		TEXT,
 	taster_name		TEXT,
 	taster_twitter_handle	TEXT,
 	title 			TEXT,
-	variety 			TEXT,
-	winery			TEXT	
+	variety_id 		INT,
+	winery_id		INT
 );
 
 API QUERIES
 SYNOPSIS: Get a list of wine and information regarding it from the chosen winery
-QUERY (GET): /winery/<winery_name>
-RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region_1, region_2, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
-EXAMPLE: http://whatever.com/winery/100_Percent_Wine
-[{'country': 'US', 'description': 'Sweet and light bodied, this wine has plenty of jasmine aromas, peach and pistachio flavors, and a rich, soft texture.', 'designation': None, 'points': 86, 'price': 18, 'province': 'California', 'region_1': 'California', 'region_2': 'California Other', 'taster_name': 'Jim Gordon', 'taster_twitter_handle': '@gordone_cellars', 'title': 100 Percent Wine 2015 Moscato (California)', 'variety': 'Moscato', 'winery': '100 Percent Wine'}, {'country': 'US', 'description': 'Herbaceous in aroma, dry and lean on the palate, this wine offers refreshment more than flavor. Light bodied, it has a tangy texture.', 'designation': 'All Profits to Charity', 'points': 84, 'price': 18, 'province': 'California', 'region_1': 'California', 'region_2': 'California Other', 'taster_name': 'Jim Gordon', 'taster_twitter_handle': '@gordone_cellars', 'title': '100 Percent Wine 2014 All Profits to Charity Sauvignon Blanc (California)', 'variety': 'Sauvignon Blanc', 'winery': '100 Percent Wine'}, {'country': 'US', 'description': 'Juicy and fresh, this deeply colored wine offers lots of grapey, berry-like aromas and equally fruity and vivid flavors. It has a touch of sweetness and a soothing, smooth texture. The name refers to the winery's pledge to give 100% of profits to charity.', 'designation': 'All Profits to Charity', 'points': 89, 'price': 18, 'province': 'California', 'region_1': 'California', 'region_2': 'California Other', 'taster_name': 'Jim Gordon', 'taster_twitter_handle': '@gordone_cellars', 'title': '100 Percent Wine 2012 All Profits to Charity Red (California)', 'variety': 'Red Blend', 'winery': '100 Percent Wine'}]
+QUERY (GET): /wines?winery=<winery_name>
+RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
+EXAMPLE: http://whatever.com/wines?winery=100_Percent_Wine
+[{'country': 'US', 'description': 'Sweet and light bodied, this wine has plenty of jasmine aromas, peach and pistachio flavors, and a rich, soft texture.', 'designation': None, 'points': 86, 'price': 18, 'province': 'California', 'region': 'California', 'taster_name': 'Jim Gordon', 'taster_twitter_handle': '@gordone_cellars', 'title': 100 Percent Wine 2015 Moscato (California)', 'variety': 'Moscato', 'winery': '100 Percent Wine'}, {'country': 'US', 'description': 'Herbaceous in aroma, dry and lean on the palate, this wine offers refreshment more than flavor. Light bodied, it has a tangy texture.', 'designation': 'All Profits to Charity', 'points': 84, 'price': 18, 'province': 'California', 'region': 'California', 'taster_name': 'Jim Gordon', 'taster_twitter_handle': '@gordone_cellars', 'title': '100 Percent Wine 2014 All Profits to Charity Sauvignon Blanc (California)', 'variety': 'Sauvignon Blanc', 'winery': '100 Percent Wine'}, {'country': 'US', 'description': 'Juicy and fresh, this deeply colored wine offers lots of grapey, berry-like aromas and equally fruity and vivid flavors. It has a touch of sweetness and a soothing, smooth texture. The name refers to the winery's pledge to give 100% of profits to charity.', 'designation': 'All Profits to Charity', 'points': 89, 'price': 18, 'province': 'California', 'region': 'California', 'taster_name': 'Jim Gordon', 'taster_twitter_handle': '@gordone_cellars', 'title': '100 Percent Wine 2012 All Profits to Charity Red (California)', 'variety': 'Red Blend', 'winery': '100 Percent Wine'}]
 
 SYNOPSIS: Get a list of wine and its corresponding information in the chosen variety
-QUERY (GET): /variety/<variety_name>
-RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region_1, region_2, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
-EXAMPLE: http://whatever.com/variety/Abouriou
-[{'country': 'US', 'description': 'Comprised 100% of this rare variety, this wine was given time to ferment and age in French oak, half of it new. Ashy red fruit meets a mild structure and considerable tannic grip; only a tiny amount was made.', 'designation': 'Moonlight Sonata', 'points': 85, 'price': 75, 'province': 'California', 'region_1': 'Russian River Valley', 'region_2': 'Sonoma', 'taster_name': 'Virginie Boone', 'taster_twitter_handle': '@vboone', 'title': 'Cerridwen 2012 Moonlight Sonata Abouriou (Russian River Valley)', 'variety': 'Abouriou', 'winery': 'Cerridwen'}, 
-{'country': 'France', 'description': 'Abouriou is a grape found almost exclusively in southwest France. As here, it produces a wine that balances acidity and juicy red fruits with a herbal edge. A light layer of tannin gives a structured aftertaste. Drink now.', 'designation': 'Just', 'points': 87, 'price': 15, 'province': 'Southwest', 'region_1': 'Côtes du Marmandais', 'region_2': None, 'taster_name': 'Roger Voss', 'taster_twitter_handle': '@vossroger', 'title': 'Cave du Marmandais 2012 Just Abouriou (Côtes du Marmandais)', 'variety': 'Abouriou', 'winery': 'Cave du Marmandais'}, 
-{'country': 'France', 'description': 'Despite its proximity to Bordeaux, the Marmandais has managed to retain Abouriou as its own grape variety. As part of its conservatory of some of the more obscure grape varieties, this producer has made this fine and fruity wine. It is smoky with attractive tannins and swathes of juicy black fruits. It's a fine wine to drink now.', 'designation': None, 'points': 91, 'price': 15, 'province': 'Southwest', 'region_1': 'Côtes du Marmandais', 'region_2': None, 'taster_name': 'Roger Voss', 'taster_twitter_handle': '@vossroger', 'title': 'Lionel Osmin & Cie 2014 Abouriou (Côtes du Marmandais)', 'variety': 'Abouriou', 'winery': 'Lionel Osmin & Cie'}]
+QUERY (GET): /wines?variety=<variety_name>
+RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
+EXAMPLE: http://whatever.com/wines?variety=Abouriou
+[{'country': 'US', 'description': 'Comprised 100% of this rare variety, this wine was given time to ferment and age in French oak, half of it new. Ashy red fruit meets a mild structure and considerable tannic grip; only a tiny amount was made.', 'designation': 'Moonlight Sonata', 'points': 85, 'price': 75, 'province': 'California', 'region': 'Russian River Valley', 'taster_name': 'Virginie Boone', 'taster_twitter_handle': '@vboone', 'title': 'Cerridwen 2012 Moonlight Sonata Abouriou (Russian River Valley)', 'variety': 'Abouriou', 'winery': 'Cerridwen'}, 
+{'country': 'France', 'description': 'Abouriou is a grape found almost exclusively in southwest France. As here, it produces a wine that balances acidity and juicy red fruits with a herbal edge. A light layer of tannin gives a structured aftertaste. Drink now.', 'designation': 'Just', 'points': 87, 'price': 15, 'province': 'Southwest', 'region': 'CÃ´tes du Marmandais', 'taster_name': 'Roger Voss', 'taster_twitter_handle': '@vossroger', 'title': 'Cave du Marmandais 2012 Just Abouriou (CÃ´tes du Marmandais)', 'variety': 'Abouriou', 'winery': 'Cave du Marmandais'}, 
+{'country': 'France', 'description': 'Despite its proximity to Bordeaux, the Marmandais has managed to retain Abouriou as its own grape variety. As part of its conservatory of some of the more obscure grape varieties, this producer has made this fine and fruity wine. It is smoky with attractive tannins and swathes of juicy black fruits. It's a fine wine to drink now.', 'designation': None, 'points': 91, 'price': 15, 'province': 'Southwest', 'region': 'CÃ´tes du Marmandais', 'taster_name': 'Roger Voss', 'taster_twitter_handle': '@vossroger', 'title': 'Lionel Osmin & Cie 2014 Abouriou (CÃ´tes du Marmandais)', 'variety': 'Abouriou', 'winery': 'Lionel Osmin & Cie'}]
 
 SYNOPSIS: Get a list of wine reviewed by chosen taster and information regarding it
-QUERY (GET): /taster/<taster_name>
-RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region_1, region_2, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
-EXAMPLE: http://whatever.com/taster/Alexander_Peartree
-[{'country': 'US', 'description': 'Pineapple rind, lemon pith and orange blossom start off the aromas. The palate is a bit more opulent, with notes of honey-drizzled guava and mango giving way to a slightly astringent, semidry finish.', 'designation': 'Reserve Late Harvest', 'points': 87, 'price': 13, 'province': 'Michigan', 'region_1': 'Lake Michigan Shore', 'region_2': None, 'taster_name': 'Alexander Peartree', 'taster_twitter_handle': None, 'title': 'St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore)', 'variety': 'Riesling', 'winery': 'St. Julian'}, {'country': 'US', 'description': 'Red fruit aromas pervade on the nose, with cigar box and menthol notes riding in the back. The palate is slightly restrained on entry, but opens up to riper notes of cherry and plum specked with crushed pepper. This blend of Merlot, Cabernet Sauvignon and Cabernet Franc is approachable now and ready to be enjoyed.', 'designation': None, 'points': 87, 'price': 32, 'province': 'Virginia', 'region_1': 'Lake Michigan Shore', 'region_2': None, 'taster_name': 'Alexander Peartree', 'taster_twitter_handle': None, 'title': 'Quiévremont 2012 Meritage (Virginia)', 'variety': 'Meritage', 'winery': 'Quiévremont'}, ETC]
+QUERY (GET): /wines?taster=<taster_name>
+RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
+EXAMPLE: http://whatever.com/wines?taster=Peartree
+[{'country': 'US', 'description': 'Pineapple rind, lemon pith and orange blossom start off the aromas. The palate is a bit more opulent, with notes of honey-drizzled guava and mango giving way to a slightly astringent, semidry finish.', 'designation': 'Reserve Late Harvest', 'points': 87, 'price': 13, 'province': 'Michigan', 'region': 'Lake Michigan Shore', 'taster_name': 'Alexander Peartree', 'taster_twitter_handle': None, 'title': 'St. Julian 2013 Reserve Late Harvest Riesling (Lake Michigan Shore)', 'variety': 'Riesling', 'winery': 'St. Julian'}, {'country': 'US', 'description': 'Red fruit aromas pervade on the nose, with cigar box and menthol notes riding in the back. The palate is slightly restrained on entry, but opens up to riper notes of cherry and plum specked with crushed pepper. This blend of Merlot, Cabernet Sauvignon and Cabernet Franc is approachable now and ready to be enjoyed.', 'designation': None, 'points': 87, 'price': 32, 'province': 'Virginia', 'region': 'Lake Michigan Shore', 'taster_name': 'Alexander Peartree', 'taster_twitter_handle': None, 'title': 'QuiÃ©vremont 2012 Meritage (Virginia)', 'variety': 'Meritage', 'winery': 'QuiÃ©vremont'}, ETC]
 
 SYNOPSIS:  Get a list of wine and information regarding it from a certain region or province
-QUERY (GET): /region/<region_name>
-RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region_1, region_2, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
-EXAMPLE: http://whatever.com/region/Amindeo
-[{'country': 'Greece', 'description': 'The difficult Xinomavro grape is wrangled well by talented winemaker Hatzis, though the wine feels slightly discordant. Aromas and flavors of olive, pepper, spice and tart berry offer intriguing layers, and the finish has  sweet spice.', 'designation': None, 'points': 84, 'price': 20.0, 'province': 'Amindeo', 'region_1': None, 'region_2': None, 'taster_name': 'Susan Kostrzewa', 'taster_twitter_handle': '@suskostrzewa', 'title': 'Ioannis Hatzis 2004 Xinomavro (Amindeo)', 'variety': 'Xinomavro', 'winery': 'Ioannis Hatzis'},
-{'country': 'Greece', 'description': 'This Xinomavro, with its compelling nose of coffee, cinnamon spice and olive, has a rough character that both distinguishes it (showing its Greek blood) and makes it tough to embrace. Tannic and slightly tart, with an underlay of spice, the wine wants more balance and less barb.', 'designation': 'Kelinos', 'points': 83, 'price': 35.0, 'province': 'Amindeo', 'region_1': None, 'region_2': None, 'taster_name': 'Susan Kostrzewa', 'taster_twitter_handle': '@suskostrzewa', 'title': 'Ioannis Hatzis 2001 Kelinos Xinomavro (Amindeo)', 'variety': 'Xinomavro', 'winery': 'Ioannis Hatzis'}]
+QUERY (GET): /wines?region=<region_name>
+RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
+EXAMPLE: http://whatever.com/wines?region=Amindeo
+[{'country': 'Greece', 'description': 'The difficult Xinomavro grape is wrangled well by talented winemaker Hatzis, though the wine feels slightly discordant. Aromas and flavors of olive, pepper, spice and tart berry offer intriguing layers, and the finish has  sweet spice.', 'designation': None, 'points': 84, 'price': 20.0, 'province': 'Amindeo', 'region': None, 'taster_name': 'Susan Kostrzewa', 'taster_twitter_handle': '@suskostrzewa', 'title': 'Ioannis Hatzis 2004 Xinomavro (Amindeo)', 'variety': 'Xinomavro', 'winery': 'Ioannis Hatzis'},
+{'country': 'Greece', 'description': 'This Xinomavro, with its compelling nose of coffee, cinnamon spice and olive, has a rough character that both distinguishes it (showing its Greek blood) and makes it tough to embrace. Tannic and slightly tart, with an underlay of spice, the wine wants more balance and less barb.', 'designation': 'Kelinos', 'points': 83, 'price': 35.0, 'province': 'Amindeo', 'region': None, 'taster_name': 'Susan Kostrzewa', 'taster_twitter_handle': '@suskostrzewa', 'title': 'Ioannis Hatzis 2001 Kelinos Xinomavro (Amindeo)', 'variety': 'Xinomavro', 'winery': 'Ioannis Hatzis'}]
 
 
 SYNOPSIS: Get a list of wineries and information from a certain taste description
-QUERY (GET): /description/<taste_description_text>
-RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region_1, region_2, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
-EXAMPLE: http://whatever.com/wine_info/description/oak_barriques
-[{'country': 'Australia', 'description': 'Aged partly in new American Oak hogsheads and partly in used French Oak barriques, the barrel regime shows in this wine's obvious vanilla and caramel accents to its boysenberry fruit. Supple and creamy in texture before turning crisp on the finish. Drink now.', 'designation': 'Single Vineyard', 'points': 87, 'price': 30.0, 'province': 'South Australia', 'region_1': 'McLaren Vale', 'region_2': None, 'taster_name':'Joe Czerwinski', 'taster_twitter_handle': '@JoeCz', 'title': 'Longwood 2008 Single Vineyard Shiraz (McLaren Vale)', 'variety': 'Shiraz', 'winery': 'Longwood'}]
+QUERY (GET): /wines?description=<taste_description_text>
+RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
+EXAMPLE: http://whatever.com/wines?description=oak_barriques
+[{'country': 'Australia', 'description': 'Aged partly in new American Oak hogsheads and partly in used French Oak barriques, the barrel regime shows in this wine's obvious vanilla and caramel accents to its boysenberry fruit. Supple and creamy in texture before turning crisp on the finish. Drink now.', 'designation': 'Single Vineyard', 'points': 87, 'price': 30.0, 'province': 'South Australia', 'region': 'McLaren Vale', 'taster_name':'Joe Czerwinski', 'taster_twitter_handle': '@JoeCz', 'title': 'Longwood 2008 Single Vineyard Shiraz (McLaren Vale)', 'variety': 'Shiraz', 'winery': 'Longwood'}]
 
 SYNOPSIS:  Get a list of wine and information regarding it from a certain vineyard (designation)
-QUERY (GET): /vineyard/<vineyard_name>
-RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region_1, region_2, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
-EXAMPLE: http://whatever.com/winery_info/winery/Abras
-[{'country': 'Argentina', 'description': 'Brambly and wild on the nose, this Cafayate Malbec features a narrow palate with edgy, briary plum and berry flavors. This seems riper with time in the glass, but all the way through it's pinchy in feel and ultimately ends with candied sweetness.', 'designation': 'Abras', 'points': 85, 'price': 20, 'province': 'Other', 'region_1': 'Cafayate', 'region_2': None, 'taster_name': 'Michael Schachner', 'taster_twitter_handle': '@wineschach', 'title': 'Altocedro 2013 Abras Malbec (Cafayate)', 'variety': 'Malbec', 'winery': 'Altocedro'}]
+QUERY (GET): /wines?vineyard=<vineyard_name>
+RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
+EXAMPLE: http://whatever.com/wines?vineyard=Abras
+[{'country': 'Argentina', 'description': 'Brambly and wild on the nose, this Cafayate Malbec features a narrow palate with edgy, briary plum and berry flavors. This seems riper with time in the glass, but all the way through it's pinchy in feel and ultimately ends with candied sweetness.', 'designation': 'Abras', 'points': 85, 'price': 20, 'province': 'Other', 'region': 'Cafayate', 'taster_name': 'Michael Schachner', 'taster_twitter_handle': '@wineschach', 'title': 'Altocedro 2013 Abras Malbec (Cafayate)', 'variety': 'Malbec', 'winery': 'Altocedro'}]
 
 SYNOPSIS:  Get a list of wine and information regarding it from a certain country
-QUERY (GET): /country/<country_name>
-RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region_1, region_2, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
-EXAMPLE: http://whatever.com/winery_info/country/
-[{'country': 'Bosnia and Herzegovina', 'description': 'Toasted oak and cedar notes meld into lush, ripe black plums on the nose and palate of this fruit-forward, richly concentrated wine from Bosnia and Herzegovina. It's a straightforward, accessible wine, but well balanced with smooth tannins and a bright acidity', 'designation': 'Vranac', 'points': 85, 'price': 13, 'province': 'Mostar', 'region_1': None, 'region_2': None, 'taster_name': 'Anna Lee C. Iijima', 'taster_twitter_handle': None, 'title': 'Winery Čitluk 2007 Vranac Vranec (Mostar)', 'variety': 'Vranec', 'winery': 'Winery Čitluk'}, 
-{'country': 'Bosnia and Herzegovina', 'description': 'A mix of red and black fruits pervade on the nose, with hints of roasted coffee beans bringing nuance. Flavors of black plum and freshly ground espresso dominate the palate.', 'designation': None, 'points': 88, 'price': 12, 'province': 'Mostar', 'region_1': None, 'region_2': None, 'taster_name': 'Jeff Jenssen', 'taster_twitter_handle': '@worldwineguys', 'title': 'Winery Čitluk 2011 Blatina (Mostar)', 'variety': 'Blatina', 'winery': 'Winery Čitluk'}]
+QUERY (GET): /wines?country=<country_name>
+RESPONSE: a list of dictionaries, each with the title of the wine, the variety of the wine, the country, province, region, winery name, description of wine, designation within winery, review points, price of bottle, and name and twitter handle of the taster who wrote the description of the wine as entries.
+EXAMPLE: http://whatever.com/wines?country=Bosnia_and_Herzegovina
+[{'country': 'Bosnia and Herzegovina', 'description': 'Toasted oak and cedar notes meld into lush, ripe black plums on the nose and palate of this fruit-forward, richly concentrated wine from Bosnia and Herzegovina. It's a straightforward, accessible wine, but well balanced with smooth tannins and a bright acidity', 'designation': 'Vranac', 'points': 85, 'price': 13, 'province': 'Mostar', 'region': None, 'taster_name': 'Anna Lee C. Iijima', 'taster_twitter_handle': None, 'title': 'Winery ÄŒitluk 2007 Vranac Vranec (Mostar)', 'variety': 'Vranec', 'winery': 'Winery ÄŒitluk'}, 
+{'country': 'Bosnia and Herzegovina', 'description': 'A mix of red and black fruits pervade on the nose, with hints of roasted coffee beans bringing nuance. Flavors of black plum and freshly ground espresso dominate the palate.', 'designation': None, 'points': 88, 'price': 12, 'province': 'Mostar', 'region': None, 'taster_name': 'Jeff Jenssen', 'taster_twitter_handle': '@worldwineguys', 'title': 'Winery ÄŒitluk 2011 Blatina (Mostar)', 'variety': 'Blatina', 'winery': 'Winery ÄŒitluk'}]
+
+SYNOPSIS:  Get a list of all wineries (names and ids)
+QUERY (GET): /wineries
+RESPONSE: a list of dictionaries, each with a winery name and id
+EXAMPLE: http://whatever.com/wineries
+[{winery, winery_id}, etc.]
+
+SYNOPSIS:  Get a list of all regions
+QUERY (GET): /regions
+RESPONSE: a list of region names
+EXAMPLE: http://whatever.com/regions 
+[<region>, etc.]
+
+SYNOPSIS:  Get a list of all varieties (names and ids)
+QUERY (GET): /varieties
+RESPONSE: a list of dictionaries, each with a variety name and id
+EXAMPLE: http://whatever.com/varieties 
+[{varieties, variety_id}, etc.]

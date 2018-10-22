@@ -20,9 +20,9 @@ def get_connection():
     '''
     connection = None
     try:
-        connection = psycopg2.connect(database='washingtonj',
-                                      user='washingtonj',
-                                      password='suckmy@ss123')
+        connection = psycopg2.connect(database='kimc2',
+                                      user='kimc2',
+                                      password='cow265summer')
     except Exception as e:
         print(e, file=sys.stderr)
     return connection

@@ -1,3 +1,3 @@
-database = 'dalmeidad'
-user = 'dalmeidad'
-password = ''
+database = 'kimc2'
+user = 'kimc2'
+password = 'cow265summer'

@@ -33,12 +33,30 @@ movies = [
     {'title': 'Clueless', 'year': 1995, 'genre': 'comedy'}
 ]
 
+def get_winery_id(winery_name):
+    for winery in wineries:
+        if winery_name == winery['name']:
+            return(winery['winery_id'])
+    return -1
+
+def get_variety_id(variety_name):
+    for variety in varieties:
+        if variety_name == variety['name']:
+            return(variety['variety_id'])
+    return -1
+
+def get_country_id(country_name):
+    for country in countries:
+        if country_name == country['name']:
+            return(country['country_id'])
+    return -1
+
 @app.route('/')
 def hello():
-    return 'Hello, Citizen of CS257.'
-
-@app.route('/actor/<last_name>')
-def get_actor(last_name):
+    return 'Franzia is the best wine'
+"""
+@app.route('/countries')
+def get_countries():
     ''' Returns the first matching actor, or an empty dictionary if there's no match. '''
     actor_dictionary = {}
     lower_last_name = last_name.lower()
@@ -48,30 +66,60 @@ def get_actor(last_name):
             break
     return json.dumps(actor_dictionary)
 
-@app.route('/movies')
-def get_movies():
-    ''' Returns the list of movies that match GET parameters:
-          start_year, int: reject any movie released earlier than this year
-          end_year, int: reject any movie released later than this year
-          genre: reject any movie whose genre does not match this genre exactly
-        If a GET parameter is absent, then any movie is treated as though
+@app.route('/regions')
+def get_regions():
+    return json.dumps(actor_dictionary)
+@app.route('/varieties')
+def get_varieties():
+    return json.dumps(actor_dictionary)
+"""
+
+@app.route('/wines')
+def get_wines():
+    ''' Returns the list of wines that match GET parameters:
+          winery_name: reject any wine not from this winery
+          variety_name: reject any wine not of this variety
+          taster_name: reject any wine not tasted by this taster
+          region: reject any wine not from this region
+          description: reject any wine that does not have specified 
+                       words in its description
+          vineyard: reject any wine not from this vineyard
+          country_name: reject any wine not from this country
+        If a GET parameter is absent, then any wine is treated as though
         it meets the corresponding constraint. (That is, accept a movie unless
         it is explicitly rejected by a GET parameter.)
     '''
-    movie_list = []
-    genre = flask.request.args.get('genre')
-    start_year = flask.request.args.get('start_year', default=0, type=int)
-    end_year = flask.request.args.get('end_year', default=10000, type=int)
-    for movie in movies:
-        if genre is not None and genre != movie['genre']:
-            continue
-        if movie['year'] < start_year:
-            continue
-        if movie['year'] > end_year:
-            continue
-        movie_list.append(movie)
+    bad_wines_list = []
+    winery_name = flask.request.args.get('winery')
+    variety_name = flask.request.args.get('variety')
+    taster_name = flask.request.args.get('taster')
+    region = flask.request.args.get('region')
+    description = flask.request.args.get('description')
+    vineyard = flask.request.args.get('vineyard')
+    country_name = flask.request.args.get('country')
+    #points = flask.request.args.get('points', type=int)
+    #price = flask.request.args.get('price', type=int)
 
-    return json.dumps(movie_list)
+    for wine in wines:
+        if winery_name is not None and get_winery_id(winery_name) != wines['winery_id']:
+            continue
+        if variety_name is not None and get_variety_id(variety_name) != wines['variety_id']:
+            continue
+        if taster_name is not None and taster_name != wines['taster_name']:
+            continue
+        if region is not None and region != wines['region']:
+            continue
+        if description is not None and description not in wines['vineyard']:
+            continue
+        if vineyard is not None and vineyard != wines['vineyard']:
+            continue
+        if country_name is not None and get_country_id(country_name) != wines['country_id']:
+            continue
+        wines_list.append(wine)
+
+    return json.dumps(bad_wines_list)
+
+            
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:

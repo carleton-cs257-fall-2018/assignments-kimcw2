@@ -48,6 +48,7 @@ def load_from_books_csv_file(csv_file_name):
     variety_dict = {}
 
     for row in reader:
+        pass_winery = True
         assert len(row) == 14
         country = row[1].strip()
         if country == "":
@@ -62,13 +63,15 @@ def load_from_books_csv_file(csv_file_name):
 
         if winery not in winery_dict:
             winery_dict[winery] = id
+            pass_winery = False
         if country not in country_dict:
             country_dict[country] = id
         if variety not in variety_dict:
             variety_dict[variety] = id
 
         single_winery_info = {'id': winery_dict[winery], 'country_id': country_dict[country], 'province': row[6], 'region': row[7], 'name': winery}
-        winery_info.append(single_winery_info)
+        if not pass_winery:
+            winery_info.append(single_winery_info)
         single_wine_info = {'winery_id': winery_dict[winery], 'description':row[2], 'designation': row[3], 'points':row[4], 'price':row[5], 'taster_name':row[9],
                             'taster_twitter_handle':row[10], 'title':row[11], 'variety_id':variety_dict[variety]}
         wine_info.append(single_wine_info)
@@ -170,10 +173,10 @@ if __name__ == '__main__':
     print("Loading and parsing file information...")
     wine_info, winery_info, country_dict, variety_dict  = load_from_books_csv_file('winemag-data-130k-v2.csv')
     print("Starting to save wine table")
-    save_wine_table(wine_info, 'wine2.csv')
+    save_wine_table(wine_info, 'wine.csv')
     print("Starting to save winery table")
-    save_winery_table(winery_info, 'winery2.csv')
+    save_winery_table(winery_info, 'winery.csv')
     print("Starting to save country table")
-    save_countries_table(country_dict, 'country2.csv')
+    save_countries_table(country_dict, 'country.csv')
     print("Starting to save variety table")
-    save_varieties_table(variety_dict, 'variety2.csv')
+    save_varieties_table(variety_dict, 'variety.csv')

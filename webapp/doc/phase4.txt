@@ -11,14 +11,14 @@ CREATE TABLE varieties (
 
 CREATE TABLE wineries (
 	winery_id	SERIAL,
-country_id	INT,
+	country_id	INT,
 	province	TEXT,
 	region		TEXT,
 	name		TEXT	
 );
 
 CREATE TABLE wines (
-description		TEXT,
+	description		TEXT,
 	designation		TEXT,
 	points			INT,
 	price			INT,

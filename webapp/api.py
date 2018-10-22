@@ -6,6 +6,10 @@ import sys
 import flask
 import json
 
+from config import password
+from config import database
+from config import user
+
 app = flask.Flask(__name__)
 
 def get_connection():

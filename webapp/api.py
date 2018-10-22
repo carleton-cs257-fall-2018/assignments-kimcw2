@@ -1,14 +1,19 @@
 '''
     api.py
-
+    
+    Dawson d'Almeida
+    Justin Washington
+    Chae Kim
 '''
 import sys
 import flask
 import json
+import psycopg2
 
 from config import password
 from config import database
 from config import user
+
 
 app = flask.Flask(__name__)
 
@@ -20,9 +25,9 @@ def get_connection():
     '''
     connection = None
     try:
-        connection = psycopg2.connect(database='washingtonj',
-                                      user='washingtonj',
-                                      password='suckmy@ss123')
+        connection = psycopg2.connect(database=database,
+                                      user=user,
+                                      password=password)
     except Exception as e:
         print(e, file=sys.stderr)
     return connection
@@ -44,6 +49,27 @@ def get_select_query_results(connection, query, parameters=None):
 @app.route('/')
 def hello():
     return 'Franzia is the best wine'
+
+@app.route('/test')
+def test():
+    query = '''SELECT * FROM countries'''
+    to_dump_countries=[]
+    connection = get_connection()
+    if connection is not None:
+        try:
+            for row in get_select_query_results(connection, query):
+                country = {'id':row[0],
+                          'name':row[1]}
+                to_dump_countries.append(country)
+        except Exception as e:
+            print(e, file=sys.stderr)
+        connection.close()
+    return json.dumps(to_dump_countries)
+
+
+    return 'Franzia is the best wine'
+
+
 
 @app.route('/countries')
 def get_countries():
@@ -71,7 +97,7 @@ def get_regions():
     if connection is not None:
         try:
             for row in get_select_query_results(connection, query):
-                to_dump_regions.append(row)
+                to_dump_regions.append(row[0])
         except Exception as e:
             print(e, file=sys.stderr)
         connection.close()
@@ -121,7 +147,7 @@ def get_wines():
     #points = flask.request.args.get('points', type=int)
     #price = flask.request.args.get('price', type=int)
 
-    query = '''SELECT countries.name, 
+    query = """SELECT countries.name, 
                       wines.description, 
                       wines.designation,
                       wines.points, 
@@ -136,13 +162,13 @@ def get_wines():
                     JOIN wineries ON wineries.id = wines.winery_id 
                     JOIN varieties ON varieties.id = wines.variety_id 
                     JOIN countries ON countries.id = wineries.country_id
-                WHERE wineries.name LIKE {0}
-                    AND varieties.name LIKE {1}
-                    AND wines.taster_name LIKE {2}
-                    AND wineries.region LIKE {3}
-                    AND wines.description LIKE {4}
-                    AND wines.designation LIKE {5}
-                    AND countries.name LIKE {6}'''.format(winery_name, variety_name, taster_name, region, description, vineyard, country_name)
+                WHERE wineries.name LIKE '%{0}%'
+                    AND varieties.name LIKE '%{1}%'
+                    AND wines.taster_name LIKE '%{2}%'
+                    AND wineries.region LIKE '%{3}%'
+                    AND wines.description LIKE '%{4}%'
+                    AND wines.designation LIKE '%{5}%'
+                    AND countries.name LIKE '%{6}%'""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name)
 
     
     wines_list = []

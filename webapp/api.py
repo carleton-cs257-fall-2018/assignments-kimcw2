@@ -74,7 +74,7 @@ def test():
 @app.route('/countries')
 def get_countries():
     ''' Returns all countries '''
-    query = '''SELECT id, name FROM countries'''
+    query = '''SELECT id, name FROM countries ORDER BY id'''
     to_dump_countries=[]
     connection = get_connection()
     if connection is not None:
@@ -91,7 +91,7 @@ def get_countries():
 @app.route('/regions')
 def get_regions():
     ''' Returns all regions '''
-    query = '''SELECT DISTINCT region FROM wineries'''
+    query = '''SELECT DISTINCT region FROM wineries ORDER BY region'''
     to_dump_regions=[]
     connection = get_connection()
     if connection is not None:
@@ -106,7 +106,7 @@ def get_regions():
 @app.route('/varieties')
 def get_varieties():
     ''' Returns all varieties '''
-    query = '''SELECT id, name FROM varieties'''
+    query = '''SELECT id, name FROM varieties ORDER BY id'''
     to_dump_varieties=[]
     connection = get_connection()
     if connection is not None:

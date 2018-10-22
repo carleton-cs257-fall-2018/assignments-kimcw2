@@ -1,16 +1,16 @@
 ﻿SQL CREATE STATEMENTS
 CREATE TABLE countries (
-	country_id	SERIAL,
+	id	SERIAL,
 	name		TEXT
 );
 
 CREATE TABLE varieties (
-	variety_id	SERIAL,
+	id	SERIAL,
 	name		TEXT
 );
 
 CREATE TABLE wineries (
-	winery_id	SERIAL,
+	id	SERIAL,
 	country_id	INT,
 	province	TEXT,
 	region		TEXT,

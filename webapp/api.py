@@ -15,7 +15,7 @@ from config import database
 from config import user
 
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_folder='static', template_folder='templates')
 
 def get_connection():
     '''
@@ -46,6 +46,12 @@ def get_select_query_results(connection, query, parameters=None):
     return cursor
 
 #~~~~~~~~APP ROUTES~~~~~~~~~#
+
+@app.after_request
+def set_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 @app.route('/')
 def hello():
     return 'Franzia is the best wine'
@@ -74,7 +80,7 @@ def test():
 @app.route('/countries')
 def get_countries():
     ''' Returns all countries '''
-    query = '''SELECT id, name FROM countries'''
+    query = '''SELECT id, name FROM countries ORDER BY id'''
     to_dump_countries=[]
     connection = get_connection()
     if connection is not None:
@@ -91,7 +97,7 @@ def get_countries():
 @app.route('/regions')
 def get_regions():
     ''' Returns all regions '''
-    query = '''SELECT DISTINCT region FROM wineries'''
+    query = '''SELECT DISTINCT region FROM wineries ORDER BY region'''
     to_dump_regions=[]
     connection = get_connection()
     if connection is not None:
@@ -106,7 +112,7 @@ def get_regions():
 @app.route('/varieties')
 def get_varieties():
     ''' Returns all varieties '''
-    query = '''SELECT id, name FROM varieties'''
+    query = '''SELECT id, name FROM varieties ORDER BY id'''
     to_dump_varieties=[]
     connection = get_connection()
     if connection is not None:
@@ -144,6 +150,7 @@ def get_wines():
     description = flask.request.args.get('description', default='%')
     vineyard = flask.request.args.get('vineyard', default='%')
     country_name = flask.request.args.get('country', default='%')
+    order_by = flask.request.args.get('orderby', default='points')
     #points = flask.request.args.get('points', type=int)
     #price = flask.request.args.get('price', type=int)
 
@@ -168,7 +175,8 @@ def get_wines():
                     AND wineries.region LIKE '%{3}%'
                     AND wines.description LIKE '%{4}%'
                     AND wines.designation LIKE '%{5}%'
-                    AND countries.name LIKE '%{6}%'""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name)
+                    AND countries.name LIKE '%{6}%'
+                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by)
 
 
     wines_list = []

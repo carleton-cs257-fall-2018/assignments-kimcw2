@@ -1,6 +1,6 @@
 '''
     api.py
-    
+
     Dawson d'Almeida
     Justin Washington
     Chae Kim
@@ -15,7 +15,7 @@ from config import database
 from config import user
 
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__, static_folder='static', template_folder='templates')
 
 def get_connection():
     '''
@@ -128,7 +128,7 @@ def get_wines():
           variety_name: reject any wine not of this variety
           taster_name: reject any wine not tasted by this taster
           region: reject any wine not from this region
-          description: reject any wine that does not have specified 
+          description: reject any wine that does not have specified
                        words in its description
           vineyard: reject any wine not from this vineyard
           country_name: reject any wine not from this country
@@ -148,20 +148,20 @@ def get_wines():
     #points = flask.request.args.get('points', type=int)
     #price = flask.request.args.get('price', type=int)
 
-    query = """SELECT countries.name, 
-                      wines.description, 
+    query = """SELECT countries.name,
+                      wines.description,
                       wines.designation,
-                      wines.points, 
-                      wines.price, 
-                      wineries.province, 
-                      wineries.region, 
-                      wines.taster_name, 
-                      wines.taster_twitter_handle, 
-                      wines.title, varieties.name, 
+                      wines.points,
+                      wines.price,
+                      wineries.province,
+                      wineries.region,
+                      wines.taster_name,
+                      wines.taster_twitter_handle,
+                      wines.title, varieties.name,
                       wineries.name
-                FROM wines 
-                    JOIN wineries ON wineries.id = wines.winery_id 
-                    JOIN varieties ON varieties.id = wines.variety_id 
+                FROM wines
+                    JOIN wineries ON wineries.id = wines.winery_id
+                    JOIN varieties ON varieties.id = wines.variety_id
                     JOIN countries ON countries.id = wineries.country_id
                 WHERE wineries.name LIKE '%{0}%'
                     AND varieties.name LIKE '%{1}%'
@@ -172,7 +172,7 @@ def get_wines():
                     AND countries.name LIKE '%{6}%'
                 ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by)
 
-    
+
     wines_list = []
     connection = get_connection()
     if connection is not None:
@@ -180,29 +180,29 @@ def get_wines():
             for row in get_select_query_results(connection, query):
                 wine = {'country':row[0],
                         'description':row[1],
-                        'designation':row[2], 
+                        'designation':row[2],
                         'points':row[3],
-                        'price':row[4], 
-                        'province':row[5], 
-                        'region':row[6], 
-                        'taster_name':row[7], 
-                        'taster_twitter_handle':row[8], 
-                        'title':row[9], 
-                        'variety':row[10], 
+                        'price':row[4],
+                        'province':row[5],
+                        'region':row[6],
+                        'taster_name':row[7],
+                        'taster_twitter_handle':row[8],
+                        'title':row[9],
+                        'variety':row[10],
                         'winery':row[11]}
                 wines_list.append(wine)
         except Exception as e:
             print(e, file=sys.stderr)
         connection.close()
     return json.dumps(wines_list)
-            
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print('Usage: {0} host port'.format(sys.argv[0]))
         print('  Example: {0} perlman.mathcs.carleton.edu 5101'.format(sys.argv[0]))
         exit()
-    
+
     host = sys.argv[1]
     port = int(sys.argv[2])
     app.run(host=host, port=port, debug=True)

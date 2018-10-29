@@ -46,6 +46,12 @@ def get_select_query_results(connection, query, parameters=None):
     return cursor
 
 #~~~~~~~~APP ROUTES~~~~~~~~~#
+
+@app.after_request
+def set_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    return response
+
 @app.route('/')
 def hello():
     return 'Franzia is the best wine'

@@ -35,12 +35,13 @@ function initialize() {
     if (search_button) {
         search_button.onclick = onWinesSearch;
     }
-    var random_wine = document.getElementById('wine_of_the_day_button');
-    console.log("initialized the random_wine var");
-    if (random_wine) {
-	console.log("random wine clicked");
-        random_wine.onclick = wine_of_the_day;
-    }
+    wine_of_the_day();
+    //var random_wine = document.getElementById('wine_of_the_day_button');
+    //console.log("initialized the random_wine var");
+    //if (random_wine) {
+//	console.log("random wine clicked");
+ //       random_wine.onclick = wine_of_the_day;
+    //}
 }
 
 function wine_of_the_day() {
@@ -50,18 +51,18 @@ function wine_of_the_day() {
 
   .then(function(wine_list) {
       var random_wine = wine_list[Math.floor(Math.random() * wine_list.length)];
-
-      var random_wine_body = '<p>' + random_wine_body['country'] + ',' +
-                                     random_wine_body['description'] + ',' +
-                                     random_wine_body['designation'] + ',' +
-                                     random_wine_body['points'] + ',' +
-                                     random_wine_body['price'] + ',' +
-                                     random_wine_body['province'] + ',' +
-                                     random_wine_body['taster_name'] + ',' +
-                                     random_wine_body['taster_twitter_handle'] + ',' +
-                                     random_wine_body['title'] + ',' +
-                                     random_wine_body['variety'] + ',' +
-                                     random_wine_body['winery'] + '</p>';
+      console.log(random_wine);
+      var random_wine_body = '<p>' + random_wine['country'] + ',' +
+                                     random_wine['description'] + ',' +
+                                     random_wine['designation'] + ',' +
+                                     random_wine['points'] + ',' +
+                                     random_wine['price'] + ',' +
+                                     random_wine['province'] + ',' +
+                                     random_wine['taster_name'] + ',' +
+                                     random_wine['taster_twitter_handle'] + ',' +
+                                     random_wine['title'] + ',' +
+                                     random_wine['variety'] + ',' +
+                                     random_wine['winery'] + '</p>';
       
 
       var wine_of_the_day = document.getElementById('wine_of_the_day');

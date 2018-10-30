@@ -38,7 +38,7 @@ function initialize() {
     var random_wine = document.getElementById('wine_of_the_day_button');
     console.log("initialized the random_wine var");
     if (random_wine) {
-	console.log("random wine clicked");
+	      console.log("random wine clicked");
         random_wine.onclick = wine_of_the_day;
     }
 }

@@ -33,17 +33,50 @@ initialize();
 function initialize() {
     var element = document.getElementById('submit_search');
     if (element) {
-        element.onclick = onAuthorsButtonClicked;
+        element.onclick = onWinesSearch;
     }
 }
+
+function wine_of_the_day() {
+  var url = getBaseURL() + '/wines/';
+  fetch(url, {method: 'get'})
+  .then((response) => response.json())
+
+  .then(function(wine_list) {
+      var random_wine = wine_list[Math.floor(Math.random() * wine_list.length)];
+
+      var random_wine_body = '<p>' + random_wine_body['country'] + ',' +
+                                     random_wine_body['description'] + ',' +
+                                     random_wine_body['designation'] + ',' +
+                                     random_wine_body['points'] + ',' +
+                                     random_wine_body['price'] + ',' +
+                                     random_wine_body['province'] + ',' +
+                                     random_wine_body['taster_name'] + ',' +
+                                     random_wine_body['taster_twitter_handle'] + ',' +
+                                     random_wine_body['title'] + ',' +
+                                     random_wine_body['variety'] + ',' +
+                                     random_wine_body['winery'] + '</p>''
+      }
+
+      var wine_of_the_day = document.getElementById('wine_of_the_day');
+      if (wine_of_the_day) {
+          wine_of_the_day.innerHTML = random_wine_body;
+      }
+
+      .catch(function(error) {
+          console.log(error);
+      });
+}
+
+
 
 function getBaseURL() {
     var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + api_port;
     return baseURL;
 }
 
-function onAuthorsButtonClicked() {
-    var url = getBaseURL() + '/authors/';
+function onWinesSearch() {
+    var url = getBaseURL() + '/wines/';
 
     // Send the request to the Books API /authors/ endpoint
     fetch(url, {method: 'get'})

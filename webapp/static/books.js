@@ -31,9 +31,13 @@
 initialize();
 
 function initialize() {
-    var element = document.getElementById('submit_search');
-    if (element) {
-        element.onclick = onWinesSearch;
+    var search_button = document.getElementById('submit_search');
+    if (search_button) {
+        search_button.onclick = onWinesSearch;
+    }
+    var random_wine = document.getElementById('submit_search');
+    if (random_wine) {
+        random_wine.onclick = wine_of_the_day;
     }
 }
 
@@ -76,7 +80,7 @@ function getBaseURL() {
 }
 
 function onWinesSearch() {
-    var url = getBaseURL() + '/wines/';
+    var url = getBaseURL() + '/wines';
 
     // Send the request to the Books API /authors/ endpoint
     fetch(url, {method: 'get'})

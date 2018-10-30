@@ -35,11 +35,12 @@ function initialize() {
     if (search_button) {
         search_button.onclick = onWinesSearch;
     }
-    var random_wine = document.getElementById('wine_of_the_day_button');
-    console.log("initialized the random_wine var");
-    if (random_wine) {
-	      console.log("random wine clicked");
-        random_wine.onclick = wine_of_the_day;
+    wine_of_the_day();
+    //var random_wine = document.getElementById('wine_of_the_day_button');
+    //console.log("initialized the random_wine var");
+    //if (random_wine) {
+	  //    console.log("random wine clicked");
+
     }
 }
 
@@ -62,7 +63,7 @@ function wine_of_the_day() {
                                      random_wine_body['title'] + ',' +
                                      random_wine_body['variety'] + ',' +
                                      random_wine_body['winery'] + '</p>';
-      
+
 
       var wine_of_the_day = document.getElementById('wine_of_the_day');
       if (wine_of_the_day) {

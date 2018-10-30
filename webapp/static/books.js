@@ -38,7 +38,7 @@ function initialize() {
 }
 
 function wine_of_the_day() {
-  var url = getBaseURL() + '/wines/';
+  var url = getBaseURL() + '/wines';
   fetch(url, {method: 'get'})
   .then((response) => response.json())
 

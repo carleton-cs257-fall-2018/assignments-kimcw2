@@ -31,7 +31,7 @@
 initialize();
 
 function initialize() {
-    var element = document.getElementById('authors_button');
+    var element = document.getElementById('submit_search');
     if (element) {
         element.onclick = onAuthorsButtonClicked;
     }

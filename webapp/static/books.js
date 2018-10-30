@@ -62,12 +62,12 @@ function wine_of_the_day() {
                                      random_wine_body['title'] + ',' +
                                      random_wine_body['variety'] + ',' +
                                      random_wine_body['winery'] + '</p>';
-      }
+      
 
       var wine_of_the_day = document.getElementById('wine_of_the_day');
       if (wine_of_the_day) {
           wine_of_the_day.innerHTML = random_wine_body;
-      }
+      }})
 
       .catch(function(error) {
           console.log(error);

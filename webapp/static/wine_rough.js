@@ -31,28 +31,40 @@
 initialize();
 
 function initialize() {
-    onWineSearchPart2();
+  if (!(window.location.pathname.includes("display"))){
+    var search_button = document.getElementById('submit_search');
+    search_button.onclick = function() {
+      sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
+      console.log(sessionStorage.getItem("search_text"));
+    }
+    wine_of_the_day();
+  } else {
+    search_text = window.location.href.split("search_text=")[-1]
+    console.log(search_text)
+    onWinesSearch("default", sessionStorage.getItem("search_text"));
+  }
 }
 
 function wine_of_the_day() {
   var url = getBaseURL() + '/wines';
-  fetch(url, {method: 'get'})
+  fetch(url)
   .then((response) => response.json())
 
   .then(function(wine_list) {
       var random_wine = wine_list[Math.floor(Math.random() * wine_list.length)];
       console.log(random_wine);
-      var random_wine_body = '<p>' + random_wine['country'] + ',' +
-                                     random_wine['description'] + ',' +
-                                     random_wine['designation'] + ',' +
-                                     random_wine['points'] + ',' +
-                                     random_wine['price'] + ',' +
-                                     random_wine['province'] + ',' +
-                                     random_wine['taster_name'] + ',' +
-                                     random_wine['taster_twitter_handle'] + ',' +
-                                     random_wine['title'] + ',' +
-                                     random_wine['variety'] + ',' +
-                                     random_wine['winery'] + '</p>';
+      var random_wine_body = '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
+                             '<div class="left_box"><p class = "title">' + random_wine['title'] +
+                             '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
+                             '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
+                             '</text><text class = "place"> (' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
+                             ')</text><p class = "points"> Points: ' + random_wine['points'] + '/100</p></div>'+
+                             '<div class="middle_box"><p class = "description">Review: ' + random_wine['description'] +
+                             '</p><text class = "taster_name">' + random_wine['taster_name'] +
+                             '</text>  <text class = "taster_twitter_handle">(' + random_wine['taster_twitter_handle'] +
+                             ')</text></div>' +
+                             '<div class = "right_box">  <text class = "price">$' + random_wine['price'] +
+                             '</text></div></div>';
 
 
       var wine_of_the_day = document.getElementById('wine_of_the_day');
@@ -65,65 +77,30 @@ function wine_of_the_day() {
       });
 }
 
-
-
 function getBaseURL() {
   var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + api_port;
   return baseURL;
 }
 
-function getBaseURLWeb() {
-  var api_port_str = api_port.toString();
-  var web_port;
-  if (api_port_str.substring(1,2) == '1'){
-    web_port = api_port_str.substring(0,1) + '2' + api_port_str.substring(2);
-  } else {
-    web_port = api_port_str.substring(0,1) + '1' + api_port_str.substring(2);
-  }
-  var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + web_port;
-  return baseURL;
-}
-
-function onWinesSearch(category, search_text) {
-
-  //window.location.href = getBaseUrl() + "/wines?title=" + value;
-  var defaultTo = True;
-  var value = document.getElementById("search_bar").value;
-  console.log(value);
-  var searchDirectory;
-
-  if (defaultTo) {searchDirectory = "/wines?title=" + value + "/";}
-  else {}
-
-  //location.href = getBaseURL() + "/view" + searchDirectory
-  var url = getBaseURLWeb() + "test";
-  window.location.href = url
+function getBaseWebURL() {
+    var baseWebURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port;
+    console.log(baseWebURL);
+    return baseWebURL;
 }
 
 function append(parent, el) {
   return parent.appendChild(el);
 }
 
-function onWineSearchPart2() {
-  // Send the request to the Books API /authors/ endpoint
-  var url = getBaseURL() + "/wines?description=" + "fruity taste";
+function onWinesSearch(category, search_text) {
+  // TODO change here to account for different search categories
+  if (category == "default") {category = "description"}
+  var url = getBaseURL() + `/wines?${category}=${search_text}`;
   console.log(url);
-  var list_li = [];
 
   fetch(url)
     .then(response => response.json())
     .then(function(data) {
-      //var tableBody = document.createElement("ul");
-      //for (var k = 0; k < wineList.length; k++) {
-      //    tableBody += '<tr>';
-      //    tableBody += '<td>' + booksList[k]['title'] + '</td>';
-      //    tableBody += '<td>' + booksList[k]['publication_year'] + '</td>';
-      //    tableBody += '</tr>';
-      //}
-      //var resultsTableElement = document.getElementById('results_table');
-      //if (resultsTableElement) {
-      //    resultsTableElement.innerHTML = tableBody;
-      //}
       console.log(data);
       for (var k=0; k<data.length;k++) {
         var title = data[k]['title'] || "undefined";
@@ -183,14 +160,7 @@ function onWineSearchPart2() {
         append(main_li, right_panel);
 
         append(document.getElementById("search_wrap"), main_li);
-
-        //list_li.push(main_li);
       }
     })
     .catch(error => console.error(error))
-
-  //console.log(list_li);
-
-  //console.log(wine_result_list.length);
-  //console.log(wine_result_list);
 }

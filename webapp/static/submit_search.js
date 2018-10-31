@@ -6,6 +6,11 @@ function initialize() {
     onWinesSearch(search_input);
 }
 
+function getBaseURL() {
+    var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + api_port;
+    return baseURL;
+}
+
 function onWinesSearch(search_input) {
     var url = getBaseURL() + '/wines?title=' + search_input;
 
@@ -58,10 +63,4 @@ function get_input() {
 }
 document.getElementById('submit_search').onclick = get_input();
 
-
-//Initialize submit button to point to new page
-function submit_search() {
-  var url = getBaseWebURL() + '/submit_search';
-  document.location.href = url;
-}
 document.getElementById('submit_search').onclick = onWinesSearch(window.sessionStorage.getItem("search_input"));

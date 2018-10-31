@@ -34,6 +34,7 @@ function initialize() {
   var search_button = document.getElementById('submit_search');
   search_button.onclick = function() {
     sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
+  }
   var home_button = document.getElementById('go_to_home_page');
   home_button.onclick = function() {
     go_to_home_page();
@@ -169,5 +170,5 @@ function onWinesSearch(category, search_text) {
         append(document.getElementById("search_wrap"), main_li);
       }
     })
-    .catch(error => console.error(error))
+    .catch(error => console.error(error));
 }

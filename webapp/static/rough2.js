@@ -186,12 +186,14 @@ function onWineSearchPart2() {
         append(main_li, mid_panel);
         append(main_li, right_panel);
 
-        list_li.push(main_li);
+        append(document.getElementById("search_wrap"), main_li);
+
+        //list_li.push(main_li);
       }
     })
     .catch(error => console.error(error))
 
-  console.log(list_li);
+  //console.log(list_li);
 
   //console.log(wine_result_list.length);
   //console.log(wine_result_list);

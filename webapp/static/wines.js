@@ -42,8 +42,8 @@ function initialize() {
 
   if (window.location.pathname.includes("display")){
     onWinesSearch("default", sessionStorage.getItem("search_text"));
-  } else if (window.location.pathname.include("about")){
-  } else if (window.location.pathname.include("wine_of_the_day")){
+  } else if (window.location.pathname.includes("about")){
+  } else if (window.location.pathname.includes("wine_of_the_day")){
   } else {
     wine_of_the_day();
   }

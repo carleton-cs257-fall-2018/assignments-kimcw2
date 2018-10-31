@@ -130,18 +130,29 @@ function onWineSearchPart2() {
       //}
       console.log(data);
       for (var k=0; k<data.length;k++) {
-      var main_li = document.createElement("li").setAttribute("wine_name",data[k]['title']).setAttribute("class","wine_view");
+        var title = data[k]['title'] || " ";
+        var variety = data[k]['variety'] || " ";
+        var winery = data[k]['winery'] || " ";
+        var points = data[k]['points'] || " ";
+        var description = data[k]['description'] || " ";
+        var taster_name = data[k]['taster_name'] || " ";
+        var taster_twitter_handle = data[k]['taster_twitter_handle'] || " ";
+        var price = data[k]['price'] || " ";
+
+
+
+      var main_li = document.createElement("li").setAttribute("wine_name",title).setAttribute("class","wine_view");
       var left_panel = document.createElement("div").setAttribute("class","left_panel");
-      var title_span = document.createElement("span").setAttribute("class","title").setValue(data[k]['title']);
-      var variety_span = document.createElement("span").setAttribute("class","variety").setValue(data[k]['variety']);
-      var winery_span = document.createElement("span").setAttribute("class","winery").setValue(data[k]['winery']);
-      var points_span = document.createElement("span").setAttribute("class","points").setValue(data[k]['points']);
+      var title_span = document.createElement("span").setAttribute("class","title").setValue(title);
+      var variety_span = document.createElement("span").setAttribute("class","variety").setValue(variety);
+      var winery_span = document.createElement("span").setAttribute("class","winery").setValue(winery);
+      var points_span = document.createElement("span").setAttribute("class","points").setValue(points);
       var mid_panel = document.createElement("div").setAttribute("class","mid_panel");
-      var description_span = document.createElement("span").setAttribute("class","description").setValue(data[k]['description']);
-      var taster_name_span = document.createElement("span").setAttribute("class","taster_name").setValue(data[k]['taster_name']);
-      var taster_twitter_span = document.createElement("span").setAttribute("class","taster_twitter_handle").setValue(data[k]['taster_twitter_handle']);
+      var description_span = document.createElement("span").setAttribute("class","description").setValue(description);
+      var taster_name_span = document.createElement("span").setAttribute("class","taster_name").setValue(taster_name);
+      var taster_twitter_span = document.createElement("span").setAttribute("class","taster_twitter_handle").setValue(taster_twitter_handle);
       var right_panel = document.createElement("div").setAttribute("class","right_panel");
-      var price_span = document.createElement("span").setAttribute("class","price").setValue(data[k]['price']);
+      var price_span = document.createElement("span").setAttribute("class","price").setValue(price);
 
       append(left_panel,title_span);
       append(left_panel,variety_span);

@@ -12,7 +12,11 @@ function getBaseURL() {
 }
 
 function onWinesSearch(search_input) {
+<<<<<<< HEAD
+    console.log(search_input);
+=======
     console.log(search_input)
+>>>>>>> e2b687301e24a3505c11d8aa48e6e633936ff0c8
     var url = getBaseURL() + '/wines?title=' + search_input;
 
     // Send the request to the Books API /authors/ endpoint

@@ -31,7 +31,13 @@
 initialize();
 
 function initialize() {
-    onWineSearchPart2();
+  if (window.location.href == getBaseURLWeb()){
+    var search_button = document.getElementById('submit_search');
+    search_button.onclick = function() {onWineSearch("default", document.getElementById('search_bar').value);}
+    wine_of_the_day();
+  } else {
+    onWineSearch(category, search_text);
+  }
 }
 
 function wine_of_the_day() {
@@ -85,28 +91,27 @@ function getBaseURLWeb() {
 }
 
 function onWinesSearch(category, search_text) {
-
-  //window.location.href = getBaseUrl() + "/wines?title=" + value;
   var defaultTo = True;
-  var value = document.getElementById("search_bar").value;
-  console.log(value);
   var searchDirectory;
 
-  if (defaultTo) {searchDirectory = "/wines?title=" + value + "/";}
+  if (defaultTo) {searchDirectory = "/wines?title=" + search_text + "/";}
   else {}
 
+  onWineSearchPart2(category, search_text);
+
   //location.href = getBaseURL() + "/view" + searchDirectory
-  var url = getBaseURLWeb() + "test";
-  window.location.href = url
+  //var url = getBaseURLWeb() + "/display";
+  //window.location.href = url
 }
 
 function append(parent, el) {
   return parent.appendChild(el);
 }
 
-function onWineSearchPart2() {
+function onWineSearchPart2(category, search_text) {
   // Send the request to the Books API /authors/ endpoint
-  var url = getBaseURL() + "/wines?description=" + "fruity taste";
+  if (category == "default") {category = "description"}
+  var url = getBaseURL() + "/wines?${category}=${search_text}";
   console.log(url);
   var list_li = [];
 

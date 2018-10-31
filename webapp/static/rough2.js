@@ -110,7 +110,7 @@ function append(parent, el) {
 
 function onWineSearchPart2() {
   // Send the request to the Books API /authors/ endpoint
-  var url = getBaseURL() + "/wines?title=" + "ar";
+  var url = getBaseURL() + "/wines?title=" + "arc";
   console.log(url);
   var list_li = [];
 
@@ -146,32 +146,32 @@ function onWineSearchPart2() {
         left_panel.setAttribute("class","left_panel");
         var title_span = document.createElement("span");
         title_span.setAttribute("class","title");
-        title_span.value = title;
+        title_span.innerHTML = title;
         var variety_span = document.createElement("span");
         variety_span.setAttribute("class","variety");
-        variety_span.value = variety;
+        variety_span.innerHTML = variety;
         var winery_span = document.createElement("span");
         winery_span.setAttribute("class","winery");
-        winery_span.value = winery;
+        winery_span.innerHTML = winery;
         var points_span = document.createElement("span");
         points_span.setAttribute("class","points");
-        points_span.value = points;
+        points_span.innerHTML = points;
         var mid_panel = document.createElement("div");
         mid_panel.setAttribute("class","mid_panel");
         var description_span = document.createElement("span");
         description_span.setAttribute("class","description");
-        description_span.value = description;
+        description_span.innerHTML = description;
         var taster_name_span = document.createElement("span");
         taster_name_span.setAttribute("class","taster_name");
-        taster_name_span.value = taster_name;
+        taster_name_span.innerHTML = taster_name;
         var taster_twitter_span = document.createElement("span");
         taster_twitter_span.setAttribute("class","taster_twitter_handle");
-        taster_twitter_span.value = taster_twitter_handle;
+        taster_twitter_span.innerHTML = taster_twitter_handle;
         var right_panel = document.createElement("div");
         right_panel.setAttribute("class","right_panel");
         var price_span = document.createElement("span");
         price_span.setAttribute("class","price");
-        price_span.value = price;
+        price_span.innerHTML = price;
 
         append(left_panel,title_span);
         append(left_panel,variety_span);

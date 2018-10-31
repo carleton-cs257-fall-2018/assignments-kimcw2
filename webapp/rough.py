@@ -21,6 +21,7 @@ def get_main_page():
 
 @app.route('/display')
 def test():
+    global api_port
     return flask.render_template('rough2.html', api_port=api_port)
 
 if __name__ == '__main__':

@@ -75,10 +75,10 @@ function getBaseURL() {
 function getBaseURLWeb() {
   var api_port_str = api_port.toString();
   var web_port;
-  if (api_port_string[1] == '1'){
-    web_port = api_port[0] + '2' + api_port[2:]
+  if (api_port_str.substring(1,2) == '1'){
+    web_port = api_port_str.substring(0,1) + '2' + api_port_str.substring(2);
   } else {
-    web_port = api_port[0] + '1' + api_port[2:]
+    web_port = api_port_str.substring(0,1) + '1' + api_port_str.substring(2);
   }
   var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + web_port;
   return baseURL;
@@ -87,11 +87,12 @@ function getBaseURLWeb() {
 function onWinesSearch() {
 
   //window.location.href = getBaseUrl() + "/wines?title=" + value;
-  var default = True;
+  var defaultTo = True;
   var value = document.getElementById("search_bar").value;
+  console.log(value);
   var searchDirectory;
 
-  if (default) {searchDirectory = "/wines?title=" + value + "/";}
+  if (defaultTo) {searchDirectory = "/wines?title=" + value + "/";}
   else {}
 
   //location.href = getBaseURL() + "/view" + searchDirectory
@@ -99,11 +100,20 @@ function onWinesSearch() {
   window.location.href = url
 }
 
+function createNode(element) {
+  return document.createElement(element);
+}
+
+function append(parent, el) {
+  return parent.appendChild(el);
+}
+
 function onWineSearchPart2() {
   // Send the request to the Books API /authors/ endpoint
   var url = window.location.href
-  var result = fetch(url, {method: 'get'})
+  var jsonResult = fetch(url, {method: 'get'})
     .then((response) => response.json());
+  var result = JSON.parse(jsonResult);
 
   var wine_result_list = [];
 
@@ -128,7 +138,7 @@ function onWineSearchPart2() {
     wine_result_list.push(main_wrapper_format);
   }
 
-  console.log(wine_result_list.length());
+  console.log(wine_result_list.length);
   console.log(wine_result_list);
 
   var search_wrap = document.getElementById("search_wrap");

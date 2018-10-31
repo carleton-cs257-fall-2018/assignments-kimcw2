@@ -105,14 +105,8 @@ function onWinesSearch() {
     .then(function(authorsList) {
         // Build the table body.
         var tableBody = '';
-<<<<<<< HEAD
-        for (var k = 0; k < 10; k++) {
-		//authorsList.length; k++) {
-        	tableBody +=  '<div id="wine_of_the_day" class="info_box">' +
-=======
-        for (var k = 0; k < 10, k++) {//authorsList.length; k++) {
+                for (var k = 0; k < 10; k++) {//authorsList.length; k++) {
             tableBody +=    '<div id="wine_of_the_day" class="info_box">' +
->>>>>>> 6ea1c5700f01fc6ba21037164bbef5f87356c090
                             '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
                             '<div class="left_box"><p class = "title">' + random_wine['title'] +
                             '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
@@ -171,7 +165,7 @@ function getAuthor(authorID, authorName) {
 }
 
 function get_input() {
-    var search_input = document.getElementById("Search").value;
+    var search_input = document.getElementById("search_bar").value;
     console.log(search_input);
     return search_input
 }

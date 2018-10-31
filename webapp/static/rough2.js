@@ -113,14 +113,18 @@ function onWineSearchPart2() {
   var url = getBaseURL() + "/wines?title=" + "a";
   console.log(url);
 
-  var jsonResult = fetch(url, {method: 'get'})
-    .then((response) => response.json())
-    .then(function(data) {
-      console.log(JSON.stringify(data));
-    });
+  var jsonResult = fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      return JSON.parse(data);
+    })
+    .catch(error => console.error(error))
 
-  console.log(wine_result_list.length);
-  console.log(wine_result_list);
+  console.log(jsonResult);
+
+  //console.log(wine_result_list.length);
+  //console.log(wine_result_list);
 }
 
 function getAuthor(authorID, authorName) {

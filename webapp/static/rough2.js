@@ -112,12 +112,12 @@ function onWineSearchPart2() {
   // Send the request to the Books API /authors/ endpoint
   var url = getBaseURL() + "/wines?title=" + "a";
   console.log(url);
-  var wine_result_list = [];
+  //var wine_result_list = [];
 
   var jsonResult = fetch(url, {method: 'get'})
-    .then(response) => response.json())
+    .then((response) => response.json())
     .then(function(data) {
-      console.log(JSON.stringify(myJson));
+      console.log(JSON.stringify(data));
     });
   //var jsonResult = fetch(url, {method: 'get'})
   //  .then((response) => response.json())

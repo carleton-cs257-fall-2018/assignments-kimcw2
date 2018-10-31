@@ -165,7 +165,7 @@ document.getElementById('about').onclick = about;
 
 //Initialize submit_search button to point to new page
 function submit_search() {
-  var url = getBaseWebURL() + '/wines';
+  var url = getBaseWebURL() + '/submit_search';
   document.location.href = url;
 }
 document.getElementById('submit_search').onclick = submit_search;

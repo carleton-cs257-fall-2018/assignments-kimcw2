@@ -19,7 +19,6 @@ function onWinesSearch(search_input) {
   console.log(search_input);
   var url = getBaseURL() + "/wines?title=" + search_input;
   console.log(url);
-  var list_li = [];
 
   fetch(url)
     .then(response => response.json())

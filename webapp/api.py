@@ -139,6 +139,7 @@ def get_wines():
         it is explicitly rejected by a GET parameter.)
     '''
 
+    wine_name = flask.request.args.get('title', default='%')
     winery_name = flask.request.args.get('winery', default='%')
     variety_name = flask.request.args.get('variety', default='%')
     taster_name = flask.request.args.get('taster', default='%')
@@ -151,6 +152,7 @@ def get_wines():
     #price = flask.request.args.get('price', type=int)
 
     query = """SELECT countries.name,
+                      wines.title,
                       wines.description,
                       wines.designation,
                       wines.points,
@@ -172,7 +174,8 @@ def get_wines():
                     AND wines.description LIKE '%{4}%'
                     AND wines.designation LIKE '%{5}%'
                     AND countries.name LIKE '%{6}%'
-                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by)
+                    AND wines.title LIKE '%{7}%'
+                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by, wine_name)
 
 
     wines_list = []

@@ -36,7 +36,7 @@ function initialize() {
     search_button.onclick = function() {onWineSearch("default", document.getElementById('search_bar').value);}
     wine_of_the_day();
   } else {
-    onWineSearch(category, search_text);
+    onWinesSearch("default", "fruity taste");
   }
 }
 

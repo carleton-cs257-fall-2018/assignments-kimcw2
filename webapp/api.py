@@ -147,6 +147,7 @@ def get_wines():
     vineyard = flask.request.args.get('vineyard', default='%')
     country_name = flask.request.args.get('country', default='%')
     order_by = flask.request.args.get('orderby', default='points')
+    title = flask.request.args.get('title', default='%')
     #points = flask.request.args.get('points', type=int)
     #price = flask.request.args.get('price', type=int)
 
@@ -159,7 +160,8 @@ def get_wines():
                       wineries.region,
                       wines.taster_name,
                       wines.taster_twitter_handle,
-                      wines.title, varieties.name,
+                      wines.title, 
+                      varieties.name,
                       wineries.name
                 FROM wines
                     JOIN wineries ON wineries.id = wines.winery_id
@@ -172,7 +174,8 @@ def get_wines():
                     AND wines.description LIKE '%{4}%'
                     AND wines.designation LIKE '%{5}%'
                     AND countries.name LIKE '%{6}%'
-                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by)
+                    AND wines.title LIKE '%{8}%'
+                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by, title)
 
 
     wines_list = []

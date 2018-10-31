@@ -31,7 +31,7 @@
 initialize();
 
 function initialize() {
-  if (window.location.href == getBaseURLWeb()){
+  if (window.location.pathname.includes("display")){
     var search_button = document.getElementById('submit_search');
     search_button.onclick = function() {
       sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
@@ -80,21 +80,21 @@ function getBaseURL() {
   return baseURL;
 }
 
-function getBaseURLWeb() {
-  var api_port_str = api_port;
-  var web_port;
-  if (api_port_str.substring(1,2) == '1'){
-    web_port = api_port_str.substring(0,1) + '2' + api_port_str.substring(2);
-  } else {
-    web_port = api_port_str.substring(0,1) + '1' + api_port_str.substring(2);
-  }
-  var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + web_port;
-  return baseURL;
-}
+//function getBaseURLWeb() {
+//  var api_port_str = api_port;
+//  var web_port;
+//  if (api_port_str.substring(1,2) == '1'){
+//    web_port = api_port_str.substring(0,1) + '2' + api_port_str.substring(2);
+//  } else {
+//    web_port = api_port_str.substring(0,1) + '1' + api_port_str.substring(2);
+//  }
+//  var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + web_port;
+//  return baseURL;
+//}
 
 function onWinesSearch(category, search_text) {
-  window.location(getBaseURLWeb + "/display")
-  var defaultTo = True;
+  
+  var defaultTo = true;
   var searchDirectory;
 
   if (defaultTo) {searchDirectory = "/wines?title=" + search_text + "/";}

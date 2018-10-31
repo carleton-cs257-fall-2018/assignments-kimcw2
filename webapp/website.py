@@ -17,7 +17,7 @@ app = flask.Flask(__name__, static_folder='static', template_folder='templates')
 def get_main_page():
     ''' This is the only route intended for human users '''
     global api_port
-    return flask.render_template('index_rough.html', api_port=api_port)
+    return flask.render_template('index.html', api_port=api_port)
 
 @app.route('/about')
 def get_about_page():
@@ -29,7 +29,7 @@ def get_about_page():
 def get_submit_search_page():
     ''' This is the only route intended for human users '''
     global port
-    return flask.render_template('index2_rough.html', api_port=api_port)
+    return flask.render_template('index2.html', api_port=api_port)
 
 @app.route('/advanced_search')
 def get_advanced_search_page():

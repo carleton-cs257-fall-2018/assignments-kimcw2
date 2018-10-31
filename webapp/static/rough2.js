@@ -139,33 +139,54 @@ function onWineSearchPart2() {
         var taster_twitter_handle = data[k]['taster_twitter_handle'] || "undefined";
         var price = data[k]['price'] || "undefined";
 
-      var main_li = document.createElement("li").setAttribute("wine_name",title).setAttribute("class","wine_view");
-      var left_panel = document.createElement("div").setAttribute("class","left_panel");
-      var title_span = document.createElement("span").setAttribute("class","title").setValue(title);
-      var variety_span = document.createElement("span").setAttribute("class","variety").setValue(variety);
-      var winery_span = document.createElement("span").setAttribute("class","winery").setValue(winery);
-      var points_span = document.createElement("span").setAttribute("class","points").setValue(points);
-      var mid_panel = document.createElement("div").setAttribute("class","mid_panel");
-      var description_span = document.createElement("span").setAttribute("class","description").setValue(description);
-      var taster_name_span = document.createElement("span").setAttribute("class","taster_name").setValue(taster_name);
-      var taster_twitter_span = document.createElement("span").setAttribute("class","taster_twitter_handle").setValue(taster_twitter_handle);
-      var right_panel = document.createElement("div").setAttribute("class","right_panel");
-      var price_span = document.createElement("span").setAttribute("class","price").setValue(price);
+        var main_li = document.createElement("li");
+        main_li.setAttribute("wine_name",title);
+        main_li.setAttribute("class","wine_view");
+        var left_panel = document.createElement("div");
+        left_panel.setAttribute("class","left_panel");
+        var title_span = document.createElement("span");
+        title_span.setAttribute("class","title");
+        title_span.setValue(title);
+        var variety_span = document.createElement("span");
+        variety_span.setAttribute("class","variety");
+        variety_span.setValue(variety);
+        var winery_span = document.createElement("span");
+        winery_span.setAttribute("class","winery");
+        winery_span.setValue(winery);
+        var points_span = document.createElement("span");
+        points_span.setAttribute("class","points");
+        points_span.setValue(points);
+        var mid_panel = document.createElement("div");
+        mid_panel.setAttribute("class","mid_panel");
+        var description_span = document.createElement("span");
+        description_span.setAttribute("class","description");
+        description_span.setValue(description);
+        var taster_name_span = document.createElement("span");
+        taster_name_span.setAttribute("class","taster_name");
+        taster_name_span.setValue(taster_name);
+        var taster_twitter_span = document.createElement("span");
+        taster_twitter_span.setAttribute("class","taster_twitter_handle");
+        taster_twitter_span.setValue(taster_twitter_handle);
+        var right_panel = document.createElement("div");
+        right_panel.setAttribute("class","right_panel");
+        var price_span = document.createElement("span");
+        price_span.setAttribute("class","price");
+        price_span.setValue(price);
 
-      append(left_panel,title_span);
-      append(left_panel,variety_span);
-      append(left_panel,winery_span);
-      append(left_panel,points_span);
-      append(mid_panel,description_span);
-      append(mid_panel,taster_name_span);
-      append(mid_panel,taster_twitter_span);
-      append(right_panel,price_span);
+        append(left_panel,title_span);
+        append(left_panel,variety_span);
+        append(left_panel,winery_span);
+        append(left_panel,points_span);
+        append(mid_panel,description_span);
+        append(mid_panel,taster_name_span);
+        append(mid_panel,taster_twitter_span);
+        append(right_panel,price_span);
 
-      append(main_li, left_panel);
-      append(main_li, mid_panel);
-      append(main_li, right_panel);
+        append(main_li, left_panel);
+        append(main_li, mid_panel);
+        append(main_li, right_panel);
 
-      list_li.push(main_li);
+        list_li.push(main_li);
       }
     })
     .catch(error => console.error(error))

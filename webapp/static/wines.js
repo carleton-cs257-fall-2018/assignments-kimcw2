@@ -31,15 +31,18 @@
 initialize();
 
 function initialize() {
-  var search_button = document.getElementById("submit_search");
+  var search_button = document.getElementById('submit_search');
   search_button.onclick = function() {
     sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
+  var home_button = document.getElementById('go_to_home_page');
+  home_button.onclick = function() {
+    go_to_home_page();
   }
-  document.getElementById('go_to_home_page').onclick = go_to_home_page();
-  if (window.location.pathname.includes("display?")){
+
+  if (window.location.pathname.includes("display")){
     onWinesSearch("default", sessionStorage.getItem("search_text"));
-  } else if (window.location.pathname.includes("about")){
-  } else if (window.location.pathname.includes("wine_of_the_day")){
+  } else if (window.location.pathname.include("about")){
+  } else if (window.location.pathname.include("wine_of_the_day")){
   } else {
     wine_of_the_day();
   }

@@ -155,3 +155,10 @@ function getAuthor(authorID, authorName) {
         console.log(error);
     });
 }
+
+//Initialize about button to point to new page
+function about() {
+  var url = getBaseWebURL() + '/about';
+  document.location.href = url;
+}
+document.getElementById('about').onclick = about;

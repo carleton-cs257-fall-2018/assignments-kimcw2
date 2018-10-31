@@ -40,24 +40,25 @@
 }
 
 .variety {
-  font-size: 13px;
-  display:inline;
-  line-height: 2;
+  font-size: 14px;
+
 }
 
 
 .winery {
+  font-size: 14px;
   line-height: 1;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .place {
   font-size: 10px;
+  display:inline;
 }
 
 .points{
   font-size:13px;
-  line-height: 8;
+  line-height: 4;
 
 }
 

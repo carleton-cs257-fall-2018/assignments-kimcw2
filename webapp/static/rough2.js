@@ -110,18 +110,67 @@ function append(parent, el) {
 
 function onWineSearchPart2() {
   // Send the request to the Books API /authors/ endpoint
-  var url = getBaseURL() + "/wines?title=" + "a";
+  var url = getBaseURL() + "/wines?title=" + "ar";
   console.log(url);
+  var list_li = [];
 
-  var jsonResult = fetch(url)
+  fetch(url)
     .then(response => response.json())
-    .then(data => {
+    .then(function(data) {
+      //var tableBody = document.createElement("ul");
+      //for (var k = 0; k < wineList.length; k++) {
+      //    tableBody += '<tr>';
+      //    tableBody += '<td>' + booksList[k]['title'] + '</td>';
+      //    tableBody += '<td>' + booksList[k]['publication_year'] + '</td>';
+      //    tableBody += '</tr>';
+      //}
+      //var resultsTableElement = document.getElementById('results_table');
+      //if (resultsTableElement) {
+      //    resultsTableElement.innerHTML = tableBody;
+      //}
       console.log(data);
-      return JSON.parse(data);
+      for (var k=0; k<data.length;k++) {
+        var title = data[k]['title'] || "undefined";
+        var variety = data[k]['variety'] || "undefined";
+        var winery = data[k]['winery'] || "undefined";
+        var points = data[k]['points'] || "undefined";
+        var description = data[k]['description'] || "undefined";
+        var taster_name = data[k]['taster_name'] || "undefined";
+        var taster_twitter_handle = data[k]['taster_twitter_handle'] || "undefined";
+        var price = data[k]['price'] || "undefined";
+
+      var main_li = document.createElement("li").setAttribute("wine_name",title).setAttribute("class","wine_view");
+      var left_panel = document.createElement("div").setAttribute("class","left_panel");
+      var title_span = document.createElement("span").setAttribute("class","title").setValue(title);
+      var variety_span = document.createElement("span").setAttribute("class","variety").setValue(variety);
+      var winery_span = document.createElement("span").setAttribute("class","winery").setValue(winery);
+      var points_span = document.createElement("span").setAttribute("class","points").setValue(points);
+      var mid_panel = document.createElement("div").setAttribute("class","mid_panel");
+      var description_span = document.createElement("span").setAttribute("class","description").setValue(description);
+      var taster_name_span = document.createElement("span").setAttribute("class","taster_name").setValue(taster_name);
+      var taster_twitter_span = document.createElement("span").setAttribute("class","taster_twitter_handle").setValue(taster_twitter_handle);
+      var right_panel = document.createElement("div").setAttribute("class","right_panel");
+      var price_span = document.createElement("span").setAttribute("class","price").setValue(price);
+
+      append(left_panel,title_span);
+      append(left_panel,variety_span);
+      append(left_panel,winery_span);
+      append(left_panel,points_span);
+      append(mid_panel,description_span);
+      append(mid_panel,taster_name_span);
+      append(mid_panel,taster_twitter_span);
+      append(right_panel,price_span);
+
+      append(main_li, left_panel);
+      append(main_li, mid_panel);
+      append(main_li, right_panel);
+
+      list_li.push(main_li);
+      }
     })
     .catch(error => console.error(error))
 
-  console.log(jsonResult);
+  console.log(list_li);
 
   //console.log(wine_result_list.length);
   //console.log(wine_result_list);

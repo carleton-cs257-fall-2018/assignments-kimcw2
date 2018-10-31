@@ -117,7 +117,7 @@ function onWineSearchPart2() {
   var jsonResult = fetch(url, {method: 'get'})
     .then((response) => response.json())
     .then(function(data) {
-      console.log(JSON.stringify(myJson));
+      console.log(JSON.stringify(data));
     });
   //var jsonResult = fetch(url, {method: 'get'})
   //  .then((response) => response.json())

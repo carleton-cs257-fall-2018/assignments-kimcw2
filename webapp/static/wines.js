@@ -105,20 +105,21 @@ function onWinesSearch() {
     .then(function(authorsList) {
         // Build the table body.
         var tableBody = '';
-        for (var k = 0; k < authorsList.length; k++) {
-            tableBody += '<tr>';
+        for (var k = 0; k < 10){//authorsList.length; k++) {
+          var tableBody +=  ''<div id='wine_of_the_day' class="info_box">' +
+                            '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
+                            '<div class="left_box"><p class = "title">' + random_wine['title'] +
+                            '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
+                            '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
+                            '</text><text class = "place"> (' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
+                            ')</text><p class = "points"> Points: ' + random_wine['points'] + '/100</p></div>'+
+                            '<div class="middle_box"><p class = "description">Review: ' + random_wine['description'] +
+                            '</p><text class = "taster_name">' + random_wine['taster_name'] +
+                            '</text>  <text class = "taster_twitter_handle">(' + random_wine['taster_twitter_handle'] +
+                            ')</text></div>' +
+                            '<div class = "right_box">  <text class = "price">$' + random_wine['price'] +
+                            '</text></div></div></div>';
 
-            tableBody += '<td><a onclick="getAuthor(' + authorsList[k]['id'] + ",'"
-                            + authorsList[k]['first_name'] + ' ' + authorsList[k]['last_name'] + "')\">"
-                            + authorsList[k]['last_name'] + ', '
-                            + authorsList[k]['first_name'] + '</a></td>';
-
-            tableBody += '<td>' + authorsList[k]['birth_year'] + '-';
-            if (authorsList[k]['death_year'] != 0) {
-                tableBody += authorsList[k]['death_year'];
-            }
-            tableBody += '</td>';
-            tableBody += '</tr>';
         }
 
         // Put the table body we just built inside the table that's already on the page.
@@ -162,3 +163,11 @@ function getAuthor(authorID, authorName) {
         console.log(error);
     });
 }
+
+function get_input() {
+    var search_input = document.getElementById("Search").value;
+    console.log(search_input);
+    return search_input
+}
+get_input();
+document.getElementById('submit_search').onclick = get_input;

@@ -113,32 +113,38 @@ function onWineSearchPart2() {
   var url = getBaseURL() + "/wines?title=" + "a";
   console.log(url);
   var wine_result_list = [];
+
   var jsonResult = fetch(url, {method: 'get'})
-    .then((response) => response.json())
+    .then(response) => response.json())
     .then(function(data) {
-      for (var i=0; i<data.products.length; i++){
-        var country = data.products[i].country;
-        var description = data.products[i].description;
-        var designation = data.products[i].designation;
-        var points = data.products[i].points;
-        var price = data.products[i].price;
-        var province = data.products[i].province;
-        var taster_name = data.products[i].taster_name;
-        var taster_twitter_handle = data.products[i].taster_twitter_handle;
-        var title = data.products[i].title;
-        var variety = data.products[i].variety;
-        var winery = data.products[i].winery;
-
-        var main_wrapper_format = "<li wine_name=${title} class=wine_view>"+
-          "<div class=left_panel><span class=title>${title}</span><span class=variety>${variety}</span><span class=winery>${winery}</span><span class=points>${points}</span></div>"+
-          "<div class=mid_panel><span class=description>${description}</span><span class=taster_name>${taster_name}</span><span class=taster_twitter_handle>${taster_twitter_handle}</span></div>"+
-          "<div class=right_panel><span class=price>${price}</span></div>"+"</li>";
-
-        console.log(main_wrapper_format);
-
-        wine_result_list.push(main_wrapper_format);
-      }
+      console.log(JSON.stringify(myJson));
     });
+  //var jsonResult = fetch(url, {method: 'get'})
+  //  .then((response) => response.json())
+  //  .then(function(data) {
+  //    for (var i=0; i<data.products.length; i++){
+  //      var country = data.products[i].country;
+  //      var description = data.products[i].description;
+  //      var designation = data.products[i].designation;
+  //      var points = data.products[i].points;
+  //      var price = data.products[i].price;
+  //      var province = data.products[i].province;
+  //      var taster_name = data.products[i].taster_name;
+  //      var taster_twitter_handle = data.products[i].taster_twitter_handle;
+  //      var title = data.products[i].title;
+  //      var variety = data.products[i].variety;
+  //      var winery = data.products[i].winery;
+
+  //      var main_wrapper_format = "<li wine_name=${title} class=wine_view>"+
+    //      "<div class=left_panel><span class=title>${title}</span><span class=variety>${variety}</span><span class=winery>${winery}</span><span class=points>${points}</span></div>"+
+      //    "<div class=mid_panel><span class=description>${description}</span><span class=taster_name>${taster_name}</span><span class=taster_twitter_handle>${taster_twitter_handle}</span></div>"+
+        //  "<div class=right_panel><span class=price>${price}</span></div>"+"</li>";
+
+  //      console.log(main_wrapper_format);
+
+  //      wine_result_list.push(main_wrapper_format);
+  //    }
+  //  });
 
 
 

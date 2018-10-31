@@ -111,6 +111,7 @@ function append(parent, el) {
 function onWineSearchPart2() {
   // Send the request to the Books API /authors/ endpoint
   var url = getBaseURL() + "/wines?title=" + "a";
+  console.log(url);
   var wine_result_list = [];
   var jsonResult = fetch(url, {method: 'get'})
     .then((response) => response.json())
@@ -132,6 +133,8 @@ function onWineSearchPart2() {
           "<div class=left_panel><span class=title>${title}</span><span class=variety>${variety}</span><span class=winery>${winery}</span><span class=points>${points}</span></div>"+
           "<div class=mid_panel><span class=description>${description}</span><span class=taster_name>${taster_name}</span><span class=taster_twitter_handle>${taster_twitter_handle}</span></div>"+
           "<div class=right_panel><span class=price>${price}</span></div>"+"</li>";
+
+        console.log(main_wrapper_format);
 
         wine_result_list.push(main_wrapper_format);
       }

@@ -54,7 +54,7 @@ def set_headers(response):
 
 @app.route('/')
 def hello():
-    return 'Welcome to the base page for the wine data api!'
+    return 'Franzia is the best wine'
 
 @app.route('/test')
 def test():
@@ -71,6 +71,10 @@ def test():
             print(e, file=sys.stderr)
         connection.close()
     return json.dumps(to_dump_countries)
+
+
+    return 'Franzia is the best wine'
+
 
 
 @app.route('/countries')
@@ -139,7 +143,6 @@ def get_wines():
         it is explicitly rejected by a GET parameter.)
     '''
 
-    wine_name = flask.request.args.get('title', default='%')
     winery_name = flask.request.args.get('winery', default='%')
     variety_name = flask.request.args.get('variety', default='%')
     taster_name = flask.request.args.get('taster', default='%')
@@ -152,7 +155,6 @@ def get_wines():
     #price = flask.request.args.get('price', type=int)
 
     query = """SELECT countries.name,
-                      wines.title,
                       wines.description,
                       wines.designation,
                       wines.points,
@@ -174,8 +176,7 @@ def get_wines():
                     AND wines.description LIKE '%{4}%'
                     AND wines.designation LIKE '%{5}%'
                     AND countries.name LIKE '%{6}%'
-                    AND wines.title LIKE '%{7}%'
-                ORDER BY wines.{8}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name,  wine_name, order_by)
+                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by)
 
 
     wines_list = []

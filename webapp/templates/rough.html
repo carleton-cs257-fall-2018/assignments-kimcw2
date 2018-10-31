@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='rough.css') }}" />
+    <script>var api_port = {{ api_port }};</script>
+  <!--  <script type="text/javascript" src="/static/books.js"></script>-->
+    <script type="text/javascript" src="{{ url_for('static', filename='rough.js') }}" defer></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <title>CS 257: Software Design, Spring 2017</title>
+
+    <style>
+.whoa {
+    font-family: "Verdana", cursive, sans-serif;
+    color: red;
+    font-size: 250%;
+}
+    </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WowwWine</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#wine_of_the_day">Wine of the Day</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="mailto:washingtonj@carleton.edu?cc=dalmeidad@carleton.edu&subject=From%20Wine%20Website" target="_blank">Email Us!</a></li>
+        <li class="dropdown" style="padding-top:8px">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Search Categories </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Wines</a></li>
+              <li><a href="#">Wineries</a></li>
+              <li><a href="#">Search Text</a></li>
+            </ul>
+        </li>
+        <form class="navbar-form navbar-left" action="/action_page.php">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search" id="search_bar">
+          </div>
+          <button type="submit" class="btn btn-default" id="submit_search">Submit</button>
+        </form>
+      </ul>
+    </div>
+  </nav>
+
+  <div><p style="font-size:1000% ; padding-top:80px">Fill space here i want the wines thing on the next page</p></div>
+
+  <div class="container">
+    <h3>Basic Navbar Example</h3>
+    <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+  </div>
+
+  <p><button id="wine_of_the_day_button">Get the Wine of the Day!</button></p>
+
+  <p id='wine_of_the_day'></p>
+
+
+
+    <h1>CS 257: Sample Web App</h1>
+
+    <p><button id="authors_button">Get authors</button></p>
+
+    <p><table id="results_table"></table></p>
+
+    <p>This is a <span class="whoa">TERRIBLE</span>
+        user interface. Do not copy it for your project!</p>
+
+    <p><strong>Why is this page this way?</strong> Because I want to give you an example
+    that illustrates the core techniques you'll need for your web application project,
+    but does so in as minimal a way as possible. So you'll find a little HTML, a little CSS, a little
+    Javascript, and access to a database-drive API, but nothing more. You can't even search for
+    a book or author by name, which would be fundamental features if I actually wanted to
+    make this application useful.</p>
+
+    <p> THIS IS CHANGING </p>
+
+  </body>
+</html>

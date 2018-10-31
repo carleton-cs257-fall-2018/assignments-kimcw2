@@ -52,18 +52,19 @@ function wine_of_the_day() {
   .then(function(wine_list) {
       var random_wine = wine_list[Math.floor(Math.random() * wine_list.length)];
       console.log(random_wine);
-      var random_wine_body = '<p>' + random_wine['country'] + ',' +
-                                     random_wine['description'] + ',' +
-                                     random_wine['designation'] + ',' +
-                                     random_wine['points'] + ',' +
-                                     random_wine['price'] + ',' +
-                                     random_wine['province'] + ',' +
-                                     random_wine['taster_name'] + ',' +
-                                     random_wine['taster_twitter_handle'] + ',' +
-                                     random_wine['title'] + ',' +
-                                     random_wine['variety'] + ',' +
-                                     random_wine['winery'] + '</p>';
-      
+      var random_wine_body = '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
+                             '<div class="left_box"><p class = "title">' + random_wine['title'] +
+                             '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
+                             '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
+                             '</text><text class = "place"> (' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
+                             ')</text><p class = "points"> Points: ' + random_wine['points'] + '/100</p></div>'+
+                             '<div class="middle_box"><p class = "description">Review: ' + random_wine['description'] +
+                             '</p><text class = "taster_name">' + random_wine['taster_name'] +
+                             '</text>  <text class = "taster_twitter_handle">(' + random_wine['taster_twitter_handle'] +
+                             ')</text></div>' +
+                             '<div class = "right_box">  <text class = "price">$' + random_wine['price'] +
+                             '</text></div></div>';
+
 
       var wine_of_the_day = document.getElementById('wine_of_the_day');
       if (wine_of_the_day) {

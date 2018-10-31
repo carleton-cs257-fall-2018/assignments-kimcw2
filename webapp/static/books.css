@@ -1,5 +1,88 @@
 .body
 
+.a {
+  color:black;
+}
+
 .dropdown {
   background-color: white;
+}
+
+.info_box{
+  border: 25px solid green;
+  padding: 25px;
+  margin: 25px;
+  box-sizing: border-box;
+  height:406px;
+}
+
+.wine_of_the_day {
+    background-color: #666;
+    padding: 8px;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+
+.left_box {
+    float: left;
+    width: 40%;
+    background: #ccc;
+    padding: 20px;
+    height: 250px;
+}
+
+.title{
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.variety {
+  font-size: 14px;
+
+}
+
+
+.winery {
+  font-size: 14px;
+  line-height: 1;
+  font-size: 14px;
+}
+
+.place {
+  font-size: 10px;
+  display:inline;
+}
+
+.points{
+  font-size:13px;
+  line-height: 4;
+
+}
+
+.middle_box {
+    float: left;
+    padding: 20px;
+    width: 50%;
+    background-color: #f1f1f1;
+    height: 250px;
+}
+
+.taster_name {
+  line-height:3;
+  font-size: 14px;
+}
+
+.taster_twitter_handle {
+  font-size: 12px;
+}
+
+.right_box {
+    float: left;
+    padding: 20px;
+    width: 10%;
+    background-color: #1ff1f1;
+    height: 250px;
 }

@@ -9,9 +9,10 @@
 
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='books.css') }}" />
+    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='books.css') }}" />-->
+    <link rel="stylesheet" type="text/css" href="../static/books.css" />
     <script>var api_port = {{ api_port }};</script>
-  <!--  <script type="text/javascript" src="/static/books.js"></script>-->
+    <!--<script type="text/javascript" src="/static/books.js"></script>-->
     <script type="text/javascript" src="{{ url_for('static', filename='books.js') }}" defer></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
     <title>CS 257: Software Design, Spring 2017</title>
@@ -41,9 +42,28 @@
             </ul>
         </nav>
 
-  <p><button id="wine_of_the_day_button">Get the Wine of the Day!</button></p>
+  <div id='wine_of_the_day' class="info_box">
+    <!--<header name='wine_of_the_day' class='wine_of_the_day'>Discover Wine</header>
+    <div class="left_box">
+      <p class = "title">random_wine['title']</p>
+      <p class = "variety">Variety: random_wine['variety']</p>
+      <text class = "winery">Winery: random_wine['winery']</text>
+      <text class = "place">(random_wine['region'], random_wine['province'], random_wine['country'])</text>
+      <p class = "points">Points: random_wine['points']/100</p>
+    </div>
+
+    <div class="middle_box">
+      <p class = "description">Review: random_wine['description'] </p>
+      <text class = "taster_name">random_wine['taster_name']</text>
+      <text class = "taster_twitter_handle">(random_wine['taster_twitter_handle')</text>
+    </div>
+
+    <div class = "right_box">
+      <text class = "price">$ random_wine['price']</text>
+    </div>-->
+  </div>
+
 
   <p id='wine_of_the_day'></p>
-
 </body>
 </html>

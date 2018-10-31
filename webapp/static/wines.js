@@ -31,16 +31,22 @@
 initialize();
 
 function initialize() {
-  if (!(window.location.pathname.includes("display"))){
-    var search_button = document.getElementById('submit_search');
-    search_button.onclick = function() {
-      sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
-      console.log(sessionStorage.getItem("search_text"));
-    }
-    wine_of_the_day();
-  } else {
-    onWinesSearch("default", sessionStorage.getItem("search_text"));
+  var search_button = document.getElementById("submit_search");
+  search_button.onclick = function() {
+    sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
   }
+  document.getElementById('go_to_home_page').onclick = go_to_home_page();
+  if (window.location.pathname.includes("display?")){
+    onWinesSearch("default", sessionStorage.getItem("search_text"));
+  } else if (window.location.pathname.includes("about")){
+  } else if (window.location.pathname.includes("wine_of_the_day")){
+  } else {
+    wine_of_the_day();
+  }
+}
+
+function go_to_home_page() {
+  document.location.href = getBaseWebURL();
 }
 
 function wine_of_the_day() {

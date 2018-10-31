@@ -19,7 +19,7 @@ def get_main_page():
     global api_port
     return flask.render_template('rough.html', api_port=api_port)
 
-@app.route('/test')
+@app.route('/display')
 def test():
     return flask.render_template('rough2.html', api_port=api_port)
 

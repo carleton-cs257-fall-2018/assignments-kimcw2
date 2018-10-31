@@ -29,16 +29,16 @@ function onWinesSearch(search_input) {
                 for (var k = 0; k < 10; k++) {//authorsList.length; k++) {
             tableBody +=    '<div id="wine_of_the_day" class="info_box">' +
                             '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
-                            '<div class="left_box"><p class = "title">' + random_wine['title'] +
-                            '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
-                            '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
-                            '</text><text class = "place"> (' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
-                            ')</text><p class = "points"> Points: ' + random_wine['points'] + '/100</p></div>'+
-                            '<div class="middle_box"><p class = "description">Review: ' + random_wine['description'] +
-                            '</p><text class = "taster_name">' + random_wine['taster_name'] +
-                            '</text>  <text class = "taster_twitter_handle">(' + random_wine['taster_twitter_handle'] +
+                            '<div class="left_box"><p class = "title">' + tableBody['title'] +
+                            '</p><p class = "variety"> Variety: ' + tableBody['variety'] +
+                            '</p><text class = "winery"> Winery: ' + tableBody['winery'] +
+                            '</text><text class = "place"> (' + tableBody['region'] +', '+ tableBody['province'] + ', ' + tableBody['country'] +
+                            ')</text><p class = "points"> Points: ' + tableBody['points'] + '/100</p></div>'+
+                            '<div class="middle_box"><p class = "description">Review: ' + tableBody['description'] +
+                            '</p><text class = "taster_name">' + tableBody['taster_name'] +
+                            '</text>  <text class = "taster_twitter_handle">(' + tableBody['taster_twitter_handle'] +
                             ')</text></div>' +
-                            '<div class = "right_box">  <text class = "price">$' + random_wine['price'] +
+                            '<div class = "right_box">  <text class = "price">$' + tableBody['price'] +
                             '</text></div></div></div>';
 
         }

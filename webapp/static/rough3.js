@@ -93,6 +93,7 @@ function getBaseURLWeb() {
 }
 
 function onWinesSearch(category, search_text) {
+  window.location(getBaseURLWeb + "/display")
   var defaultTo = True;
   var searchDirectory;
 

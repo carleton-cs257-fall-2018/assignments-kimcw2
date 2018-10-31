@@ -12,6 +12,7 @@ function getBaseURL() {
 }
 
 function onWinesSearch(search_input) {
+    console.log(search_input)
     var url = getBaseURL() + '/wines?title=' + search_input;
 
     // Send the request to the Books API /authors/ endpoint
@@ -23,22 +24,22 @@ function onWinesSearch(search_input) {
 
     // Once you have your list of author dictionaries, use it to build
     // an HTML table displaying the author names and lifespan.
-    .then(function(authorsList) {
+    .then(function(wine_list) {
         // Build the table body.
         var tableBody = '';
                 for (var k = 0; k < 10; k++) {//authorsList.length; k++) {
             tableBody +=    '<div id="wine_of_the_day" class="info_box">' +
                             '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
-                            '<div class="left_box"><p class = "title">' + tableBody['title'] +
-                            '</p><p class = "variety"> Variety: ' + tableBody['variety'] +
-                            '</p><text class = "winery"> Winery: ' + tableBody['winery'] +
-                            '</text><text class = "place"> (' + tableBody['region'] +', '+ tableBody['province'] + ', ' + tableBody['country'] +
-                            ')</text><p class = "points"> Points: ' + tableBody['points'] + '/100</p></div>'+
-                            '<div class="middle_box"><p class = "description">Review: ' + tableBody['description'] +
-                            '</p><text class = "taster_name">' + tableBody['taster_name'] +
-                            '</text>  <text class = "taster_twitter_handle">(' + tableBody['taster_twitter_handle'] +
+                            '<div class="left_box"><p class = "title">' + wine_list['title'] +
+                            '</p><p class = "variety"> Variety: ' + wine_list['variety'] +
+                            '</p><text class = "winery"> Winery: ' + wine_list['winery'] +
+                            '</text><text class = "place"> (' + wine_list['region'] +', '+ wine_list['province'] + ', ' + wine_list['country'] +
+                            ')</text><p class = "points"> Points: ' + wine_list['points'] + '/100</p></div>'+
+                            '<div class="middle_box"><p class = "description">Review: ' + wine_list['description'] +
+                            '</p><text class = "taster_name">' + wine_list['taster_name'] +
+                            '</text>  <text class = "taster_twitter_handle">(' + wine_list['taster_twitter_handle'] +
                             ')</text></div>' +
-                            '<div class = "right_box">  <text class = "price">$' + tableBody['price'] +
+                            '<div class = "right_box">  <text class = "price">$' + wine_list['price'] +
                             '</text></div></div></div>';
 
         }

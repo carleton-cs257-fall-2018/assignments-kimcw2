@@ -83,6 +83,11 @@ function getBaseURL() {
     return baseURL;
 }
 
+function getBaseWebURL() {
+    var baseWebURL = window.location.protocol + '//' + window.location.hostname + ':' + port;
+    return baseWebURL;
+}
+
 function onWinesSearch() {
     var url = getBaseURL() + '/wines';
 

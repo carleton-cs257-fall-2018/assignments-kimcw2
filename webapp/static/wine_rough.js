@@ -94,7 +94,7 @@ function append(parent, el) {
 
 function onWinesSearch(category, search_text) {
   // TODO change here to account for different search categories
-  if (category == "default") {category = "description"}
+  if (category == "default") {category = "title"}
   var url = getBaseURL() + `/wines?${category}=${search_text}`;
   console.log(url);
 

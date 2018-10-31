@@ -39,8 +39,6 @@ function initialize() {
     }
     wine_of_the_day();
   } else {
-    search_text = window.location.href.split("search_text=")[-1]
-    console.log(search_text)
     onWinesSearch("default", sessionStorage.getItem("search_text"));
   }
 }

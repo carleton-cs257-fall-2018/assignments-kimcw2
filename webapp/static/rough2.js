@@ -31,6 +31,7 @@
 initialize();
 
 function initialize() {
+    onWineSearch(category, search_text);
     onWineSearchPart2();
 }
 
@@ -84,7 +85,7 @@ function getBaseURLWeb() {
   return baseURL;
 }
 
-function onWinesSearch() {
+function onWinesSearch(category, search_text) {
 
   //window.location.href = getBaseUrl() + "/wines?title=" + value;
   var defaultTo = True;
@@ -100,17 +101,13 @@ function onWinesSearch() {
   window.location.href = url
 }
 
-function createNode(element) {
-  return document.createElement(element);
-}
-
 function append(parent, el) {
   return parent.appendChild(el);
 }
 
 function onWineSearchPart2() {
   // Send the request to the Books API /authors/ endpoint
-  var url = getBaseURL() + "/wines?title=" + "arc";
+  var url = getBaseURL() + "/wines?description=" + "fruity taste";
   console.log(url);
   var list_li = [];
 
@@ -197,33 +194,4 @@ function onWineSearchPart2() {
 
   //console.log(wine_result_list.length);
   //console.log(wine_result_list);
-}
-
-function getAuthor(authorID, authorName) {
-    // Very similar pattern to onAuthorsButtonClicked, so I'm not
-    // repeating those comments here. Read through this code
-    // and see if it makes sense to you.
-    var url = getBaseURL() + '/books/author/' + authorID;
-
-    fetch(url, {method: 'get'})
-
-    .then((response) => response.json())
-
-    .then(function(booksList) {
-        var tableBody = '<tr><th>' + authorName + '</th></tr>';
-        for (var k = 0; k < booksList.length; k++) {
-            tableBody += '<tr>';
-            tableBody += '<td>' + booksList[k]['title'] + '</td>';
-            tableBody += '<td>' + booksList[k]['publication_year'] + '</td>';
-            tableBody += '</tr>';
-        }
-        var resultsTableElement = document.getElementById('results_table');
-        if (resultsTableElement) {
-            resultsTableElement.innerHTML = tableBody;
-        }
-    })
-
-    .catch(function(error) {
-        console.log(error);
-    });
 }

@@ -110,7 +110,7 @@ function append(parent, el) {
 
 function onWineSearchPart2() {
   // Send the request to the Books API /authors/ endpoint
-  var url = getBaseURL() + "/wines?title=" + "a";
+  var url = getBaseURL() + "/wines?title=" + "ar";
   console.log(url);
   var list_li = [];
 
@@ -130,16 +130,14 @@ function onWineSearchPart2() {
       //}
       console.log(data);
       for (var k=0; k<data.length;k++) {
-        var title = data[k]['title'] || " ";
-        var variety = data[k]['variety'] || " ";
-        var winery = data[k]['winery'] || " ";
-        var points = data[k]['points'] || " ";
-        var description = data[k]['description'] || " ";
-        var taster_name = data[k]['taster_name'] || " ";
-        var taster_twitter_handle = data[k]['taster_twitter_handle'] || " ";
-        var price = data[k]['price'] || " ";
-
-
+        var title = data[k]['title'] || "undefined";
+        var variety = data[k]['variety'] || "undefined";
+        var winery = data[k]['winery'] || "undefined";
+        var points = data[k]['points'] || "undefined";
+        var description = data[k]['description'] || "undefined";
+        var taster_name = data[k]['taster_name'] || "undefined";
+        var taster_twitter_handle = data[k]['taster_twitter_handle'] || "undefined";
+        var price = data[k]['price'] || "undefined";
 
       var main_li = document.createElement("li").setAttribute("wine_name",title).setAttribute("class","wine_view");
       var left_panel = document.createElement("div").setAttribute("class","left_panel");

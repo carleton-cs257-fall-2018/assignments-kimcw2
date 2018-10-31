@@ -32,7 +32,7 @@ def get_submit_search_page():
     return flask.render_template('submit_search.html', api_port=api_port)
 
 @app.route('/advanced_search')
-def get_submit_search_page():
+def get_advanced_search_page():
     ''' This is the only route intended for human users '''
     global port
     return flask.render_template('advanced_search.html', api_port=api_port)

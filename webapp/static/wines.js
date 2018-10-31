@@ -105,8 +105,9 @@ function onWinesSearch() {
     .then(function(authorsList) {
         // Build the table body.
         var tableBody = '';
-        for (var k = 0; k < 10){//authorsList.length; k++) {
-          var tableBody +=  ''<div id='wine_of_the_day' class="info_box">' +
+        for (var k = 0; k < 10; k++) {
+		//authorsList.length; k++) {
+        	tableBody +=  '<div id="wine_of_the_day" class="info_box">' +
                             '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
                             '<div class="left_box"><p class = "title">' + random_wine['title'] +
                             '</p><p class = "variety"> Variety: ' + random_wine['variety'] +

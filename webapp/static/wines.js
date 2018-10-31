@@ -32,9 +32,6 @@ initialize();
 
 function initialize() {
     var search_button = document.getElementById('submit_search');
-    if (search_button) {
-        search_button.onclick = onWinesSearch;
-    }
     wine_of_the_day();
     getBaseWebURL();
     //var random_wine = document.getElementById('wine_of_the_day_button');

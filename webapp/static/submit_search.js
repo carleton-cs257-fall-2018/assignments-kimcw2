@@ -50,3 +50,18 @@ function onWinesSearch(search_input) {
         console.log(error);
     });
 }
+
+function get_input() {
+    var search_input = document.getElementById("search_bar").value;
+    window.sessionStorage.setItem("search_input", search_input);
+    return search_input
+}
+document.getElementById('submit_search').onclick = get_input();
+
+
+//Initialize submit button to point to new page
+function submit_search() {
+  var url = getBaseWebURL() + '/submit_search';
+  document.location.href = url;
+}
+document.getElementById('submit_search').onclick = onWinesSearch(window.sessionStorage.getItem("search_input"));

@@ -175,7 +175,7 @@ def get_wines():
                     AND wines.designation LIKE '%{5}%'
                     AND countries.name LIKE '%{6}%'
                     AND wines.title LIKE '%{7}%'
-                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by, wine_name)
+                ORDER BY wines.{8}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name,  wine_name, order_by)
 
 
     wines_list = []

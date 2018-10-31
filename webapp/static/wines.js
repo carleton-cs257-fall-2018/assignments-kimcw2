@@ -166,8 +166,14 @@ function getAuthor(authorID, authorName) {
 
 function get_input() {
     var search_input = document.getElementById("search_bar").value;
-    console.log(search_input);
+    localStorage["search_input"] = search_input;
     return search_input
 }
-get_input();
-document.getElementById('test').onclick = get_input;
+document.getElementById('submit_search').onclick = get_input;
+
+//Initialize submit button to point to new page
+function submit_search() {
+  var url = getBaseWebURL() + '/submit_search';
+  document.location.href = url;
+}
+document.getElementById('submit_search').onclick = submit_search;

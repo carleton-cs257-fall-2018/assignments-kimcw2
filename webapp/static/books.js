@@ -36,6 +36,7 @@ function initialize() {
         search_button.onclick = onWinesSearch;
     }
     wine_of_the_day();
+    getBaseWebURL(); 
     //var random_wine = document.getElementById('wine_of_the_day_button');
     //console.log("initialized the random_wine var");
     //if (random_wine) {
@@ -84,7 +85,8 @@ function getBaseURL() {
 }
 
 function getBaseWebURL() {
-    var baseWebURL = window.location.protocol + '//' + window.location.hostname + ':' + port;
+    var baseWebURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port;
+    console.log(baseWebURL);
     return baseWebURL;
 }
 
@@ -171,7 +173,7 @@ document.getElementById('about').onclick = about;
 //Initialize submit_search button to point to new page
 function submit_search() {
   var url = getBaseWebURL() + '/submit_search';
-  console.
   document.location.href = url;
 }
 document.getElementById('submit_search').onclick = submit_search;
+

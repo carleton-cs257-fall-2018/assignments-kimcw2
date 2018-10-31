@@ -56,7 +56,7 @@ function wine_of_the_day() {
                              '<div class="left_box"><p class = "title">' + random_wine['title'] +
                              '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
                              '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
-                             '</text><text class = "place">(' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
+                             '</text><text class = "place"> (' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
                              ')</text><p class = "points"> Points: ' + random_wine['points'] + '/100</p></div>'+
                              '<div class="middle_box"><p class = "description">Review: ' + random_wine['description'] +
                              '</p><text class = "taster_name">' + random_wine['taster_name'] +

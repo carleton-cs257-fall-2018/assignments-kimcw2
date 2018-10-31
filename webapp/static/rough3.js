@@ -33,12 +33,14 @@ initialize();
 function initialize() {
   if (window.location.href == getBaseURLWeb()){
     var search_button = document.getElementById('submit_search');
-    search_button.onclick = function() {onWineSearch("default", document.getElementById('search_bar').value);}
+    search_button.onclick = function() {
+      sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
+    }
     wine_of_the_day();
   } else {
     search_text = window.location.href.split("search_text=")[-1]
     console.log(search_text)
-    onWinesSearch("default", search_text);
+    onWinesSearch("default", sessionStorage.getItem("search_text"));
   }
 }
 
@@ -73,15 +75,13 @@ function wine_of_the_day() {
       });
 }
 
-
-
 function getBaseURL() {
   var baseURL = window.location.protocol + '//' + window.location.hostname + ':' + api_port;
   return baseURL;
 }
 
 function getBaseURLWeb() {
-  var api_port_str = api_port.toString();
+  var api_port_str = api_port;
   var web_port;
   if (api_port_str.substring(1,2) == '1'){
     web_port = api_port_str.substring(0,1) + '2' + api_port_str.substring(2);

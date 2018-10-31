@@ -31,10 +31,11 @@
 initialize();
 
 function initialize() {
-  if (window.location.pathname.includes("display")){
+  if (!(window.location.pathname.includes("display"))){
     var search_button = document.getElementById('submit_search');
     search_button.onclick = function() {
       sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
+      console.log(sessionStorage.getItem("search_text"));
     }
     wine_of_the_day();
   } else {
@@ -46,7 +47,7 @@ function initialize() {
 
 function wine_of_the_day() {
   var url = getBaseURL() + '/wines';
-  fetch(url, {method: 'get'})
+  fetch(url)
   .then((response) => response.json())
 
   .then(function(wine_list) {
@@ -114,7 +115,7 @@ function append(parent, el) {
 function onWineSearchPart2(category, search_text) {
   // Send the request to the Books API /authors/ endpoint
   if (category == "default") {category = "description"}
-  var url = getBaseURL() + "/wines?${category}=${search_text}";
+  var url = getBaseURL() + `/wines?${category}=${search_text}`;
   console.log(url);
   var list_li = [];
 

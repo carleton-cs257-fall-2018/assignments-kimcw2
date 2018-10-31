@@ -143,15 +143,15 @@ def get_wines():
         it is explicitly rejected by a GET parameter.)
     '''
 
-    winery_name = flask.request.args.get('winery', default='%')
-    variety_name = flask.request.args.get('variety', default='%')
-    taster_name = flask.request.args.get('taster', default='%')
-    region = flask.request.args.get('region', default='%')
-    description = flask.request.args.get('description', default='%')
-    vineyard = flask.request.args.get('vineyard', default='%')
-    country_name = flask.request.args.get('country', default='%')
-    order_by = flask.request.args.get('orderby', default='points')
-    title = flask.request.args.get('title', default='%')
+    winery_name = lower(flask.request.args.get('winery', default='%'))
+    variety_name = lower(flask.request.args.get('variety', default='%'))
+    taster_name = lower(flask.request.args.get('taster', default='%'))
+    region = lower(flask.request.args.get('region', default='%'))
+    description = lower(flask.request.args.get('description', default='%'))
+    vineyard = lower(flask.request.args.get('vineyard', default='%'))
+    country_name = lower(flask.request.args.get('country', default='%'))
+    order_by = lower(flask.request.args.get('orderby', default='points'))
+    title = lower(flask.request.args.get('title', default='%'))
     #points = flask.request.args.get('points', type=int)
     #price = flask.request.args.get('price', type=int)
 
@@ -164,7 +164,7 @@ def get_wines():
                       wineries.region,
                       wines.taster_name,
                       wines.taster_twitter_handle,
-                      wines.title, 
+                      wines.title,
                       varieties.name,
                       wineries.name
                 FROM wines
@@ -172,13 +172,13 @@ def get_wines():
                     JOIN varieties ON varieties.id = wines.variety_id
                     JOIN countries ON countries.id = wineries.country_id
                 WHERE wineries.name LIKE '%{0}%'
-                    AND varieties.name LIKE '%{1}%'
-                    AND wines.taster_name LIKE '%{2}%'
-                    AND wineries.region LIKE '%{3}%'
-                    AND wines.description LIKE '%{4}%'
-                    AND wines.designation LIKE '%{5}%'
-                    AND countries.name LIKE '%{6}%'
-                    AND wines.title LIKE '%{8}%'
+                    AND lower(varieties.name) LIKE '%{1}%'
+                    AND lower(wines.taster_name) LIKE '%{2}%'
+                    AND lower(wineries.region) LIKE '%{3}%'
+                    AND lower(wines.description) LIKE '%{4}%'
+                    AND lower(wines.designation) LIKE '%{5}%'
+                    AND lower(countries.name) LIKE '%{6}%'
+                    AND lower(wines.title) LIKE '%{8}%'
                 ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by, title)
 
 

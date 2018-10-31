@@ -92,6 +92,5 @@ function get_input() {
     window.sessionStorage.setItem("search_input", search_input);
     return search_input
 }
-document.getElementById('submit_search').onclick = get_input();
 
-document.getElementById('submit_search').onclick = onWinesSearch(window.sessionStorage.getItem("search_input"));
+document.getElementById('submit_search').onclick = onWinesSearch(document.getElementById("search_bar").value));

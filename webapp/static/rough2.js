@@ -30,19 +30,8 @@
 
 initialize();
 
-function initialize(search_result=Null) {
-    if (window.location.href != getBaseURLWeb())
-    {
-      onWineSearchPart2();
-    }
-    else
-    {
-      var search_button = document.getElementById('submit_search');
-      if (search_button) {
-        search_button.onclick = onWinesSearch();
-      }
-      wine_of_the_day();
-    }
+function initialize() {
+    onWineSearchPart2();
 }
 
 function wine_of_the_day() {
@@ -139,13 +128,14 @@ function onWineSearchPart2() {
     wine_result_list.push(main_wrapper_format);
   }
 
-  console.log(length(wine_result_list));
+  console.log(wine_result_list.length());
+  console.log(wine_result_list);
 
   var search_wrap = document.getElementById("search_wrap");
 
   if (search_wrap) {
     for (result in wine_result_list) {
-      document.getElementById("search_wrap").appendChild(result);
+      search_wrap += result;
     }
   }
 }

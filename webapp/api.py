@@ -54,7 +54,7 @@ def set_headers(response):
 
 @app.route('/')
 def hello():
-    return 'Welcome to the base page for the wine data api!'
+    return 'Franzia is the best wine'
 
 @app.route('/test')
 def test():
@@ -71,6 +71,10 @@ def test():
             print(e, file=sys.stderr)
         connection.close()
     return json.dumps(to_dump_countries)
+
+
+    return 'Franzia is the best wine'
+
 
 
 @app.route('/countries')

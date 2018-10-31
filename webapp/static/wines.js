@@ -32,10 +32,8 @@ initialize();
 
 function initialize() {
     var search_button = document.getElementById('submit_search');
-    if (search_button) {
-        search_button.onclick = onWinesSearch;
-    }
     wine_of_the_day();
+    getBaseWebURL();
     //var random_wine = document.getElementById('wine_of_the_day_button');
     //console.log("initialized the random_wine var");
     //if (random_wine) {
@@ -83,75 +81,24 @@ function getBaseURL() {
     return baseURL;
 }
 
-function onWinesSearch() {
-    var url = getBaseURL() + '/wines';
-
-    // Send the request to the Books API /authors/ endpoint
-    fetch(url, {method: 'get'})
-
-    // When the results come back, transform them from JSON string into
-    // a Javascript object (in this case, a list of author dictionaries).
-    .then((response) => response.json())
-
-    // Once you have your list of author dictionaries, use it to build
-    // an HTML table displaying the author names and lifespan.
-    .then(function(authorsList) {
-        // Build the table body.
-        var tableBody = '';
-        for (var k = 0; k < authorsList.length; k++) {
-            tableBody += '<tr>';
-
-            tableBody += '<td><a onclick="getAuthor(' + authorsList[k]['id'] + ",'"
-                            + authorsList[k]['first_name'] + ' ' + authorsList[k]['last_name'] + "')\">"
-                            + authorsList[k]['last_name'] + ', '
-                            + authorsList[k]['first_name'] + '</a></td>';
-
-            tableBody += '<td>' + authorsList[k]['birth_year'] + '-';
-            if (authorsList[k]['death_year'] != 0) {
-                tableBody += authorsList[k]['death_year'];
-            }
-            tableBody += '</td>';
-            tableBody += '</tr>';
-        }
-
-        // Put the table body we just built inside the table that's already on the page.
-        var resultsTableElement = document.getElementById('results_table');
-        if (resultsTableElement) {
-            resultsTableElement.innerHTML = tableBody;
-        }
-    })
-
-    // Log the error if anything went wrong during the fetch.
-    .catch(function(error) {
-        console.log(error);
-    });
+function getBaseWebURL() {
+    var baseWebURL = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port;
+    console.log(baseWebURL);
+    return baseWebURL;
 }
 
-function getAuthor(authorID, authorName) {
-    // Very similar pattern to onAuthorsButtonClicked, so I'm not
-    // repeating those comments here. Read through this code
-    // and see if it makes sense to you.
-    var url = getBaseURL() + '/books/author/' + authorID;
 
-    fetch(url, {method: 'get'})
-
-    .then((response) => response.json())
-
-    .then(function(booksList) {
-        var tableBody = '<tr><th>' + authorName + '</th></tr>';
-        for (var k = 0; k < booksList.length; k++) {
-            tableBody += '<tr>';
-            tableBody += '<td>' + booksList[k]['title'] + '</td>';
-            tableBody += '<td>' + booksList[k]['publication_year'] + '</td>';
-            tableBody += '</tr>';
-        }
-        var resultsTableElement = document.getElementById('results_table');
-        if (resultsTableElement) {
-            resultsTableElement.innerHTML = tableBody;
-        }
-    })
-
-    .catch(function(error) {
-        console.log(error);
-    });
+function get_input() {
+    var search_input = document.getElementById("search_bar").value;
+    window.sessionStorage.setItem("search_input", search_input);
+    return search_input
 }
+document.getElementById('submit_search').onclick = get_input();
+
+
+//Initialize submit button to point to new page
+function submit_search() {
+  var url = getBaseWebURL() + '/submit_search';
+  document.location.href = url;
+}
+document.getElementById('submit_search').onclick = submit_search;

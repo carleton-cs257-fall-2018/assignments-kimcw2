@@ -106,7 +106,7 @@ function onWinesSearch() {
   else {}
 
   //location.href = getBaseURL() + "/view" + searchDirectory
-  var url = getBaseURL() + searchDirectory;
+  var url = getBaseURLWeb() + "test";
   window.location.href = url
 }
 
@@ -139,12 +139,15 @@ function onWineSearchPart2() {
     wine_result_list.push(main_wrapper_format);
   }
 
+  console.log(length(wine_result_list));
+
   var search_wrap = document.getElementById("search_wrap");
 
   if (search_wrap) {
     for (result in wine_result_list) {
-      document.getElementById("search_wrap").innerHTML += result;
+      document.getElementById("search_wrap").appendChild(result);
     }
+  }
 }
 
 function getAuthor(authorID, authorName) {

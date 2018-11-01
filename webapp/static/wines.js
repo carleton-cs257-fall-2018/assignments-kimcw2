@@ -270,13 +270,7 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
   if (title.length == 0) {
     title = "%"
   }
-  var url = getBaseApiURL() + `/wines?varieties=${varieties}' +
-                              '&taster=${taster}' +
-                              '&region=${region}' +
-                              '&description=${description}' +
-                              '&vineyard=${vineyard}' +
-                              '&country=${country}' +
-                              '&title=${title}`;
+  var url = getBaseApiURL() + `/wines?varieties=${varieties}&taster=${taster}&region=${region}&description=${description}&vineyard=${vineyard}&country=${country}&title=${title}`;
   console.log(url);
 
   fetch(url)

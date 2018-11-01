@@ -249,6 +249,7 @@ function onWinesSearch(category, search_text) {
 
 
 function onAdvancedWinesSearch(varieties, taster, region, description, designation, country, title) {
+  console.log("varieties: " + varieties);
   // TODO change here to account for different search categories
   /*if (category == "default") {category = "title"}
 

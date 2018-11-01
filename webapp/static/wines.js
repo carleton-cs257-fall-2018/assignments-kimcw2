@@ -83,6 +83,7 @@ function initialize() {
       console.log("sessionStorage search text empty");
     }
     console.log("as my search text");
+    console.log(sessionStorage.getItem("advanced_search"));
 
     if (sessionStorage.getItem("advanced_search") == false) {
       console.log("normal search");

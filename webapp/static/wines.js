@@ -343,5 +343,5 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
         append(document.getElementById("search_wrap"), main_li);
       }
     })
-    .catch(error => console.error(error));*/
+    .catch(error => console.error(error));
 }

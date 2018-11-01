@@ -258,9 +258,9 @@ function onWinesSearch(category, search_text) {
         append(document.getElementById("search_wrap"), main_li);*/
       }
 
-      var search_wrap_text = document.getElementById('search_wrap');
-      if (search_wrap_test) {
-          search_wrap_test.innerHTML = list;
+      var search_wrap = document.getElementById('search_wrap');
+      if (search_wrap) {
+          search_wrap.innerHTML = list;
       }
     })
     .catch(error => console.error(error));
@@ -370,9 +370,9 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
 
         append(document.getElementById("search_wrap"), main_li);*/
       }
-      var search_wrap_text = document.getElementById('search_wrap');
-      if (search_wrap_test) {
-          search_wrap_test.innerHTML = list;
+      var search_wrap = document.getElementById('search_wrap');
+      if (search_wrap) {
+          search_wrap.innerHTML = list;
       }
     })
     .catch(error => console.error(error));

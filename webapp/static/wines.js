@@ -190,7 +190,7 @@ function onWinesSearch(category, search_text) {
         var winery = "Winery: " + data[k]['winery'] || "undefined";
         var points = data[k]['points'] + "/100" || "undefined";
         var description = data[k]['description'] || "undefined";
-        var taster_name = "Taster: " data[k]['taster_name'] || "undefined";
+        var taster_name = "Taster: " + data[k]['taster_name'] || "undefined";
         var taster_twitter_handle = "twitter handle: " + data[k]['taster_twitter_handle'] || "undefined";
         var price = "$" + data[k]['price'] || "undefined";
 
@@ -283,7 +283,7 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
         var winery = "Winery: " + data[k]['winery'] || "undefined";
         var points = data[k]['points'] + "/100" || "undefined";
         var description = data[k]['description'] || "undefined";
-        var taster_name = "Taster: " data[k]['taster_name'] || "undefined";
+        var taster_name = "Taster: " + data[k]['taster_name'] || "undefined";
         var taster_twitter_handle = "twitter handle: " + data[k]['taster_twitter_handle'] || "undefined";
         var price = "$" + data[k]['price'] || "undefined";
 

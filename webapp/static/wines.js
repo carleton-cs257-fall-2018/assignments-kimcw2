@@ -185,6 +185,22 @@ function onWinesSearch(category, search_text) {
     .then(function(data) {
       console.log(data);
       for (var k=0; k<data.length;k++) {
+
+        var wine_body = '<div id="discover_wine" class="info_box"><header name="discover_wine" class="discover_wine">Discover Wine</header>'+
+                               '<div class="left_box"><p class = "title">' + data[k]['title'] +
+                               '</p><p class = "varieties"> varieties: ' + data[k]['varieties'] +
+                               '</p><text class = "winery"> Winery: ' + data[k]['winery'] +
+                               '</text><text class = "place"> (' + data[k]['region'] +', '+ data[k]['province'] + ', ' + data[k]['country'] +
+                               ')</text><p class = "points"> Points: ' + data[k]['points'] + '/100</p></div>'+
+                               '<div class="middle_box"><p class = "description">Review: ' + data[k]['description'] +
+                               '</p><text class = "taster_name">' + data[k]['taster_name'] +
+                               '</text>  <text class = "taster_twitter_handle">(' + data[k]['taster_twitter_handle'] +
+                               ')</text></div>' +
+                               '<div class = "right_box">  <text class = "price">$' + data[k]['price'] +
+                               '</text></div></div></div>';
+
+        append(document.getElementById("search_wrap_test"), main_li);
+        /*
         var title = data[k]['title'] || "undefined";
         var varieties = data[k]['varieties'] || "undefined";
         var winery = "Winery: " + data[k]['winery'] || "undefined";
@@ -241,7 +257,7 @@ function onWinesSearch(category, search_text) {
         append(main_li, mid_panel);
         append(main_li, right_panel);
 
-        append(document.getElementById("search_wrap"), main_li);
+        append(document.getElementById("search_wrap"), main_li);*/
       }
     })
     .catch(error => console.error(error));

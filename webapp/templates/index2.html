@@ -9,13 +9,12 @@
 
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='wines.css') }}" />-->
-    <link rel="stylesheet" type="text/css" href="../static/wines.css" />
-    <script>var api_port = 5132;</script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='wines.css') }}" />
+    <script>var api_port = {{ api_port }};</script>
     <!--<script type="text/javascript" src="/static/wines.js"></script>-->
-    <script type="text/javascript" src="{{ url_for('static', filename='submit_search.js') }}" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='wines.js') }}" defer></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
-    <title>CS 257: Software Design, Spring 2017</title>
+    <title>CS 257: Software Design, Fall 2018</title>
 
 </head>
 
@@ -34,13 +33,15 @@
                 &cc=kimcw2@carleton.edu
                 &subject=From%20Wine%20Website" target="_blank">Email Us!</a></li>
             <li class="nav-item">
-              <form class="form-inline" action="/display" method="GET">
-                      <input type="text" class="form-control" placeholder="Search" id="search_bar" name="search_text">
-                      <button type="submit" class="btn btn-default" id="submit_search">Submit</button>
-              </form>
+                <form class="form-inline" action="/display" method="GET">
+                        <input type="text" class="form-control" placeholder="Search" id="search_bar" name="search_text">
+                        <button type="submit" class="btn btn-default" id="submit_search"> Submit</button>
+                </form>
             </li>
         </ul>
     </nav>
-  <p id='wine_of_the_day'></p>
+    <ul class="results" id="search_wrap">
+      Your results...
+    </ul>
 </body>
 </html>

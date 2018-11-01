@@ -23,10 +23,10 @@ def get_about_page():
     global port
     return flask.render_template('about.html', api_port=api_port)
 
-@app.route('/submit_search')
+@app.route('/display')
 def get_submit_search_page():
     global port
-    return flask.render_template('submit_search.html', api_port=api_port)
+    return flask.render_template('index2.html', api_port=api_port)
 
 @app.route('/advanced_search')
 def get_advanced_search_page():

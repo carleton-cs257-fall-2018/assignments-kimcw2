@@ -77,7 +77,7 @@ function initialize() {
   }
 
   if (window.location.pathname.includes("display")){
-    if !(sessionStorage.getItem("advanced_search")) {
+    if (sessionStorage.getItem("advanced_search") == false) {
       onWinesSearch("default", sessionStorage.getItem("search_text"));
     else {
       onAdvancedWinesSearch(sessionStorage.getItem("varieties_search_text"),

@@ -184,9 +184,9 @@ function onWinesSearch(category, search_text) {
     .then(response => response.json())
     .then(function(data) {
       console.log(data);
+      var list = '';
       for (var k=0; k<data.length;k++) {
-        var list;
-        var list += '<li><div id="discover_wine" class="info_box"><header name="discover_wine" class="discover_wine">Discover Wine</header>'+
+        list += '<li><div id="discover_wine" class="info_box"><header name="discover_wine" class="discover_wine">Discover Wine</header>'+
                                '<div class="left_box"><p class = "title">' + data[k]['title'] +
                                '</p><p class = "varieties"> varieties: ' + data[k]['varieties'] +
                                '</p><text class = "winery"> Winery: ' + data[k]['winery'] +

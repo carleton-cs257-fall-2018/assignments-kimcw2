@@ -31,6 +31,8 @@
 initialize();
 
 function initialize() {
+  initMap();
+  
   var search_button = document.getElementById('submit_search');
   search_button.onclick = function() {
     sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
@@ -52,6 +54,8 @@ function initialize() {
   } else {
     discover_wine();
   }
+
+
 }
 
 function go_to_home_page() {

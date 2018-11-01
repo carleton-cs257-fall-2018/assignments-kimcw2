@@ -32,7 +32,7 @@
         <a class="navbar-brand" href="#">Mr. Bill's!</a>
         <ul class="navbar-nav" style="align-items: center; width: 100%; justify-content: space-around">
             <li class="nav-item"><a href="#" id="go_to_home_page">Home</a></li>
-            <li class="nav-item"><a href="#wine_of_the_day">Wine of the Day</a></li>
+            <li class="nav-item"><a href="#discover_wine">Discover Wine</a></li>
             <li class="nav-item"><a href="/about" id="about">About</a></li>
             <li class="nav-item"><a href="mailto:washingtonj@carleton.edu
                 ?cc=dalmeidad@carleton.edu
@@ -48,30 +48,9 @@
     </nav>
     <div id="map"></div>
 
-    <div id='wine_of_the_day' class="info_box">
-        <!--<header name='wine_of_the_day' class='wine_of_the_day'>Discover Wine</header>
-        <div class="left_box">
-          <p class = "title">random_wine['title']</p>
-          <p class = "variety">Variety: random_wine['variety']</p>
-          <text class = "winery">Winery: random_wine['winery']</text>
-          <text class = "place">(random_wine['region'], random_wine['province'], random_wine['country'])</text>
-          <p class = "points">Points: random_wine['points']/100</p>
-        </div>
+    <div id='discover_wine' class="info_box"></div>
 
-        <div class="middle_box">
-          <p class = "description">Review: random_wine['description'] </p>
-          <text class = "taster_name">random_wine['taster_name']</text>
-          <text class = "taster_twitter_handle">(random_wine['taster_twitter_handle')</text>
-        </div>
-
-        <div class = "right_box">
-          <text class = "price">$ random_wine['price']</text>
-        </div>-->
-    </div>
-
-
-
-    <p id='wine_of_the_day'></p>
+    <p id='discover_wine'></p>
     <script>
         function initMap() {
             var  italy = [{lat: 41.871941, lng:12.567380}, "Italy", 24382];
@@ -144,7 +123,6 @@
 
                 attachInfoToMarker(marker,content);
 
-                setTimeout(function(){console.log(i)}, 2000);
             }
         }
         function attachInfoToMarker(marker, infowindowcontent){

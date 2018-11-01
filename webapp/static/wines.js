@@ -40,12 +40,17 @@ function initialize() {
     go_to_home_page();
   }
 
+  var discover_wine_button = document.getElementById('go_to_discover_wine');
+  discover_wine_button.onclick = function() {
+    go_to_discover_wine();
+  }
+    
   if (window.location.pathname.includes("display")){
     onWinesSearch("default", sessionStorage.getItem("search_text"));
   } else if (window.location.pathname.includes("about")){
-  } else if (window.location.pathname.includes("wine_of_the_day")){
+  } else if (window.location.pathname.includes("discover_wine")){
   } else {
-    wine_of_the_day();
+    discover_wine();
   }
 }
 
@@ -53,7 +58,11 @@ function go_to_home_page() {
   document.location.href = getBaseWebURL();
 }
 
-function wine_of_the_day() {
+function go_to_discover_wine(){
+  document.location.href = (getBaseWebURL() + "#discover_wine");
+}
+
+function discover_wine() {
   var url = getBaseURL() + '/wines';
   fetch(url)
   .then((response) => response.json())
@@ -61,7 +70,7 @@ function wine_of_the_day() {
   .then(function(wine_list) {
       var random_wine = wine_list[Math.floor(Math.random() * wine_list.length)];
       console.log(random_wine);
-      var random_wine_body = '<header name="wine_of_the_day" class="wine_of_the_day">Discover Wine</header>'+
+      var random_wine_body = '<header name="discover_wine" class="discover_wine">Discover Wine</header>'+
                              '<div class="left_box"><p class = "title">' + random_wine['title'] +
                              '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
                              '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
@@ -75,9 +84,9 @@ function wine_of_the_day() {
                              '</text></div></div>';
 
 
-      var wine_of_the_day = document.getElementById('wine_of_the_day');
-      if (wine_of_the_day) {
-          wine_of_the_day.innerHTML = random_wine_body;
+      var discover_wine = document.getElementById('discover_wine');
+      if (discover_wine) {
+          discover_wine.innerHTML = random_wine_body;
       }})
 
       .catch(function(error) {

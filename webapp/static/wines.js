@@ -62,7 +62,7 @@ function initialize() {
     go_to_display_page();
   }
 
-  if (window.location.pathname.incudes("/advanced_search")) {
+  if (window.location.pathname.includes("/advanced_search")) {
     var advanced_search_submit_button = document.getElementById('advanced_search_submit_button');
     advanced_search_submit_button.onclick = function() {
       sessionStorage.setItem("varieties_search_text",document.getElementById("varieties_search_bar").value);

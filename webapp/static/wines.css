@@ -89,8 +89,8 @@
 }
 
 .adv_searcher {
-  margin-top: 10px;
-  padding: 5px 3px;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
   background-color: lightgrey;
   border-radius: 50px 0px 0px 50px;
 }

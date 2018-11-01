@@ -1,5 +1,3 @@
-.body
-
 .a {
   color:black;
 }
@@ -16,7 +14,7 @@
   height:406px;
 }
 
-.wine_of_the_day {
+.discover_wine {
     background-color: #666;
     padding: 8px;
     text-align: center;
@@ -43,7 +41,6 @@
   font-size: 14px;
 
 }
-
 
 .winery {
   font-size: 14px;
@@ -85,4 +82,15 @@
     width: 10%;
     background-color: #1ff1f1;
     height: 250px;
+}
+
+.results {
+
+}
+
+.adv_searcher {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  background-color: lightgrey;
+  border-radius: 50px 0px 0px 50px;
 }

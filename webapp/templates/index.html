@@ -5,14 +5,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../static/wines.css" />
+    <script>var api_port={{api_port}};</script>
+    <script type="text/javascript" src="../static/wines.js" defer></script>
+    <link rel="shortcut icon" href="../static/favicon.ico" />
     <style>
-       /* Set the size of the div element that contains the map */
-      #map {
+        #map {
         height: 600px;  /* The height is 600 pixels */
         width: 100%;  /* The width is the width of the web page */
        }
     </style>
 
+<<<<<<< HEAD
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='wines.css') }}" />
@@ -20,6 +25,8 @@
     <script type="text/javascript" src="{{ url_for('static', filename='wines.js') }}" defer></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
 
+=======
+>>>>>>> c47a7fecd851dda4ee94ae74d4289269f42159d0
     <title>CS 257: Software Design, Fall 2018</title>
 
 </head>
@@ -32,12 +39,13 @@
         <a class="navbar-brand" href="#">Mr. Bill's!</a>
         <ul class="navbar-nav" style="align-items: center; width: 100%; justify-content: space-around">
             <li class="nav-item"><a href="#" id="go_to_home_page">Home</a></li>
-            <li class="nav-item"><a href="#wine_of_the_day">Wine of the Day</a></li>
-            <li class="nav-item"><a href="/about" id="about">About</a></li>
+            <li class="nav-item"><a href="#discover_wine" id='go_to_discover_wine'>Discover Wine</a></li>
+            <li class="nav-item"><a href="#" id="go_to_about_page">About</a></li>
             <li class="nav-item"><a href="mailto:washingtonj@carleton.edu
                 ?cc=dalmeidad@carleton.edu
                 &cc=kimcw2@carleton.edu
                 &subject=From%20Wine%20Website" target="_blank">Email Us!</a></li>
+            <li class="nav-item"><a href="#" id="go_to_advanced_search_page">Advanced Search</a></li>
             <li class="nav-item">
                 <form class="form-inline" action="/display" method="GET">
                         <input type="text" class="form-control" placeholder="Search" id="search_bar" name="search_text">
@@ -46,32 +54,13 @@
             </li>
         </ul>
     </nav>
+
     <div id="map"></div>
 
-    <div id='wine_of_the_day' class="info_box">
-        <!--<header name='wine_of_the_day' class='wine_of_the_day'>Discover Wine</header>
-        <div class="left_box">
-          <p class = "title">random_wine['title']</p>
-          <p class = "variety">Variety: random_wine['variety']</p>
-          <text class = "winery">Winery: random_wine['winery']</text>
-          <text class = "place">(random_wine['region'], random_wine['province'], random_wine['country'])</text>
-          <p class = "points">Points: random_wine['points']/100</p>
-        </div>
+    <div id='discover_wine' class="info_box"></div>
 
-        <div class="middle_box">
-          <p class = "description">Review: random_wine['description'] </p>
-          <text class = "taster_name">random_wine['taster_name']</text>
-          <text class = "taster_twitter_handle">(random_wine['taster_twitter_handle')</text>
-        </div>
-
-        <div class = "right_box">
-          <text class = "price">$ random_wine['price']</text>
-        </div>-->
-    </div>
-
-
-
-    <p id='wine_of_the_day'></p>
+    <p id='discover_wine'></p>
+    
     <script>
         function initMap() {
             var  italy = [{lat: 41.871941, lng:12.567380}, "Italy", 24382];
@@ -119,34 +108,34 @@
             var  egypt= [{lat: 26.820553, lng:30.802498}, "Egypt", 2];
 
             var countries = [italy,portugal,us,spain,france,germany,argentina,chile,australia,austria,southafrica,
-                    newzealand,israel,hungary,greece,romania,mexico,canada,georgia,turkey,czechrepublic,
-                    slovenia,luxembourg,croatia,uruguay,england,lebanon,serbia,brazil,moldova,morocco,peru,
-                    india,bulgaria,cyprus,armenia,switzerland,bosniaandherzegovina,ukraine,slovakia,macedonia,
-                    china,egypt]
+                  newzealand,israel,hungary,greece,romania,mexico,canada,georgia,turkey,czechrepublic,
+                  slovenia,luxembourg,croatia,uruguay,england,lebanon,serbia,brazil,moldova,morocco,peru,
+                  india,bulgaria,cyprus,armenia,switzerland,bosniaandherzegovina,ukraine,slovakia,macedonia,
+                  china,egypt]
             var map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 4, center: italy[0]});
+              document.getElementById('map'), {zoom: 4, center: italy[0]});
 
             var image = {
-                url: '../static/images/marker.png',
-                // This marker is 20 pixels wide by 32 pixels high.
-                scaledSize: new google.maps.Size(20, 32),
-                // The origin for this image is (0, 0).
-                origin: new google.maps.Point(0, 0),
-                // The anchor for this image is the base of the wineglass at (10, 32).
-                anchor: new google.maps.Point(10, 32)};
+              url: '../static/images/marker.png',
+              // This marker is 20 pixels wide by 32 pixels high.
+              scaledSize: new google.maps.Size(20, 32),
+              // The origin for this image is (0, 0).
+              origin: new google.maps.Point(0, 0),
+              // The anchor for this image is the base of the wineglass at (10, 32).
+              anchor: new google.maps.Point(10, 32)};
 
 
             var cl = countries.length;
             for (var i = 0; i < cl; i++){
-                var marker = new google.maps.Marker({position: countries[i][0], map: map, icon: image, draggable: true, animation: google.maps.Animation.DROP, title: countries[i][1]});
+              var marker = new google.maps.Marker({position: countries[i][0], map: map, icon: image, draggable: true, animation: google.maps.Animation.DROP, title: countries[i][1]});
 
-                var content = '<p><strong>'+countries[i][1]+'</strong> has '+countries[i][2]+' wines registered in our database!</p><br>'+'<a href="https://en.wikipedia.org/wiki/'+countries[i][1]+'" target="_blank">Learn more about this country</a>';
+              var content = '<p><strong>'+countries[i][1]+'</strong> has '+countries[i][2]+' wines registered in our database!</p><br>'+'<a href="https://en.wikipedia.org/wiki/'+countries[i][1]+'" target="_blank">Learn more about this country</a>';
 
-                attachInfoToMarker(marker,content);
+              attachInfoToMarker(marker,content);
 
-                setTimeout(function(){console.log(i)}, 2000);
             }
         }
+
         function attachInfoToMarker(marker, infowindowcontent){
             var infowindow = new google.maps.InfoWindow({
                 content: infowindowcontent});
@@ -154,7 +143,7 @@
             marker.addListener('click', function() {
                     infowindow.open(map, marker);
                 });
-        }
+            }
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFKOXhSHwHNM4lEhohC8c_YnYdIYApdnA&callback=initMap">

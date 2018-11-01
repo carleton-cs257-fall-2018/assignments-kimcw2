@@ -118,9 +118,9 @@ def get_varieties():
     if connection is not None:
         try:
             for row in get_select_query_results(connection, query):
-                variety = {'id':row[0],
+                varieties = {'id':row[0],
                           'name':row[1]}
-                to_dump_varieties.append(variety)
+                to_dump_varieties.append(varieties)
         except Exception as e:
             print(e, file=sys.stderr)
         connection.close()
@@ -131,7 +131,7 @@ def get_varieties():
 def get_wines():
     ''' Returns the list of wines that match GET parameters:
           winery_name: reject any wine not from this winery
-          variety_name: reject any wine not of this variety
+          varieties_name: reject any wine not of this varieties
           taster_name: reject any wine not tasted by this taster
           region: reject any wine not from this region
           description: reject any wine that does not have specified
@@ -144,7 +144,7 @@ def get_wines():
     '''
 
     winery_name = flask.request.args.get('winery', default='%').lower()
-    variety_name = flask.request.args.get('variety', default='%').lower()
+    varieties_name = flask.request.args.get('varieties', default='%').lower()
     taster_name = flask.request.args.get('taster', default='%').lower()
     region = flask.request.args.get('region', default='%').lower()
     description = flask.request.args.get('description', default='%').lower()
@@ -169,7 +169,7 @@ def get_wines():
                       wineries.name
                 FROM wines
                     JOIN wineries ON wineries.id = wines.winery_id
-                    JOIN varieties ON varieties.id = wines.variety_id
+                    JOIN varieties ON varieties.id = wines.varieties_id
                     JOIN countries ON countries.id = wineries.country_id
                 WHERE wineries.name LIKE '%{0}%'
                     AND lower(varieties.name) LIKE '%{1}%'
@@ -179,7 +179,7 @@ def get_wines():
                     AND lower(wines.designation) LIKE '%{5}%'
                     AND lower(countries.name) LIKE '%{6}%'
                     AND lower(wines.title) LIKE '%{8}%'
-                ORDER BY wines.{7}""".format(winery_name, variety_name, taster_name, region, description, vineyard, country_name, order_by, title)
+                ORDER BY wines.{7}""".format(winery_name, varieties_name, taster_name, region, description, vineyard, country_name, order_by, title)
 
 
     wines_list = []
@@ -197,7 +197,7 @@ def get_wines():
                         'taster_name':row[7],
                         'taster_twitter_handle':row[8],
                         'title':row[9],
-                        'variety':row[10],
+                        'varieties':row[10],
                         'winery':row[11]}
                 wines_list.append(wine)
         except Exception as e:

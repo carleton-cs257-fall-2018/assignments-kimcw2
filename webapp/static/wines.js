@@ -69,7 +69,7 @@ function initialize() {
       sessionStorage.setItem("taster_search_text",document.getElementById("taster_search_bar").value);
       sessionStorage.setItem("region_search_text",document.getElementById("region_search_bar").value);
       sessionStorage.setItem("description_search_text",document.getElementById("description_search_bar").value);
-      sessionStorage.setItem("designation_search_text",document.getElementById("designation_search_bar").value);
+      sessionStorage.setItem("vineyard_search_text",document.getElementById("vineyard_search_bar").value);
       sessionStorage.setItem("country_search_text",document.getElementById("country_search_bar").value);
       sessionStorage.setItem("title_search_text",document.getElementById("title_search_bar").value);
       sessionStorage.setItem("advanced_search", 0);
@@ -95,7 +95,7 @@ function initialize() {
                             sessionStorage.getItem("taster_search_text"),
                             sessionStorage.getItem("region_search_text"),
                             sessionStorage.getItem("description_search_text"),
-                            sessionStorage.getItem("designation_search_text"),
+                            sessionStorage.getItem("vineyard_search_text"),
                             sessionStorage.getItem("country_search_text"),
                             sessionStorage.getItem("title_search_text"),
                             );
@@ -137,7 +137,7 @@ function discover_wine() {
       console.log(random_wine);
       var random_wine_body = '<header name="discover_wine" class="discover_wine">Discover Wine</header>'+
                              '<div class="left_box"><p class = "title">' + random_wine['title'] +
-                             '</p><p class = "variety"> Variety: ' + random_wine['variety'] +
+                             '</p><p class = "varieties"> varieties: ' + random_wine['varieties'] +
                              '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
                              '</text><text class = "place"> (' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
                              ')</text><p class = "points"> Points: ' + random_wine['points'] + '/100</p></div>'+
@@ -186,7 +186,7 @@ function onWinesSearch(category, search_text) {
       console.log(data);
       for (var k=0; k<data.length;k++) {
         var title = data[k]['title'] || "undefined";
-        var variety = data[k]['variety'] || "undefined";
+        var varieties = data[k]['varieties'] || "undefined";
         var winery = data[k]['winery'] || "undefined";
         var points = data[k]['points'] || "undefined";
         var description = data[k]['description'] || "undefined";
@@ -202,9 +202,9 @@ function onWinesSearch(category, search_text) {
         var title_span = document.createElement("span");
         title_span.setAttribute("class","title");
         title_span.innerHTML = title;
-        var variety_span = document.createElement("span");
-        variety_span.setAttribute("class","variety");
-        variety_span.innerHTML = variety;
+        var varieties_span = document.createElement("span");
+        varieties_span.setAttribute("class","varieties");
+        varieties_span.innerHTML = varieties;
         var winery_span = document.createElement("span");
         winery_span.setAttribute("class","winery");
         winery_span.innerHTML = winery;
@@ -229,7 +229,7 @@ function onWinesSearch(category, search_text) {
         price_span.innerHTML = price;
 
         append(left_panel,title_span);
-        append(left_panel,variety_span);
+        append(left_panel,varieties_span);
         append(left_panel,winery_span);
         append(left_panel,points_span);
         append(mid_panel,description_span);
@@ -248,15 +248,35 @@ function onWinesSearch(category, search_text) {
 }
 
 
-function onAdvancedWinesSearch(varieties, taster, region, description, designation, country, title) {
+function onAdvancedWinesSearch(varieties, taster, region, description, vineyard, country, title) {
   if (varieties.length == 0) {
-    console.log("blank entry has length 0");
+    varieities = "%"
   }
-  console.log(varieties.length);
-  // TODO change here to account for different search categories
-  /*if (category == "default") {category = "title"}
-
-  var url = getBaseApiURL() + `/wines?${category}=${search_text}`;
+  if (taster.length == 0) {
+    taster = "%"
+  }
+  if (region.length == 0) {
+    region = "%"
+  }
+  if (description.length == 0) {
+    description = "%"
+  }
+  if (vineyard.length == 0) {
+    varieites = "%"
+  }
+  if (country.length == 0) {
+    country = "%"
+  }
+  if (title.length == 0) {
+    title = "%"
+  }
+  var url = getBaseApiURL() + `/wines?varieties=${varieties}' +
+                              '&taster=${taster}' +
+                              '&region=${region}' +
+                              '&description=${description}' +
+                              '&vineyard=${vineyard}' +
+                              '&country=${country}' +
+                              '&title=${title}`;
   console.log(url);
 
   fetch(url)
@@ -265,7 +285,7 @@ function onAdvancedWinesSearch(varieties, taster, region, description, designati
       console.log(data);
       for (var k=0; k<data.length;k++) {
         var title = data[k]['title'] || "undefined";
-        var variety = data[k]['variety'] || "undefined";
+        var varieties = data[k]['varieties'] || "undefined";
         var winery = data[k]['winery'] || "undefined";
         var points = data[k]['points'] || "undefined";
         var description = data[k]['description'] || "undefined";
@@ -281,9 +301,9 @@ function onAdvancedWinesSearch(varieties, taster, region, description, designati
         var title_span = document.createElement("span");
         title_span.setAttribute("class","title");
         title_span.innerHTML = title;
-        var variety_span = document.createElement("span");
-        variety_span.setAttribute("class","variety");
-        variety_span.innerHTML = variety;
+        var varieties_span = document.createElement("span");
+        varieties_span.setAttribute("class","varieties");
+        varieties_span.innerHTML = varieties;
         var winery_span = document.createElement("span");
         winery_span.setAttribute("class","winery");
         winery_span.innerHTML = winery;
@@ -308,7 +328,7 @@ function onAdvancedWinesSearch(varieties, taster, region, description, designati
         price_span.innerHTML = price;
 
         append(left_panel,title_span);
-        append(left_panel,variety_span);
+        append(left_panel,varieties_span);
         append(left_panel,winery_span);
         append(left_panel,points_span);
         append(mid_panel,description_span);

@@ -77,10 +77,16 @@ function initialize() {
   }
 
   if (window.location.pathname.includes("display")){
+    console.log("in display page with: ");
+    try {console.log(sessionStorage.getItem("search_text"));}
+    console.log("as my search text");
+
     if (sessionStorage.getItem("advanced_search") == false) {
+      console.log("normal search");
       onWinesSearch("default", sessionStorage.getItem("search_text"));
     }
     else {
+      console.log("advanced search");
       onAdvancedWinesSearch(sessionStorage.getItem("varieties_search_text"),
                             sessionStorage.getItem("taster_search_text"),
                             sessionStorage.getItem("region_search_text"),

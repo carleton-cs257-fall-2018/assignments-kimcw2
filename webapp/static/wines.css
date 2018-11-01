@@ -42,7 +42,6 @@
 
 }
 
-
 .winery {
   font-size: 14px;
   line-height: 1;
@@ -83,4 +82,8 @@
     width: 10%;
     background-color: #1ff1f1;
     height: 250px;
+}
+
+.results {
+
 }

@@ -199,7 +199,7 @@ function onWinesSearch(category, search_text) {
                                '<div class = "right_box">  <text class = "price">$' + data[k]['price'] +
                                '</text></div></div></div>';
 
-        append(document.getElementById("search_wrap_test"), main_li);
+        append(document.getElementById("search_wrap_test"), wine_body);
         /*
         var title = data[k]['title'] || "undefined";
         var varieties = data[k]['varieties'] || "undefined";

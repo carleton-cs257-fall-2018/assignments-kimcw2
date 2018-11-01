@@ -44,8 +44,6 @@ function initialize() {
   discover_wine_button.onclick = function() {
     go_to_discover_wine();
   }
-
-  initMap();
     
   if (window.location.pathname.includes("display")){
     onWinesSearch("default", sessionStorage.getItem("search_text"));

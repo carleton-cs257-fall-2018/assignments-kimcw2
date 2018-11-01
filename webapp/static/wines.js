@@ -261,7 +261,7 @@ function onWinesSearch(category, search_text) {
       var search_wrap_text = document.getElementById('search_wrap_test');
       if (search_wrap_test) {
           search_wrap_test.innerHTML = list;
-      }})
+      }
     })
     .catch(error => console.error(error));
 }

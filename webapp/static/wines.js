@@ -32,7 +32,7 @@ initialize();
 
 function initialize() {
 
-  sessionStorage.setItem("advanced_search", false);
+  sessionStorage.setItem("advanced_search", 1);
 
   var home_button = document.getElementById('go_to_home_page');
   home_button.onclick = function() {
@@ -58,7 +58,7 @@ function initialize() {
   var search_button = document.getElementById('submit_search');
   search_button.onclick = function() {
     sessionStorage.setItem("search_text",document.getElementById("search_bar").value);
-    sessionStorage.setItem("advanced_search", false);
+    sessionStorage.setItem("advanced_search", 1);
     go_to_display_page();
   }
 
@@ -72,7 +72,7 @@ function initialize() {
       sessionStorage.setItem("designation_search_text",document.getElementById("designation_search_bar").value);
       sessionStorage.setItem("country_search_text",document.getElementById("country_search_bar").value);
       sessionStorage.setItem("title_search_text",document.getElementById("title_search_bar").value);
-      sessionStorage.setItem("advanced_search", true);
+      sessionStorage.setItem("advanced_search", 0);
     }
   }
 
@@ -85,7 +85,7 @@ function initialize() {
     console.log("as my search text");
     console.log(sessionStorage.getItem("advanced_search"));
 
-    if (sessionStorage.getItem("advanced_search") === false) {
+    if (sessionStorage.getItem("advanced_search") == 1) {
       console.log("normal search");
       onWinesSearch("default", sessionStorage.getItem("search_text"));
     }

@@ -53,7 +53,7 @@ function initialize() {
   advanced_search_button.onclick = function() {
     go_to_advanced_search_page();
   }
-    
+
 
   var search_button = document.getElementById('submit_search');
   search_button.onclick = function() {
@@ -311,4 +311,3 @@ function onAdvancedWinesSearch(varieties, taster, region, description, designati
     })
     .catch(error => console.error(error));*/
 }
-

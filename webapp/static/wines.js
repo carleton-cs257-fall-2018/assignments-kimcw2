@@ -79,6 +79,9 @@ function initialize() {
   if (window.location.pathname.includes("display")){
     console.log("in display page with: ");
     try {console.log(sessionStorage.getItem("search_text"));}
+    catch(err) {
+      console.log("sessionStorage search text empty");
+    }
     console.log("as my search text");
 
     if (sessionStorage.getItem("advanced_search") == false) {

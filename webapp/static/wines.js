@@ -187,12 +187,12 @@ function onWinesSearch(category, search_text) {
       for (var k=0; k<data.length;k++) {
         var title = data[k]['title'] || "undefined";
         var varieties = data[k]['varieties'] || "undefined";
-        var winery = data[k]['winery'] || "undefined";
-        var points = data[k]['points'] || "undefined";
+        var winery = "Winery: " + data[k]['winery'] || "undefined";
+        var points = data[k]['points'] + "/100" || "undefined";
         var description = data[k]['description'] || "undefined";
-        var taster_name = data[k]['taster_name'] || "undefined";
-        var taster_twitter_handle = data[k]['taster_twitter_handle'] || "undefined";
-        var price = data[k]['price'] || "undefined";
+        var taster_name = "Taster: " data[k]['taster_name'] || "undefined";
+        var taster_twitter_handle = "twitter handle: " + data[k]['taster_twitter_handle'] || "undefined";
+        var price = "$" + data[k]['price'] || "undefined";
 
         var main_li = document.createElement("li");
         main_li.setAttribute("wine_name",title);
@@ -280,12 +280,12 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
       for (var k=0; k<data.length;k++) {
         var title = data[k]['title'] || "undefined";
         var varieties = data[k]['varieties'] || "undefined";
-        var winery = data[k]['winery'] || "undefined";
-        var points = data[k]['points'] || "undefined";
+        var winery = "Winery: " + data[k]['winery'] || "undefined";
+        var points = data[k]['points'] + "/100" || "undefined";
         var description = data[k]['description'] || "undefined";
-        var taster_name = data[k]['taster_name'] || "undefined";
-        var taster_twitter_handle = data[k]['taster_twitter_handle'] || "undefined";
-        var price = data[k]['price'] || "undefined";
+        var taster_name = "Taster: " data[k]['taster_name'] || "undefined";
+        var taster_twitter_handle = "twitter handle: " + data[k]['taster_twitter_handle'] || "undefined";
+        var price = "$" + data[k]['price'] || "undefined";
 
         var main_li = document.createElement("li");
         main_li.setAttribute("wine_name",title);

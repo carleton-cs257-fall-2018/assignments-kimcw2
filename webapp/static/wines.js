@@ -85,7 +85,7 @@ function initialize() {
     console.log("as my search text");
     console.log(sessionStorage.getItem("advanced_search"));
 
-    if (sessionStorage.getItem("advanced_search") == false) {
+    if (sessionStorage.getItem("advanced_search") === false) {
       console.log("normal search");
       onWinesSearch("default", sessionStorage.getItem("search_text"));
     }

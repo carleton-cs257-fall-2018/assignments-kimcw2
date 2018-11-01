@@ -32,8 +32,6 @@ initialize();
 
 function initialize() {
 
-  sessionStorage.setItem("advanced_search", 1);
-
   var home_button = document.getElementById('go_to_home_page');
   home_button.onclick = function() {
     go_to_home_page();
@@ -64,7 +62,9 @@ function initialize() {
 
   if (window.location.pathname.includes("/advanced_search")) {
     var advanced_search_submit_button = document.getElementById('advanced_search_submit_button');
+    console.log("created advanced_search_submit_button var");
     advanced_search_submit_button.onclick = function() {
+      console.log("advanced_search_submit_button was clicked");
       sessionStorage.setItem("varieties_search_text",document.getElementById("varieties_search_bar").value);
       sessionStorage.setItem("taster_search_text",document.getElementById("taster_search_bar").value);
       sessionStorage.setItem("region_search_text",document.getElementById("region_search_bar").value);

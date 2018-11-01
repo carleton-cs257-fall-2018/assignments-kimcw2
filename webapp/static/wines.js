@@ -249,7 +249,7 @@ function onWinesSearch(category, search_text) {
 
 
 function onAdvancedWinesSearch(varieties, taster, region, description, designation, country, title) {
-  if varieties.length == 0 {
+  if (varieties.length == 0) {
     console.log("blank entry has length 0");
   }
   console.log(varieties.length);

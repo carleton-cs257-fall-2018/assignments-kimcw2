@@ -185,8 +185,8 @@ function onWinesSearch(category, search_text) {
     .then(function(data) {
       console.log(data);
       for (var k=0; k<data.length;k++) {
-
-        var wine_body = '<div id="discover_wine" class="info_box"><header name="discover_wine" class="discover_wine">Discover Wine</header>'+
+        var list;
+        var list += '<li><div id="discover_wine" class="info_box"><header name="discover_wine" class="discover_wine">Discover Wine</header>'+
                                '<div class="left_box"><p class = "title">' + data[k]['title'] +
                                '</p><p class = "varieties"> varieties: ' + data[k]['varieties'] +
                                '</p><text class = "winery"> Winery: ' + data[k]['winery'] +
@@ -197,9 +197,7 @@ function onWinesSearch(category, search_text) {
                                '</text>  <text class = "taster_twitter_handle">(' + data[k]['taster_twitter_handle'] +
                                ')</text></div>' +
                                '<div class = "right_box">  <text class = "price">$' + data[k]['price'] +
-                               '</text></div></div></div>';
-
-        append(document.getElementById("search_wrap_test"), wine_body);
+                               '</text></div></div></div></li>';
         /*
         var title = data[k]['title'] || "undefined";
         var varieties = data[k]['varieties'] || "undefined";
@@ -259,6 +257,11 @@ function onWinesSearch(category, search_text) {
 
         append(document.getElementById("search_wrap"), main_li);*/
       }
+
+      var search_wrap_text = document.getElementById('search_wrap_test');
+      if (search_wrap_test) {
+          search_wrap_test.innerHTML = list;
+      }})
     })
     .catch(error => console.error(error));
 }

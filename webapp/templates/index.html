@@ -9,10 +9,13 @@
     <link rel="stylesheet" type="text/css" href="../static/wines.css" />
     <script>var api_port={{api_port}};</script>
     <script type="text/javascript" src="../static/wines.js" defer></script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFKOXhSHwHNM4lEhohC8c_YnYdIYApdnA&callback=initMap">
-    </script>
     <link rel="shortcut icon" href="../static/favicon.ico" />
+    <style>
+        #map {
+        height: 600px;  /* The height is 600 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
 
     <title>CS 257: Software Design, Fall 2018</title>
 
@@ -46,6 +49,93 @@
     <div id='discover_wine' class="info_box"></div>
 
     <p id='discover_wine'></p>
+    
+    <script>
+        function initMap() {
+            var  italy = [{lat: 41.871941, lng:12.567380}, "Italy", 24382];
+            var  portugal= [{lat: 39.399872, lng:-8.224454}, "Portugal", 5696];
+            var  us= [{lat: 37.090240, lng:-95.712891}, "United States", 54512];
+            var  spain= [{lat: 40.463669, lng:-3.749220}, "Spain", 6770];
+            var  france= [{lat: 46.227638, lng:2.213749}, "France", 22830];
+            var  germany= [{lat: 51.165691, lng:10.451526}, "Germany", 2177];
+            var  argentina= [{lat: -38.416096, lng:-63.616673}, "Argentina", 3836];
+            var  chile= [{lat: -35.675148, lng:-71.542969}, "Chile", 4623];
+            var  australia= [{lat: -25.274399, lng:133.775131}, "Australia", 2607];
+            var  austria= [{lat: 47.516232, lng:14.550072}, "Austria", ];
+            var  southafrica= [{lat: -30.559483, lng:22.937506}, "South Africa", 1406];
+            var  newzealand= [{lat: -40.900558, lng:174.885971}, "New Zealand", 1431];
+            var  israel= [{lat: 31.046051, lng:34.851612}, "Israel", 522];
+            var  hungary= [{lat: 47.162495, lng:19.503304}, "Hungary", 153];
+            var  greece= [{lat: 39.074207, lng:21.824312}, "Greece", 479];
+            var  romania= [{lat: 45.943161, lng:24.966761}, "Romania", 141];
+            var  mexico= [{lat: 23.634501, lng:-102.552788}, "Mexico", 70];
+            var  canada= [{lat: 56.130367, lng:-106.346771}, "Canada", 259];
+            var  georgia= [{lat: -20.422290, lng:-54.641280}, "Georgia", 100];
+            var  turkey= [{lat: 38.963745, lng:35.243320}, "Turkey", 107];
+            var  czechrepublic= [{lat: 49.817493, lng:15.472962}, "Czech Republic", 12];
+            var  slovenia= [{lat: 46.151241, lng: 14.995463}, "Slovenia", 93];
+            var  luxembourg= [{lat: 49.815273, lng:6.129583}, "Luxembourg", 6];
+            var  croatia= [{lat: 45.099998, lng:15.200000}, "Croatia", 74];
+            var  uruguay= [{lat: -32.522778, lng:-55.765835}, "Uruguay", 133];
+            var  england= [{lat: 52.355518, lng:-1.174320}, "England", 148];
+            var  lebanon= [{lat: 33.908956, lng:35.817637}, "Lebanon", 48];
+            var  serbia= [{lat: 44.016521, lng:21.005859}, "Serbia", 12];
+            var  brazil= [{lat: -14.235004, lng:-51.925282}, "Brazil", 59];
+            var  moldova= [{lat: 47.411633, lng:28.369884}, "Moldova", 113];
+            var  morocco= [{lat: 31.791702, lng:-7.092620}, "Morocco", 34];
+            var  peru= [{lat: -9.189967, lng:-75.015152}, "Peru", 16];
+            var  india= [{lat: 20.593683, lng:78.962883}, "India", 10];
+            var  bulgaria= [{lat: 42.696490, lng:23.326010}, "Bulgaria", 150];
+            var  cyprus= [{lat: 35.126411, lng:33.429859}, "Cyprus", 14];
+            var  armenia= [{lat: 40.069099, lng:45.038189}, "Armenia", 4];
+            var  switzerland= [{lat: 46.818188, lng:8.227512}, "Switzerland", 11];
+            var  bosniaandherzegovina= [{lat: 43.915886, lng:17.679075}, "Bosnia and Herzegovina", 2];
+            var  ukraine= [{lat: 48.379433, lng:31.165581}, "Ukraine", 2];
+            var  slovakia= [{lat: 48.669025, lng:19.699024}, "Slovakia", 1];
+            var  macedonia= [{lat: 41.608635, lng:21.745275}, "Macedonia", 23];
+            var  china= [{lat: 35.861660, lng:104.195396}, "China", 2];
+            var  egypt= [{lat: 26.820553, lng:30.802498}, "Egypt", 2];
 
+            var countries = [italy,portugal,us,spain,france,germany,argentina,chile,australia,austria,southafrica,
+                  newzealand,israel,hungary,greece,romania,mexico,canada,georgia,turkey,czechrepublic,
+                  slovenia,luxembourg,croatia,uruguay,england,lebanon,serbia,brazil,moldova,morocco,peru,
+                  india,bulgaria,cyprus,armenia,switzerland,bosniaandherzegovina,ukraine,slovakia,macedonia,
+                  china,egypt]
+            var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 4, center: italy[0]});
+
+            var image = {
+              url: '../static/images/marker.png',
+              // This marker is 20 pixels wide by 32 pixels high.
+              scaledSize: new google.maps.Size(20, 32),
+              // The origin for this image is (0, 0).
+              origin: new google.maps.Point(0, 0),
+              // The anchor for this image is the base of the wineglass at (10, 32).
+              anchor: new google.maps.Point(10, 32)};
+
+
+            var cl = countries.length;
+            for (var i = 0; i < cl; i++){
+              var marker = new google.maps.Marker({position: countries[i][0], map: map, icon: image, draggable: true, animation: google.maps.Animation.DROP, title: countries[i][1]});
+
+              var content = '<p><strong>'+countries[i][1]+'</strong> has '+countries[i][2]+' wines registered in our database!</p><br>'+'<a href="https://en.wikipedia.org/wiki/'+countries[i][1]+'" target="_blank">Learn more about this country</a>';
+
+              attachInfoToMarker(marker,content);
+
+            }
+        }
+
+        function attachInfoToMarker(marker, infowindowcontent){
+            var infowindow = new google.maps.InfoWindow({
+                content: infowindowcontent});
+
+            marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+            }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFKOXhSHwHNM4lEhohC8c_YnYdIYApdnA&callback=initMap">
+    </script>
 </body>
 </html>

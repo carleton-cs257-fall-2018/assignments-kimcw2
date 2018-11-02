@@ -7,9 +7,11 @@
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<meta charset="utf-8">
 		<script>var api_port = {{ api_port }};</script>
-    	<script type="text/javascript" src="{{ url_for('static', filename='wines.js') }}" defer></script>
+
+    	<script type="text/javascript" src="{{ url_for('../static', filename='wines.js') }}" defer></script>
 		<script type="text/css" src="{{ url_for('static', filename='wines.css') }}" ></script>
-		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+		<link rel="shortcut icon" href="{{ url_for('../static', filename='favicon.ico') }}" />
+		
 		<title>Mr. Bill's 2.0 - About Us</title>
 	</head>
 	<body>

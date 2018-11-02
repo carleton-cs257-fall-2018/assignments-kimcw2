@@ -212,7 +212,7 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
   if (title.length != 0) {
     query_string = query_string + "title=${title}&";
   }
-  if (!query_string.equals("/wines?")) {
+  if (query_string != "/wines?") {
     query_string = query_string.substring(0,query_string.length-1);
   }
 

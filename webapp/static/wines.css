@@ -90,6 +90,7 @@
 
 .adv_searcher {
   height: calc(2.25rem + 2px);
+  width: 10%;
   padding: 0.375rem 0.75rem;
   background-color: lightgrey;
   border-radius: 50px 0px 0px 50px;

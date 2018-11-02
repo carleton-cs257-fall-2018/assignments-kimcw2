@@ -116,7 +116,7 @@ function discover_wine() {
       console.log(random_wine);
       var random_wine_body = '<header name="discover_wine" class="discover_wine">Discover Wine</header>'+
                              '<div class="left_box"><p class = "title">' + random_wine['title'] +
-                             '</p><p class = "varieties"> varieties: ' + random_wine['varieties'] +
+                             '</p><p class = "varieties"> varieties: ' + random_wine['variety'] +
                              '</p><text class = "winery"> Winery: ' + random_wine['winery'] +
                              '</text><text class = "place"> (' + random_wine['region'] +', '+ random_wine['province'] + ', ' + random_wine['country'] +
                              ')</text><p class = "points"> Points: ' + random_wine['points'] + '/100</p></div>'+
@@ -167,7 +167,7 @@ function onWinesSearch(category, search_text) {
       for (var k=0; k<data.length;k++) {
         list += '<li><div id="discover_wine" class="info_box">'+
                                '<div class="left_box"><p class = "title">' + data[k]['title'] +
-                               '</p><p class = "varieties"> varieties: ' + data[k]['varieties'] +
+                               '</p><p class = "varieties"> varieties: ' + data[k]['variety'] +
                                '</p><text class = "winery"> Winery: ' + data[k]['winery'] +
                                '</text><text class = "place"> (' + data[k]['region'] +', '+ data[k]['province'] + ', ' + data[k]['country'] +
                                ')</text><p class = "points"> Points: ' + data[k]['points'] + '/100</p></div>'+
@@ -192,25 +192,25 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
   var query_string="/wines?"
 
   if (varieties.length != 0) {
-    query_string = query_string + "varieties=${varieties}&";
+    query_string = query_string + `variety=${varieties}&`;
   }
   if (taster.length != 0) {
-    query_string = query_string + "taster=${taster}&";
+    query_string = query_string + `taster=${taster}&`;
   }
   if (region.length != 0) {
-    query_string = query_string + "region=${region}&";
+    query_string = query_string + `region=${region}&`;
   }
   if (description.length != 0) {
-    query_string = query_string + "description=${description}&";
+    query_string = query_string + `description=${description}&`;
   }
   if (vineyard.length != 0) {
-    query_string = query_string + "vineyard=${vineyard}}&";
+    query_string = query_string + `vineyard=${vineyard}}&`;
   }
   if (country.length != 0) {
-    query_string = query_string + "country=${country}&";
+    query_string = query_string + `country=${country}&`;
   }
   if (title.length != 0) {
-    query_string = query_string + "title=${title}&";
+    query_string = query_string + `title=${title}&`;
   }
   if (query_string != "/wines?") {
     query_string = query_string.substring(0,query_string.length-1);
@@ -253,7 +253,7 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
       for (var k=0; k<data.length;k++) {
         list += '<li><div id="discover_wine" class="info_box">'+
                                '<div class="left_box"><p class = "title">' + data[k]['title'] +
-                               '</p><p class = "varieties"> varieties: ' + data[k]['varieties'] +
+                               '</p><p class = "varieties"> varieties: ' + data[k]['variety'] +
                                '</p><text class = "winery"> Winery: ' + data[k]['winery'] +
                                '</text><text class = "place"> (' + data[k]['region'] +', '+ data[k]['province'] + ', ' + data[k]['country'] +
                                ')</text><p class = "points"> Points: ' + data[k]['points'] + '/100</p></div>'+

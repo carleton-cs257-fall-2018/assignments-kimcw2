@@ -10,5 +10,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class GameView {
+    /**
+     * Displays the page for playing game
+     */
+    GameView(){
 
+    }
 }

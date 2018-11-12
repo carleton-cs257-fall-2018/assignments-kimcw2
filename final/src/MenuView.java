@@ -10,4 +10,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class MenuView {
+    /**
+     * Displays the menu page
+     */
+    public void moveUp() {
+
+    }
+    MenuView(){
+
+    }
 }

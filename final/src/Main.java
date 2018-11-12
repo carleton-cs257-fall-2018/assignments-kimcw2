@@ -7,6 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main{
+    /**
+     * Initiates controller
+     */
     public static void main(String[] args) {
     }
 }

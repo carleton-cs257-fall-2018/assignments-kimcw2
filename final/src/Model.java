@@ -14,11 +14,8 @@ public class Model {
     private int score;
     private int highScore;
 
-
-
     public Model() {
     }
-
 
     /**
      * Starts the game
@@ -42,77 +39,6 @@ public class Model {
      */
     public int getScore() {
         return this.score;
-    }
-
-    /**
-     * Moves object to right by 1 unit
-     */
-    public void moveRight() {
-
-    }
-
-    /**
-     * Moves object to left by 1 unit
-     */
-    public void moveLeft() {
-
-    }
-
-    /**
-     * Moves object up by 1 unit
-     */
-    public void moveUp() {
-
-    }
-
-
-    /**
-     * Moves object down by 1 unit
-     */
-    public void moveDown() {
-
-    }
-
-    /**
-     * Check if Monster is dead
-     * @return True if Monster is dead, false otherwise
-     */
-    public boolean isMonsterDead() {
-        return true;
-    }
-
-    /**
-     * Check if Moodler is dead
-     * @return True if Moodler is dead, false otherwise
-     */
-    public boolean isMoodlerDead() {
-        return true;
-    }
-
-    /**
-     * Check if in contact with a power up
-     */
-    public void powerUp() {
-
-    }
-
-    public boolean contactWithMonster() {
-        return true;
-    }
-
-    /**
-     * Checks if Moodler is in contact with platform
-     * @return True if Moodler is in contact with the top of a platform while moving downward, false otherwise
-     */
-    public boolean contactWithPlatform(int velocity) {
-        return true;
-    }
-
-    /**
-     * Initializes new bullet
-     */
-    public void shootBullet(int x, int y) {
-
     }
 
     /**

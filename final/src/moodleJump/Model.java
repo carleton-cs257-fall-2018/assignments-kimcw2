@@ -15,13 +15,6 @@ public class Model {
     private int highScore;
 
     public Model() {
-    }
-
-    /**
-     * Starts the game
-     */
-    public void startNewGame() {
-        this.gameOver = false;
         this.score = 0;
     }
 

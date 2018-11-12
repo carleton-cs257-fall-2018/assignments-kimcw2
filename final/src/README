@@ -1,0 +1,17 @@
+Moodle Jump
+
+Dawson d'Almeida, Chae Kim, Justin Washington, November 2018
+
+Moodle jump is like doodle jump but uses fun moodle references. There
+is a 'Moodler' character that is jumping upwards on platforms. They are
+increasing their score by getting higher. They use power-ups to get higher
+but are challenged by monsters. The Moodler can shoot at the monsters to
+clear the path. The goal is to get the highest score.
+
+MVC is appropriate for this project because the software design method will
+allow us to separate the model from the controller and view and make
+updates to the model without affecting the other two. With this kind of
+structure, we could also easily change Moodle Jump into a multigame platform.
+Also, because there is a high interaction between the program and the user,
+it makes sense to have a structure where input, processing, and output are 
+all distinct.

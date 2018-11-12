@@ -19,7 +19,7 @@ public class PowerUp {
     /**
      * Generate itself
      */
-    PowerUp(){}
+    PowerUp(int currentHeight){}
 
     /**
      * Check if in contact with a power up
@@ -34,7 +34,7 @@ public class PowerUp {
      * Get platform position(height)
      */
     public void getHeight(){
-        result = 0;
+        int result = 0;
         currentHeight = result;
     }
 
@@ -42,7 +42,7 @@ public class PowerUp {
      * Get platform position (width)
      */
     public void getLatitude(){
-        result = 0;
+        int result = 0;
         currentLatitude = result;
     }
 

@@ -95,22 +95,22 @@ public class Moodler {
      * Apply powerup to itself
      */
     public void applyPowerUp() {
-        PowerUp example = new PowerUp(currentHeight);
+        PowerUp example = new PowerUp(0);
     }
 
     /**
      * Get Moodler position(height)
      */
     public void getHeight(){
-        result = 0;
-        currentHeight = result;
+        int result = 0;
+        int currentHeight = result;
     }
 
     /**
      * Get Moodler position (width)
      */
     public void getLatitude(){
-        result = 0;
-        currentLatitude = result;
+        int result = 0;
+        int currentLatitude = result;
     }
 }

@@ -49,15 +49,15 @@ public class Monster {
      * Get Monster position(height)
      */
     public void getHeight(){
-        result = 0;
-        currentHeight = result;
+        int result = 0;
+        int currentHeight = result;
     }
 
     /**
      * Get Monster position (width)
      */
     public void getLatitude(){
-        result = 0;
-        currentLatitude = result;
+        int result = 0;
+        int currentLatitude = result;
     }
 }

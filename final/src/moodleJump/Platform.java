@@ -53,15 +53,15 @@ public class Platform {
      * Get platform position(height)
      */
     public void getHeight(){
-        result = 0;
-        currentHeight = result;
+        int result = 0;
+        int currentHeight = result;
     }
 
     /**
      * Get platform position (width)
      */
     public void getLatitude(){
-        result = 0;
-        currentLatitude = result;
+        int result = 0;
+        int currentLatitude = result;
     }
 }

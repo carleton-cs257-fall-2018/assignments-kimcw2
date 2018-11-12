@@ -144,7 +144,7 @@ def get_wines():
     '''
 
     winery_name = flask.request.args.get('winery', default='%').lower()
-    variety_name = flask.request.args.get('variety', default='%').lower()
+    variety_name = flask.request.args.get('varieties', default='%').lower()
     taster_name = flask.request.args.get('taster', default='%').lower()
     region = flask.request.args.get('region', default='%').lower()
     description = flask.request.args.get('description', default='%').lower()

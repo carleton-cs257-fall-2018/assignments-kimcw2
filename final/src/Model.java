@@ -103,6 +103,7 @@ public class Model {
     /**
      * Checks if Moodler is in contact with platform
      * @return True if Moodler is in contact with the top of a platform while moving downward, false otherwise
+     * @param velocity current velocity of Moodler
      */
     public boolean contactWithPlatform(int velocity) {
         return true;
@@ -110,6 +111,8 @@ public class Model {
 
     /**
      * Initializes new bullet
+     * @param x x coordinate
+     * @param y y coordinate
      */
     public void shootBullet(int x, int y) {
 

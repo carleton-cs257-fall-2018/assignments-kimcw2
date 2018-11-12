@@ -218,30 +218,6 @@ function onAdvancedWinesSearch(varieties, taster, region, description, vineyard,
 
   var url =  getBaseApiURL() + query_string;
 
-  /*
-  if (varieties.length == 0) {
-    varieities = "%"
-  }
-  if (taster.length == 0) {
-    taster = "%"
-  }
-  if (region.length == 0) {
-    region = "%"
-  }
-  if (description.length == 0) {
-    description = "%"
-  }
-  if (vineyard.length == 0) {
-    varieites = "%"
-  }
-  if (country.length == 0) {
-    country = "%"
-  }
-  if (title.length == 0) {
-    title = "%"
-  }
-  var url = getBaseApiURL() + `/wines?varieties=${varieties}&taster=${taster}&region=${region}&description=${description}&vineyard=${vineyard}&country=${country}&title=${title}`;
-  */
   console.log(url);
 
   // create/write into html for search results

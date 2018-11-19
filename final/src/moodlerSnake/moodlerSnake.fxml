@@ -1,9 +1,9 @@
-<?import javafx.scene.layout.AnchorPane?><?import moodleJump.GameView?>
+<?import javafx.scene.layout.AnchorPane?><?import moodlerSnake.GameView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-<BorderPane fx:controller="moodleJump.Controller" xmlns:fx="http://javafx.com/fxml">
+<BorderPane fx:controller="moodlerSnake.Controller" xmlns:fx="http://javafx.com/fxml">
     <!-- See https://apps.carleton.edu/creativeservices/identity/college_colors/ for official Carleton colors -->
     <top>
         <BorderPane prefHeight="35" style="-fx-background-color: #8A2BE2; -fx-padding: 10px, 5px, 10px, 5px" >

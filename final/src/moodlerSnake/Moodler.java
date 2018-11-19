@@ -1,20 +1,12 @@
-/**
-* @author Dawson d'Almeida
-* @author Chae Kim
-* @author Justin Washington
-* Consists of static objects:
-* -Moodler
-* -Monster
-* -Platform
-* -Powerups
-* -Bullets
- */
-
-package moodleJump;
+package moodlerSnake;
 
 import java.util.ArrayList;
-import java.util.Random;
 
+/**
+ * @author Dawson d'Almeida
+ * @author Chae Kim
+ * @author Justin Washington
+ */
 public class Moodler {
 
     private int row;
@@ -33,6 +25,11 @@ public class Moodler {
     private int curLength;
     private boolean addToLength;
 
+    /**
+     * Creates a new instance of the moodler class
+     * @param numRows passed in for edge detection
+     * @param numColumns passed in for edge detection
+     */
     public Moodler(int numRows, int numColumns) {
         isDead = false;
         tailList = new ArrayList<int[]>(5);
@@ -40,12 +37,14 @@ public class Moodler {
         height = numRows - 1;
         initialLength = 10;
         curLength = initialLength;
-        createList();
+        createTailList();
         addToLength = false;
     }
 
-    public void createList() {
-
+    /**
+     * creates the list of cells behind the head node
+     */
+    public void createTailList() {
         this.row = height/2;
         this.column = width/2;
         for (int i = 0; i < initialLength; i++) {
@@ -53,13 +52,13 @@ public class Moodler {
             tailList.add(rowColumnArray);
         }
     }
-
+    /**
+     * updates the list of cells behind the head node
+     */
     public void changeList(String dir) {
         boolean collision =  false;
         int[] rowColumnArray;
         int[] pastColumnArray = new int[]{tailList.get(0)[0], tailList.get(0)[1]};
-
-
         if (dir.equals("right")) {
             rowColumnArray = new int[]{this.row,this.column+1};
             this.column += 1;
@@ -77,13 +76,11 @@ public class Moodler {
             this.row -= 1;
             tailList.set(0, rowColumnArray);
         }
-
         for (int i = 1; i < curLength; i++) {
             if (tailList.get(0)[0] == tailList.get(i)[0] && tailList.get(0)[1] == tailList.get(i)[1]) {
                 this.isDead = true;
             }
         }
-
         for (int i = 1; i < curLength; i++) {
             rowColumnArray = new int[]{tailList.get(i)[0], tailList.get(i)[1]};
             tailList.set(i, pastColumnArray);
@@ -96,31 +93,20 @@ public class Moodler {
         }
     }
 
+    /**
+     * gets the current length of the moodler
+     * @return length of the moodler
+     */
     public int getCurLength() {
         return curLength;
     }
 
+    /**
+     * boolean to determine whether moodler length should increase
+     */
     public void addLength() {
         this.addToLength = true;
     }
-
-    public int getRow() {
-        return this.row;
-    }
-
-    public int getColumn() {
-        return this.column;
-    }
-
-
-    public int getX() {
-        return this.column;
-    }
-
-    public int getY() {
-        return this.row;
-    }
-
 
     public int getXvelocity() {
         return x_velocity;
@@ -176,7 +162,7 @@ public class Moodler {
     }
 
     /**
-     * Moves object
+     * Moves the moodler
      */
     public void move(String direction) {
         System.out.print(direction + "\n");

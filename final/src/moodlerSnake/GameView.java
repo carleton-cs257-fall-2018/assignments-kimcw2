@@ -1,17 +1,14 @@
-package moodleJump;
+package moodlerSnake;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class GameView extends Group {
-    public final static double CELL_WIDTH = 10.0;
 
+    public final static double CELL_WIDTH = 10.0;
+    //instance variables of the View that are set through the fxml file
     @FXML private int rowCount;
     @FXML private int columnCount;
     private Rectangle[][] cellViews;
@@ -23,6 +20,10 @@ public class GameView extends Group {
 
     }
 
+    /**
+     * Updates the page that the game is being played on
+     * @param model The model being used for updating the view
+     */
     public void update(Model model) {
         assert model.rows == this.rowCount && model.cols == this.columnCount;
         for (int row = 0; row < this.rowCount; row++) {

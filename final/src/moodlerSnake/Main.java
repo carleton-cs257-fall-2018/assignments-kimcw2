@@ -1,25 +1,10 @@
-package moodleJump;
+package moodlerSnake;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.Group;
-
-import javafx.application.Application;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
-import javafx.stage.Stage;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
-
-import javax.swing.*;
 
 
 public class Main extends Application {
@@ -32,7 +17,7 @@ public class Main extends Application {
 
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("moodleJump.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("moodlerSnake.fxml"));
         Parent root = loader.load();
 
         primaryStage.setTitle("Moodle Jump");

@@ -24,15 +24,15 @@ public class GameView extends Group {
     }
 
     public void update(Model model) {
-        assert model.getRowCount() == this.rowCount && model.getColumnCount() == this.columnCount;
+        assert model.rows == this.rowCount && model.cols == this.columnCount;
         for (int row = 0; row < this.rowCount; row++) {
             for (int column = 0; column < this.columnCount; column++) {
                 Model.CellValue cellValue = model.getCellValue(row, column);
                 if (cellValue == Model.CellValue.MOODLER) {
                     this.cellViews[row][column].setFill(Color.web("#FBDE21"));
                 }
-                else if (cellValue == Model.CellValue.MOODLERHAT) {
-                    this.cellViews[row][column].setFill(Color.BLACK);
+                else if (cellValue == Model.CellValue.APPLE) {
+                    this.cellViews[row][column].setFill(Color.RED);
                 }
                 else {
                     this.cellViews[row][column].setFill(Color.WHITE);

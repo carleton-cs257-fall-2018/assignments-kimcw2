@@ -31,15 +31,17 @@ public class Moodler {
     private boolean isDead;
     private int initialLength;
     private int curLength;
+    private boolean addToLength;
 
     public Moodler(int numRows, int numColumns) {
         isDead = false;
         tailList = new ArrayList<int[]>(5);
-        width = numRows;
-        height = numColumns;
+        width = numColumns - 1;
+        height = numRows - 1;
         initialLength = 10;
         curLength = initialLength;
         createList();
+        addToLength = false;
     }
 
     public void createList() {
@@ -77,6 +79,11 @@ public class Moodler {
             tailList.set(i, pastColumnArray);
             pastColumnArray = rowColumnArray;
         }
+        if (addToLength) {
+            tailList.add(pastColumnArray);
+            this.curLength ++;
+            addToLength = false;
+        }
     }
 
     public int getCurLength() {
@@ -84,7 +91,7 @@ public class Moodler {
     }
 
     public void addLength() {
-        curLength ++;
+        this.addToLength = true;
     }
 
     public int getRow() {
@@ -195,84 +202,14 @@ public class Moodler {
         changeY(this.y_velocity);
         changeX(this.x_velocity);
     }
-    /*public boolean contact_platform(Platform obj) {
-        Platform other = obj;
 
-        if (getX() + getWidth() >= other.getX() &&
-                getX() <= other.getX() + other.getWidth() &&
-                getY() + getHeight() >= other.getY() &&
-                getY() + getHeight() <= other.getY() + other.getHeight()) {
-            return true;
-        }
-        return false;
-    }*/
-
-    /*public void jump() {
-        if (y_velocity > 0) {
-            y_velocity = -5;
-        } else if (y_velocity < 0) {
-            y_velocity = y_velocity + 1;
-        }
-        changeY(y_velocity);
-    }*/
-
-
-    //Extra stuff might not use
     /**
      * Check if Moodler is dead
      * @return True if Moodler is dead, false otherwise
      */
     public boolean isDead() {
-
-        System.out.println("IS DEAD: " + isDead);
+        //System.out.println("column = " + this.column + " and row = " + this.row + "with width, height == " + height + ", " + width);
+        if (this.isDead) {System.out.println("GAME OVER");}
         return this.isDead;
-
-    }
-
-
-    /**
-     * Checks if Moodler is in contact with monster
-     * Check if either killed by monster or killing monster
-     */
-    public boolean contactWithMonster() {
-        return true;
-    }
-
-    /**
-     * Get killed by monster or kill monster
-     */
-    public void applyMonster(){
-
-    }
-
-    /**
-     * Checks if Moodler is in contact with platform
-     * @return True if Moodler is in contact with the top of a platform while moving downward, false otherwise
-     */
-    public boolean contactWithPlatform(int velocity) {
-        return true;
-    }
-
-    /**
-     * jump up from platform/ react to touching platform
-     */
-    public boolean applyPlatform(int velocity) {
-        return true;
-    }
-
-    /**
-     * Initialize bullets
-     * Shoot out to atmosphere
-     */
-    public void applyBullet(int x, int y) {
-
-    }
-
-    /**
-     * Check if in contact with a power up
-     * Apply powerup to itself
-     */
-    public void applyPowerUp() {
-        PowerUp example = new PowerUp(0);
     }
 }

@@ -8,12 +8,14 @@ package moodleJump;
 
 import java.awt.image.BufferedImage;
 import java.util.Random;
+
+import com.sun.jdi.Value;
 import javafx.scene.image.Image;
 
 public class Model {
 
     public enum CellValue {
-        EMPTY, MOODLER, MOODLERHAT, PLATFORM
+        EMPTY, MOODLER, APPLE
     };
     private CellValue[][] cells;
 
@@ -22,23 +24,22 @@ public class Model {
     private int highScore;
     private Moodler moodler;
     private String direction =  "start";
+    public int rows;
+    public int cols;
 
     public Model(int rowCount, int columnCount) {
         assert rowCount > 0 && columnCount > 0;
         this.cells = new CellValue[rowCount][columnCount];
+        this.rows = rowCount;
+        this.cols = columnCount;
         this.startGame();
     }
 
     public void startGame() {
         this.gameOver = false;
         this.score = 0;
-        this.initializeLevel();
-    }
-
-    private void initializeLevel() {
-        int rowCount = this.cells.length;
-        int columnCount = this.cells[0].length;
         generateMoodler();
+        generateApple();
         drawMoodler();
     }
 
@@ -47,27 +48,22 @@ public class Model {
         return this.cells[row][column];
     }
 
-    public int getRowCount() {
-        return this.cells.length;
-    }
-
-    public int getColumnCount() {
-        assert this.cells.length > 0;
-        return this.cells[0].length;
-    }
-
     public void generateMoodler() {
-        //BufferedImageLoader loader =  new BufferedImageLoader();
-        //BufferedImage sprite = loader.loadImage("/sprites/test_character.jpg");
-
-        //Image test_image = new Image("/sprites/test_character.jpg", true);
-        int rowCount = this.cells.length;
-        int columnCount = this.cells[0].length;
-        this.moodler = new Moodler(rowCount, columnCount);
+        this.moodler = new Moodler(rows,cols);
+    }
+    public void generateApple() {
+        Random random = new Random();
+        int randrow = random.nextInt(this.cells.length);
+        int randcolumn = random.nextInt(this.cells[0].length);
+        this.cells[randrow][randcolumn] = CellValue.APPLE;
     }
 
     public void drawMoodler() {
         for (int i =  0; i < moodler.tailList.size(); i ++) {
+            if (this.cells[moodler.tailList.get(i)[0]][moodler.tailList.get(i)[1]] == CellValue.APPLE) {
+                generateApple();
+                this.moodler.addLength();
+            }
             this.cells[moodler.tailList.get(i)[0]][moodler.tailList.get(i)[1]] = CellValue.MOODLER;
         }
     }

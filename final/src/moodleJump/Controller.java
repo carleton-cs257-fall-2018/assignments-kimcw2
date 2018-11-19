@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Controller implements Runnable, KeyListener {
+public class Controller extends KeyAdapter implements Runnable {
     //EventHandler<KeyEvent>{
 
     @FXML private Label scoreLabel;
@@ -66,6 +66,8 @@ public class Controller implements Runnable, KeyListener {
     private void update() {
         if (this.model.getDirection().equals("right")) {this.model.moveMoodler("right");}
         else if (this.model.getDirection().equals("left")) {this.model.moveMoodler("left");}
+        else if (this.model.getDirection().equals("up")) {this.model.moveMoodler("up");}
+        else if (this.model.getDirection().equals("down")) {this.model.moveMoodler("down");}
         this.gameView.update(this.model);
     }
 
@@ -77,55 +79,11 @@ public class Controller implements Runnable, KeyListener {
         return GameView.CELL_WIDTH * this.gameView.getRowCount();
     }
 
+
     public void start(Scene scene) {
-        thread = new Thread(this);
         this.scene = scene;
-        thread.start();
-        running = true;
+        run();
     }
-
-    /*public void start(Scene scene) {
-        thread = new Thread(this);
-        this.scene = scene;
-        thread.start();
-        running = true;
-
-        this.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
-            boolean keyRecognized = true;
-            KeyCode code = key.getCode();
-
-            if (code == KeyCode.LEFT || code == KeyCode.A) {
-                this.model.moveMoodler("left");
-            } else if (code == KeyCode.RIGHT || code == KeyCode.D) {
-                this.model.moveMoodler("right");
-            } else {
-                keyRecognized = false;
-            }
-
-            if (keyRecognized) {
-                System.out.print("key recognized\n");
-                this.update();
-            }
-        });
-
-        this.scene.addEventHandler(KeyEvent.KEY_RELEASED, (key) -> {
-            boolean keyRecognized = true;
-            KeyCode code = key.getCode();
-
-            if (code == KeyCode.LEFT || code == KeyCode.A) {
-                this.model.moveMoodler("left");
-            } else if (code == KeyCode.RIGHT || code == KeyCode.D) {
-                this.model.moveMoodler("right");
-            } else {
-                keyRecognized = false;
-            }
-
-            if (keyRecognized) {
-                System.out.print("key released\n");
-                this.update();
-            }
-        });
-    }*/
 
     public void stop() {
         try {
@@ -143,13 +101,38 @@ public class Controller implements Runnable, KeyListener {
             {
                 //System.out.println("In timer task");
                 model.move();
+                if (model.isMoodlerDead()) {
+                    timer.cancel();
+                }
+
                 update();
             }
         };
-        while (true) {
-            timer.schedule(task, 100);
-        }
-        /*long lastTime = System.nanoTime();
+        this.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            boolean keyRecognized = true;
+            KeyCode code = key.getCode();
+
+            if (code == KeyCode.LEFT || code == KeyCode.A) {
+                this.model.changeMoodlerVelocity(-1, "x");
+            } else if (code == KeyCode.RIGHT || code == KeyCode.D) {
+                this.model.changeMoodlerVelocity(1, "x");
+            } else if (code == KeyCode.UP || code == KeyCode.W) {
+                this.model.changeMoodlerVelocity(-1, "y");
+            } else if (code == KeyCode.DOWN || code == KeyCode.S) {
+                this.model.changeMoodlerVelocity(1, "y");
+            }else {
+                keyRecognized = false;
+            }
+
+            if (keyRecognized) {
+                System.out.print("key recognized\n");
+                this.update();
+            }
+        });
+
+        timer.schedule(task, 100, 100);
+        /*
+        long lastTime = System.nanoTime();
         double ns = 5;
         double delta = 0;
         long timer = System.currentTimeMillis();
@@ -175,6 +158,7 @@ public class Controller implements Runnable, KeyListener {
         }
         stop();*/
     }
+
 
     public void tick() {
 
@@ -356,4 +340,5 @@ public class Controller implements Runnable, KeyListener {
     public void playGame(){
 
     }
+
 }

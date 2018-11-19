@@ -25,8 +25,12 @@ public class Moodler {
     private int y_velocity = 0;
     private int width;
     private int height;
+    private boolean isDead;
 
     public Moodler(int numRows, int numColumns) {
+        isDead = false;
+        width = numRows;
+        height = numColumns;
         Random random = new Random();
         this.row = random.nextInt(numRows);
         this.column = random.nextInt(numColumns);
@@ -49,34 +53,58 @@ public class Moodler {
         return this.row;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
 
     public int getXvelocity() {
         return x_velocity;
+    }
+
+    public void changeXVelocity(int velocity) {
+        this.x_velocity = velocity;
+        this.y_velocity = 0;
     }
 
     public int getYvelocity() {
         return y_velocity;
     }
 
+    public void changeYVelocity(int velocity) {
+        this.y_velocity = velocity;
+        this.x_velocity = 0;
+    }
+
     public void changeX(int velocity) {
-        if (velocity > 0)
-            this.column = this.column + 1;
-        else if (velocity < 0)
-            this.column = this.column - 1;
+        if (velocity > 0) {
+            if (this.column == this.width) {
+                isDead = true;
+            } else {
+                this.column = this.column + 1;
+            }
+        }
+        else if (velocity < 0) {
+            if (this.column == 0) {
+                isDead = true;
+            } else {
+                this.column = this.column - 1;
+            }
+        }
     }
 
     public void changeY(int velocity) {
-        if (velocity > 0)
-            this.column = this.column + 1;
-        else if (velocity < 0)
-            this.column = this.column - 1;
+        if (velocity > 0) {
+            if (this.row == this.height) {
+                isDead = true;
+            } else {
+                this.row = this.row + 1;
+            }
+        }
+        else if (velocity < 0) {
+            if (this.row == 0) {
+                isDead = true;
+            } else {
+                this.row = this.row - 1;
+            }
+        }
+
     }
 
     /**
@@ -85,34 +113,36 @@ public class Moodler {
     public void move(String direction) {
         System.out.print(direction + "\n");
         if (direction.equals("right")) {
-            if (x_velocity != 1) {
-                x_velocity = 1;
-                y_velocity = 0;
+            if (this.x_velocity != 1) {
+                this.x_velocity = 1;
+                this.y_velocity = 0;
             }
         }
 
-        if (direction.equals("left")) {
-            if (x_velocity != -1) {
-                x_velocity = -1;
-                y_velocity = 0;
+        else if (direction.equals("left")) {
+            if (this.x_velocity != -1) {
+                this.x_velocity = -1;
+                this.y_velocity = 0;
             }
         }
 
 
-        if (direction.equals("up")) {
-            if (y_velocity != -1) {
-                y_velocity = -1;
-                x_velocity = 0;
+        else if (direction.equals("up")) {
+            if (this.y_velocity != -1) {
+                this.y_velocity = -1;
+                this.x_velocity = 0;
             }
         }
 
-        if (direction.equals("down")) {
-            if (x_velocity != 1) {
-                x_velocity = 1;
+        else if (direction.equals("down")) {
+            if (this.y_velocity != 1) {
+                this.y_velocity = 1;
+                this.x_velocity = 0;
             }
         }
-        changeX(x_velocity);
-        changeY(y_velocity);
+
+        changeY(this.y_velocity);
+        changeX(this.x_velocity);
     }
     /*public boolean contact_platform(Platform obj) {
         Platform other = obj;
@@ -142,7 +172,10 @@ public class Moodler {
      * @return True if Moodler is dead, false otherwise
      */
     public boolean isDead() {
-        return true;
+
+        System.out.println("IS DEAD: " + isDead);
+        return this.isDead;
+
     }
 
 

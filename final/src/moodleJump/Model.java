@@ -101,6 +101,19 @@ public class Model {
         drawMoodler();
     }
 
+    public boolean isMoodlerDead() {
+        return moodler.isDead();
+    }
+
+    public void changeMoodlerVelocity(int velocity, String dir) {
+        if (dir.equals("x")) {
+            moodler.changeXVelocity(velocity);
+        }
+        else {
+            moodler.changeYVelocity(velocity);
+        }
+    }
+
     public void setDirection(String direct){
         direction = direct;
     }

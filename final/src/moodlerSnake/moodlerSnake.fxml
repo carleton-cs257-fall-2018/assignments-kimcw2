@@ -1,4 +1,5 @@
-<?import javafx.scene.layout.AnchorPane?><?import moodlerSnake.GameView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import moodlerSnake.GameView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.BorderPane?>
@@ -6,20 +7,15 @@
 <BorderPane fx:controller="moodlerSnake.Controller" xmlns:fx="http://javafx.com/fxml">
     <!-- See https://apps.carleton.edu/creativeservices/identity/college_colors/ for official Carleton colors -->
     <top>
-        <BorderPane prefHeight="35" style="-fx-background-color: #8A2BE2; -fx-padding: 10px, 5px, 10px, 5px" >
-            <left><Label fx:id="scoreLabel" style="-fx-font-size: 150%; -fx-text-fill: white" /></left>
-            <right><Label fx:id="messageLabel" style="-fx-font-size: 150%; -fx-text-fill: white"/></right>
-        </BorderPane>
-    </top>
 
-    <center>
-        <GameView fx:id="gameView" rowCount="65" columnCount="60"/>
-    </center>
-
-    <bottom>
         <HBox prefHeight="35" style="-fx-padding: 10px, 5px, 10px, 5px; -fx-background-color: #F3B61D">
             <Label style="-fx-font-size: 140%; -fx-text-fill: white"
                    text="Move left, right, up and down with arrow keys" />
         </HBox>
-    </bottom>
+    </top>
+
+    <center>
+        <GameView fx:id="gameView" rowCount="30" columnCount="30"/>
+    </center>
+
 </BorderPane>

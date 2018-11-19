@@ -6,8 +6,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class GameView extends Group {
+    public final static double CELL_WIDTH = 20.0;
 
-    public final static double CELL_WIDTH = 10.0;
     //instance variables of the View that are set through the fxml file
     @FXML private int rowCount;
     @FXML private int columnCount;
@@ -34,6 +34,9 @@ public class GameView extends Group {
                 }
                 else if (cellValue == Model.CellValue.APPLE) {
                     this.cellViews[row][column].setFill(Color.RED);
+                }
+                else if (cellValue == Model.CellValue.TEXT) {
+                    this.cellViews[row][column].setFill(Color.BLACK);
                 }
                 else {
                     this.cellViews[row][column].setFill(Color.WHITE);

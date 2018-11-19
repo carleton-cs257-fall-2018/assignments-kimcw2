@@ -15,12 +15,12 @@ public class Model {
      * Apple - red
      */
     public enum CellValue {
-        EMPTY, MOODLER, APPLE
-    }
-
+        EMPTY, MOODLER, APPLE,  TEXT
+    };
     private CellValue[][] cells;
+
     private boolean gameOver;
-    private int score;
+    private double score;
     private int highScore;
     private Moodler moodler;
     private String direction =  "start";
@@ -161,11 +161,79 @@ public class Model {
         return direction;
     }
 
+    public void drawEnd() {
+        this.cells[20][8] = CellValue.TEXT;
+        this.cells[19][8] = CellValue.TEXT;
+        this.cells[18][8] = CellValue.TEXT;
+        this.cells[17][8] = CellValue.TEXT;
+        this.cells[16][8] = CellValue.TEXT;
+        this.cells[15][8] = CellValue.TEXT;
+        this.cells[14][8] = CellValue.TEXT;
+        this.cells[13][8] = CellValue.TEXT;
+        this.cells[12][8] = CellValue.TEXT;
+        this.cells[11][8] = CellValue.TEXT;
+        this.cells[10][8] = CellValue.TEXT;
+
+        this.cells[10][9] = CellValue.TEXT;
+        this.cells[10][10] = CellValue.TEXT;
+        this.cells[10][11] = CellValue.TEXT;
+        this.cells[14][9] = CellValue.TEXT;
+        this.cells[14][10] = CellValue.TEXT;
+
+        this.cells[20][13] = CellValue.TEXT;
+        this.cells[19][13] = CellValue.TEXT;
+        this.cells[18][13] = CellValue.TEXT;
+        this.cells[17][13] = CellValue.TEXT;
+        this.cells[16][13] = CellValue.TEXT;
+        this.cells[15][13] = CellValue.TEXT;
+        this.cells[14][13] = CellValue.TEXT;
+        this.cells[13][13] = CellValue.TEXT;
+        this.cells[12][13] = CellValue.TEXT;
+        this.cells[11][13] = CellValue.TEXT;
+        this.cells[10][13] = CellValue.TEXT;
+
+        this.cells[20][15] = CellValue.TEXT;
+        this.cells[19][15] = CellValue.TEXT;
+        this.cells[18][15] = CellValue.TEXT;
+        this.cells[17][15] = CellValue.TEXT;
+        this.cells[16][15] = CellValue.TEXT;
+        this.cells[15][15] = CellValue.TEXT;
+        this.cells[14][15] = CellValue.TEXT;
+        this.cells[13][15] = CellValue.TEXT;
+        this.cells[12][15] = CellValue.TEXT;
+        this.cells[11][15] = CellValue.TEXT;
+        this.cells[10][15] = CellValue.TEXT;
+
+        this.cells[10][16] = CellValue.TEXT;
+        this.cells[11][16] = CellValue.TEXT;
+        this.cells[12][17] = CellValue.TEXT;
+        this.cells[13][17] = CellValue.TEXT;
+        this.cells[14][18] = CellValue.TEXT;
+        this.cells[15][18] = CellValue.TEXT;
+        this.cells[16][19] = CellValue.TEXT;
+        this.cells[17][19] = CellValue.TEXT;
+        this.cells[18][20] = CellValue.TEXT;
+        this.cells[19][20] = CellValue.TEXT;
+        this.cells[20][20] = CellValue.TEXT;
+
+        this.cells[20][21] = CellValue.TEXT;
+        this.cells[19][21] = CellValue.TEXT;
+        this.cells[18][21] = CellValue.TEXT;
+        this.cells[17][21] = CellValue.TEXT;
+        this.cells[16][21] = CellValue.TEXT;
+        this.cells[15][21] = CellValue.TEXT;
+        this.cells[14][21] = CellValue.TEXT;
+        this.cells[13][21] = CellValue.TEXT;
+        this.cells[12][21] = CellValue.TEXT;
+        this.cells[11][21] = CellValue.TEXT;
+        this.cells[10][21] = CellValue.TEXT;
+    }
+
     /**
      * Returns current score
      * @return current score
      */
-    public int getScore() {
+    public double getScore() {
         return this.score;
     }
 

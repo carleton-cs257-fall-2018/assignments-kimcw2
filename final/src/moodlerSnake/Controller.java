@@ -62,7 +62,12 @@ public class Controller extends KeyAdapter implements Runnable {
             this.model.moveMoodler("down");
         }
         this.gameView.update(this.model);
-        //this.scoreLabel.setText(String.format("Score: %d", this.model.getScore()));
+        if (model.isMoodlerDead()) {
+            this.timer.cancel();
+            this.model.drawEnd();
+            this.gameView.update(this.model);
+
+        }
     }
 
     public void gameOver() {

@@ -107,7 +107,7 @@ public class Controller extends KeyAdapter implements Runnable {
                 model.move();
                 if (model.isMoodlerDead()) {
                     timer.cancel();
-                    gameOver();
+                    //gameOver();
                 }
                 update();
             }

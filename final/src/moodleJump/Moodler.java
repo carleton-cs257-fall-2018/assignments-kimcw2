@@ -26,11 +26,11 @@ public class Moodler {
     private int width;
     private int height;
 
-    public Moodler(int numRows, int numColumns) {
+    /*public Moodler(int numRows, int numColumns) {
         Random random = new Random();
         this.row = random.nextInt(numRows);
         this.column = random.nextInt(numColumns);
-    }
+    }*/
 
     public int getRow() {
         return this.row;
@@ -55,6 +55,14 @@ public class Moodler {
 
     public int getHeight() {
         return height;
+    }
+
+    public int getXvelocity() {
+        return x_velocity;
+    }
+
+    public int getYvelocity() {
+        return y_velocity;
     }
 
     public void changeX(int velocity) {

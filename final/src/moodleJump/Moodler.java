@@ -55,7 +55,6 @@ public class Moodler {
     public void changeList(String dir) {
         int[] rowColumnArray;
         int[] pastColumnArray = new int[]{tailList.get(0)[0], tailList.get(0)[1]};
-        int j;
         if (dir.equals("right")) {
             rowColumnArray = new int[]{this.row,this.column+1};
             this.column += 1;
@@ -85,7 +84,7 @@ public class Moodler {
     }
 
     public void addLength() {
-
+        curLength ++;
     }
 
     public int getRow() {

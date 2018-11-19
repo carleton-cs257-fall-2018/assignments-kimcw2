@@ -21,6 +21,7 @@ public class Model {
     private int score;
     private int highScore;
     private Moodler moodler;
+    private String direction =  "start";
 
     public Model(int rowCount, int columnCount) {
         assert rowCount > 0 && columnCount > 0;
@@ -98,6 +99,14 @@ public class Model {
         undrawMoodler();
         this.moodler.move(direction);
         drawMoodler();
+    }
+
+    public void setDirection(String direct){
+        direction = direct;
+    }
+
+    public String getDirection(){
+        return direction;
     }
 
     public void move(){

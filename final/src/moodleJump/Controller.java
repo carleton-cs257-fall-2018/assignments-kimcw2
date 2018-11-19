@@ -25,7 +25,8 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Controller extends JPanel implements Runnable, EventHandler<KeyEvent>{
+public class Controller implements Runnable, KeyListener {
+    //EventHandler<KeyEvent>{
 
     @FXML private Label scoreLabel;
     @FXML private Label messageLabel;
@@ -42,6 +43,19 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
 
     }
 
+    public void keyPressed(KeyEvent e) {
+        KeyCode code = e.getCode();
+        if (code == KeyCode.LEFT || code == KeyCode.A) {
+            this.model.setDirection("left");
+        } else if (code == KeyCode.RIGHT || code == KeyCode.D) {
+            this.model.setDirection("right");
+        }
+    }
+
+    public void keyTyped(KeyEvent e){}
+
+    public void keyReleased(KeyEvent e){}
+
     public void initialize() {
         this.model = new Model(this.gameView.getRowCount(), this.gameView.getColumnCount());
         timer = new Timer();
@@ -50,6 +64,8 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
 
 
     private void update() {
+        if (this.model.getDirection().equals("right")) {this.model.moveMoodler("right");}
+        else if (this.model.getDirection().equals("left")) {this.model.moveMoodler("left");}
         this.gameView.update(this.model);
     }
 
@@ -61,12 +77,14 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
         return GameView.CELL_WIDTH * this.gameView.getRowCount();
     }
 
-
-     public void handle(KeyEvent keyEvent) {
+    public void start(Scene scene) {
+        thread = new Thread(this);
+        this.scene = scene;
+        thread.start();
+        running = true;
     }
 
-
-    public void start(Scene scene) {
+    /*public void start(Scene scene) {
         thread = new Thread(this);
         this.scene = scene;
         thread.start();
@@ -107,7 +125,7 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
                 this.update();
             }
         });
-    }
+    }*/
 
     public void stop() {
         try {

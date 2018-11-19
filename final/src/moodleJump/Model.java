@@ -67,18 +67,9 @@ public class Model {
     }
 
     public void drawMoodler() {
-        int row = this.moodler.getRow();
-        int column = this.moodler.getColumn();
-        this.cells[row-1][column] = CellValue.MOODLER;
-        this.cells[row-2][column] = CellValue.MOODLER;
-        this.cells[row-3][column+1] = CellValue.MOODLER;
-        this.cells[row-1][column+2] = CellValue.MOODLER;
-        this.cells[row-2][column+2] = CellValue.MOODLER;
-        this.cells[row-3][column+3] = CellValue.MOODLER;
-        this.cells[row-1][column+4] = CellValue.MOODLER;
-        this.cells[row-2][column+4] = CellValue.MOODLER;
-        this.cells[row-3][column] = CellValue.MOODLERHAT;
-
+        for (int i =  0; i < moodler.tailList.size(); i ++) {
+            this.cells[moodler.tailList.get(i)[0]][moodler.tailList.get(i)[1]] = CellValue.MOODLER;
+        }
     }
 
     public void undrawMoodler() {

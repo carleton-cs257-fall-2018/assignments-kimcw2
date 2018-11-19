@@ -12,12 +12,15 @@
 
 package moodleJump;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Moodler {
 
     private int row;
     private int column;
+
+    ArrayList<int[]> tailList;
 
     public boolean side = true;
     public int terminal_velocity = 5;
@@ -26,14 +29,29 @@ public class Moodler {
     private int width;
     private int height;
     private boolean isDead;
+    private int initialLength;
 
     public Moodler(int numRows, int numColumns) {
         isDead = false;
+        tailList = new ArrayList<int[]>(5);
         width = numRows;
         height = numColumns;
+        initialLength = 10;
+        createList();
+    }
+
+    public void createList() {
         Random random = new Random();
-        this.row = random.nextInt(numRows);
-        this.column = random.nextInt(numColumns);
+        this.row = random.nextInt(height);
+        this.column = random.nextInt(width);
+        for (int i = 0; i < initialLength; i++) {
+            int[] rowColumnArray = new int[]{this.row,this.column+i};
+            tailList.add(rowColumnArray);
+        }
+    }
+
+    public void changeList() {
+
     }
 
     public int getRow() {
@@ -78,6 +96,7 @@ public class Moodler {
                 isDead = true;
             } else {
                 this.column = this.column + 1;
+                changeList();
             }
         }
         else if (velocity < 0) {
@@ -85,6 +104,7 @@ public class Moodler {
                 isDead = true;
             } else {
                 this.column = this.column - 1;
+                changeList();
             }
         }
     }
@@ -95,6 +115,7 @@ public class Moodler {
                 isDead = true;
             } else {
                 this.row = this.row + 1;
+                changeList();
             }
         }
         else if (velocity < 0) {
@@ -102,6 +123,7 @@ public class Moodler {
                 isDead = true;
             } else {
                 this.row = this.row - 1;
+                changeList();
             }
         }
 

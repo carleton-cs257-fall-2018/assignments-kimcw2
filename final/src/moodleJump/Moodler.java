@@ -30,6 +30,7 @@ public class Moodler {
     private int height;
     private boolean isDead;
     private int initialLength;
+    private int curLength;
 
     public Moodler(int numRows, int numColumns) {
         isDead = false;
@@ -37,20 +38,53 @@ public class Moodler {
         width = numRows;
         height = numColumns;
         initialLength = 10;
+        curLength = initialLength;
         createList();
     }
 
     public void createList() {
-        Random random = new Random();
-        this.row = random.nextInt(height);
-        this.column = random.nextInt(width);
+
+        this.row = height/2;
+        this.column = width/2;
         for (int i = 0; i < initialLength; i++) {
-            int[] rowColumnArray = new int[]{this.row,this.column+i};
+            int[] rowColumnArray = new int[]{this.row,this.column-i};
             tailList.add(rowColumnArray);
         }
     }
 
-    public void changeList() {
+    public void changeList(String dir) {
+        int[] rowColumnArray;
+        int[] pastColumnArray = new int[]{tailList.get(0)[0], tailList.get(0)[1]};
+        int j;
+        if (dir.equals("right")) {
+            rowColumnArray = new int[]{this.row,this.column+1};
+            this.column += 1;
+            tailList.set(0, rowColumnArray);
+        } else if (dir.equals("left")) {
+            rowColumnArray = new int[]{this.row,this.column-1};
+            this.column -= 1;
+            tailList.set(0, rowColumnArray);
+        } else if (dir.equals("down")) {
+            rowColumnArray = new int[]{this.row+1,this.column};
+            this.row += 1;
+            tailList.set(0, rowColumnArray);
+        } else {
+            rowColumnArray = new int[]{this.row-1,this.column};
+            this.row -= 1;
+            tailList.set(0, rowColumnArray);
+        }
+        for (int i = 1; i < curLength; i++) {
+            rowColumnArray = new int[]{tailList.get(i)[0], tailList.get(i)[1]};
+            tailList.set(i, pastColumnArray);
+            pastColumnArray = rowColumnArray;
+        }
+    }
+
+    public int getCurLength() {
+        return curLength;
+    }
+
+    public void addLength() {
 
     }
 
@@ -95,16 +129,14 @@ public class Moodler {
             if (this.column == this.width) {
                 isDead = true;
             } else {
-                this.column = this.column + 1;
-                changeList();
+                changeList("right");
             }
         }
         else if (velocity < 0) {
             if (this.column == 0) {
                 isDead = true;
             } else {
-                this.column = this.column - 1;
-                changeList();
+                changeList("left");
             }
         }
     }
@@ -114,16 +146,14 @@ public class Moodler {
             if (this.row == this.height) {
                 isDead = true;
             } else {
-                this.row = this.row + 1;
-                changeList();
+                changeList("down");
             }
         }
         else if (velocity < 0) {
             if (this.row == 0) {
                 isDead = true;
             } else {
-                this.row = this.row - 1;
-                changeList();
+                changeList("up");
             }
         }
 

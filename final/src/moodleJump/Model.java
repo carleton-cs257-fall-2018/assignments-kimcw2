@@ -73,17 +73,9 @@ public class Model {
     }
 
     public void undrawMoodler() {
-        int row = this.moodler.getRow();
-        int column = this.moodler.getColumn();
-        this.cells[row-1][column] = CellValue.EMPTY;
-        this.cells[row-2][column] = CellValue.EMPTY;
-        this.cells[row-3][column+1] = CellValue.EMPTY;
-        this.cells[row-1][column+2] = CellValue.EMPTY;
-        this.cells[row-2][column+2] = CellValue.EMPTY;
-        this.cells[row-3][column+3] = CellValue.EMPTY;
-        this.cells[row-1][column+4] = CellValue.EMPTY;
-        this.cells[row-2][column+4] = CellValue.EMPTY;
-        this.cells[row-3][column] = CellValue.EMPTY;
+        int size = moodler.getCurLength();
+        this.cells[moodler.tailList.get(size-1)[0]][moodler.tailList.get(size-1)[1]] = CellValue.EMPTY;
+
     }
 
     public void moveMoodler(String direction) {

@@ -13,7 +13,7 @@
     </top>
 
     <center>
-        <GameView fx:id="gameView" rowCount="130" columnCount="120"/>
+        <GameView fx:id="gameView" rowCount="65" columnCount="60"/>
     </center>
 
     <bottom>

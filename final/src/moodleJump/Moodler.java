@@ -21,8 +21,8 @@ public class Moodler {
 
     public boolean side = true;
     public int terminal_velocity = 5;
-    private int x_velocity;
-    private int y_velocity;
+    private int x_velocity = 1;
+    private int y_velocity = 0;
     private int width;
     private int height;
 
@@ -66,11 +66,17 @@ public class Moodler {
     }
 
     public void changeX(int velocity) {
-        this.column = this.column + velocity;
+        if (velocity > 0)
+            this.column = this.column + 1;
+        else if (velocity < 0)
+            this.column = this.column - 1;
     }
 
     public void changeY(int velocity) {
-        this.row = this.row + velocity;
+        if (velocity > 0)
+            this.column = this.column + 1;
+        else if (velocity < 0)
+            this.column = this.column - 1;
     }
 
     /**
@@ -79,57 +85,55 @@ public class Moodler {
     public void move(String direction) {
         System.out.print(direction + "\n");
         if (direction.equals("right")) {
-            if (x_velocity < 1) {
+            if (x_velocity != 1) {
                 x_velocity = 1;
-            } else if (x_velocity < 5) {
-                x_velocity += 1;
+                y_velocity = 0;
             }
         }
 
         if (direction.equals("left")) {
-            if (x_velocity > -1) {
+            if (x_velocity != -1) {
                 x_velocity = -1;
-            } else if (x_velocity > -5) {
-                x_velocity -= 1;
+                y_velocity = 0;
+            }
+        }
+
+
+        if (direction.equals("up")) {
+            if (y_velocity != -1) {
+                y_velocity = -1;
+                x_velocity = 0;
+            }
+        }
+
+        if (direction.equals("down")) {
+            if (x_velocity != 1) {
+                x_velocity = 1;
             }
         }
         changeX(x_velocity);
-    }
-
-    public void decelerate_x() {
-        x_velocity = 0;
-        changeX(x_velocity);
-    }
-
-    public void fall() {
-        if (y_velocity < 0) {
-            y_velocity = 1;
-        } else if (y_velocity < terminal_velocity) {
-            y_velocity += 1;
-        }
         changeY(y_velocity);
     }
-
-    public boolean contact_platform(Platform obj) {
-        /*Platform other = obj;
+    /*public boolean contact_platform(Platform obj) {
+        Platform other = obj;
 
         if (getX() + getWidth() >= other.getX() &&
                 getX() <= other.getX() + other.getWidth() &&
                 getY() + getHeight() >= other.getY() &&
                 getY() + getHeight() <= other.getY() + other.getHeight()) {
             return true;
-        }*/
+        }
         return false;
-    }
+    }*/
 
-    public void jump() {
+    /*public void jump() {
         if (y_velocity > 0) {
             y_velocity = -5;
         } else if (y_velocity < 0) {
             y_velocity = y_velocity + 1;
         }
         changeY(y_velocity);
-    }
+    }*/
 
 
     //Extra stuff might not use

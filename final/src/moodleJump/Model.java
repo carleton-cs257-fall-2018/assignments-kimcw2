@@ -100,6 +100,15 @@ public class Model {
         drawMoodler();
     }
 
+    public void move(){
+        undrawMoodler();
+        int x_vel = this.moodler.getXvelocity();
+        int y_vel = this.moodler.getYvelocity();
+        this.moodler.changeX(x_vel);
+        this.moodler.changeY(y_vel);
+        drawMoodler();
+    }
+
     /**
      * Checks if the game is over
      * @return True if over, false if not

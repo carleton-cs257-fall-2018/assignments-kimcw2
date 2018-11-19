@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class GameView extends Group {
-    public final static double CELL_WIDTH = 5.0;
+    public final static double CELL_WIDTH = 10.0;
 
     @FXML private int rowCount;
     @FXML private int columnCount;

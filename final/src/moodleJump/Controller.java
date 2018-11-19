@@ -20,6 +20,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
+import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Controller extends JPanel implements Runnable, EventHandler<KeyEvent>{
 
     @FXML private Label scoreLabel;
@@ -29,6 +34,7 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
     private Thread thread;
     private boolean running = false;
     private Scene scene;
+    Timer timer;
 
     private Model model;
 
@@ -38,6 +44,7 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
 
     public void initialize() {
         this.model = new Model(this.gameView.getRowCount(), this.gameView.getColumnCount());
+        timer = new Timer();
         this.update();
     }
 
@@ -112,9 +119,20 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
     }
 
     public void run() {
-        long lastTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
+        TimerTask task = new TimerTask()
+        {
+            public void run()
+            {
+                //System.out.println("In timer task");
+                model.move();
+                update();
+            }
+        };
+        while (true) {
+            timer.schedule(task, 100);
+        }
+        /*long lastTime = System.nanoTime();
+        double ns = 5;
         double delta = 0;
         long timer = System.currentTimeMillis();
         int frames = 0;
@@ -126,7 +144,8 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
                 delta--;
             }
             if (running) {
-
+                this.model.move();
+                update();
             }
             frames++;
 
@@ -136,15 +155,15 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
                 frames = 0;
             }
         }
-        stop();
+        stop();*/
     }
 
     public void tick() {
 
     }
 
-    /*public void render() {
-        BufferStrategy bs = this.getBufferStrategy();
+    public void render() {
+        /*BufferStrategy bs = scene.getBufferStrategy();
         if(bs == null) {
             this.createBufferStrategy(3);
             return;
@@ -153,8 +172,8 @@ public class Controller extends JPanel implements Runnable, EventHandler<KeyEven
         Graphics g = bs.getDrawGraphics();
 
         g.dispose();
-        g.show();
-    }*/
+        g.show();*/
+    }
 
 
 

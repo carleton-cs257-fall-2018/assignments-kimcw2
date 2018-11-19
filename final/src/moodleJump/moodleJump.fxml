@@ -19,7 +19,7 @@
     <bottom>
         <HBox prefHeight="35" style="-fx-padding: 10px, 5px, 10px, 5px; -fx-background-color: #F3B61D">
             <Label style="-fx-font-size: 140%; -fx-text-fill: white"
-                   text="Move left and right with arrow keys" />
+                   text="Move left, right, up and down with arrow keys" />
         </HBox>
     </bottom>
 </BorderPane>

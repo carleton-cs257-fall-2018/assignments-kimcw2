@@ -62,6 +62,7 @@ public class Model {
         for (int i =  0; i < moodler.tailList.size(); i ++) {
             if (this.cells[moodler.tailList.get(i)[0]][moodler.tailList.get(i)[1]] == CellValue.APPLE) {
                 generateApple();
+                changeScore();
                 this.moodler.addLength();
             }
             this.cells[moodler.tailList.get(i)[0]][moodler.tailList.get(i)[1]] = CellValue.MOODLER;
@@ -111,14 +112,6 @@ public class Model {
     }
 
     /**
-     * Checks if the game is over
-     * @return True if over, false if not
-     */
-    public boolean isGameOver() {
-        return this.gameOver;
-    }
-
-    /**
      * Returns current score
      * @return current score
      */
@@ -130,24 +123,7 @@ public class Model {
      * Changes the current score
      * @param score score to change current score to
      */
-    public void changeScore(int score) {
-
+    public void changeScore() {
+        this.score += 100;
     }
-
-    /**
-     * Returns the current high score
-     * @return Current high score
-     */
-    public int getHighScore() {
-        return 1;
-    }
-
-    /**
-     * Changes the current high score to the new score if score is greater than current high score
-     * @param score Score to replace current high score if larger than current high score
-     */
-    public void changeHighScore(int score) {
-
-    }
-
 }

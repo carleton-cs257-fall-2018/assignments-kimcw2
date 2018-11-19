@@ -58,7 +58,6 @@ public class Controller extends KeyAdapter implements Runnable {
 
     public void initialize() {
         this.model = new Model(this.gameView.getRowCount(), this.gameView.getColumnCount());
-        timer = new Timer();
         this.update();
     }
 
@@ -69,6 +68,11 @@ public class Controller extends KeyAdapter implements Runnable {
         else if (this.model.getDirection().equals("up")) {this.model.moveMoodler("up");}
         else if (this.model.getDirection().equals("down")) {this.model.moveMoodler("down");}
         this.gameView.update(this.model);
+        //this.scoreLabel.setText(String.format("Score: %d", this.model.getScore()));
+    }
+
+    public void gameOver() {
+        this.scoreLabel.setText(String.format("Score: %d", this.model.getScore()));
     }
 
     public double getBoardWidth() {
@@ -95,19 +99,20 @@ public class Controller extends KeyAdapter implements Runnable {
     }
 
     public void run() {
-        TimerTask task = new TimerTask()
-        {
-            public void run()
-            {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
                 //System.out.println("In timer task");
                 model.move();
                 if (model.isMoodlerDead()) {
                     timer.cancel();
+                    gameOver();
                 }
-
                 update();
             }
-        };
+        }, 100, 100);
+
         this.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             boolean keyRecognized = true;
             KeyCode code = key.getCode();
@@ -130,33 +135,7 @@ public class Controller extends KeyAdapter implements Runnable {
             }
         });
 
-        timer.schedule(task, 100, 100);
-        /*
-        long lastTime = System.nanoTime();
-        double ns = 5;
-        double delta = 0;
-        long timer = System.currentTimeMillis();
-        int frames = 0;
-        while(running) {
-            long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            while (delta >= 1 ) {
-                tick();
-                delta--;
-            }
-            if (running) {
-                this.model.move();
-                update();
-            }
-            frames++;
 
-            if (System.currentTimeMillis() - timer > 1000) {
-                timer += 1000;
-                System.out.println("FPS: " + frames);
-                frames = 0;
-            }
-        }
-        stop();*/
     }
 
 

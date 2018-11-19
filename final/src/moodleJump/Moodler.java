@@ -55,8 +55,11 @@ public class Moodler {
     }
 
     public void changeList(String dir) {
+        boolean collision =  false;
         int[] rowColumnArray;
         int[] pastColumnArray = new int[]{tailList.get(0)[0], tailList.get(0)[1]};
+
+
         if (dir.equals("right")) {
             rowColumnArray = new int[]{this.row,this.column+1};
             this.column += 1;
@@ -74,6 +77,13 @@ public class Moodler {
             this.row -= 1;
             tailList.set(0, rowColumnArray);
         }
+
+        for (int i = 1; i < curLength; i++) {
+            if (tailList.get(0)[0] == tailList.get(i)[0] && tailList.get(0)[1] == tailList.get(i)[1]) {
+                this.isDead = true;
+            }
+        }
+
         for (int i = 1; i < curLength; i++) {
             rowColumnArray = new int[]{tailList.get(i)[0], tailList.get(i)[1]};
             tailList.set(i, pastColumnArray);

@@ -6,16 +6,98 @@
 
 package moodleJump;
 
+import java.awt.image.BufferedImage;
 import java.util.Random;
+import javafx.scene.image.Image;
 
 public class Model {
+
+    public enum CellValue {
+        EMPTY, MOODLER, MOODLERHAT, PLATFORM
+    };
+    private CellValue[][] cells;
 
     private boolean gameOver;
     private int score;
     private int highScore;
+    private Moodler moodler;
 
-    public Model() {
+    public Model(int rowCount, int columnCount) {
+        assert rowCount > 0 && columnCount > 0;
+        this.cells = new CellValue[rowCount][columnCount];
+        this.startGame();
+    }
+
+    public void startGame() {
+        this.gameOver = false;
         this.score = 0;
+        this.initializeLevel();
+    }
+
+    private void initializeLevel() {
+        int rowCount = this.cells.length;
+        int columnCount = this.cells[0].length;
+        generateMoodler();
+        drawMoodler();
+    }
+
+    public CellValue getCellValue(int row, int column) {
+        assert row >= 0 && row < this.cells.length && column >= 0 && column < this.cells[0].length;
+        return this.cells[row][column];
+    }
+
+    public int getRowCount() {
+        return this.cells.length;
+    }
+
+    public int getColumnCount() {
+        assert this.cells.length > 0;
+        return this.cells[0].length;
+    }
+
+    public void generateMoodler() {
+        //BufferedImageLoader loader =  new BufferedImageLoader();
+        //BufferedImage sprite = loader.loadImage("/sprites/test_character.jpg");
+
+        //Image test_image = new Image("/sprites/test_character.jpg", true);
+        int rowCount = this.cells.length;
+        int columnCount = this.cells[0].length;
+        this.moodler = new Moodler(rowCount, columnCount);
+    }
+
+    public void drawMoodler() {
+        int row = this.moodler.getRow();
+        int column = this.moodler.getColumn();
+        this.cells[row-1][column] = CellValue.MOODLER;
+        this.cells[row-2][column] = CellValue.MOODLER;
+        this.cells[row-3][column+1] = CellValue.MOODLER;
+        this.cells[row-1][column+2] = CellValue.MOODLER;
+        this.cells[row-2][column+2] = CellValue.MOODLER;
+        this.cells[row-3][column+3] = CellValue.MOODLER;
+        this.cells[row-1][column+4] = CellValue.MOODLER;
+        this.cells[row-2][column+4] = CellValue.MOODLER;
+        this.cells[row-3][column] = CellValue.MOODLERHAT;
+
+    }
+
+    public void undrawMoodler() {
+        int row = this.moodler.getRow();
+        int column = this.moodler.getColumn();
+        this.cells[row-1][column] = CellValue.EMPTY;
+        this.cells[row-2][column] = CellValue.EMPTY;
+        this.cells[row-3][column+1] = CellValue.EMPTY;
+        this.cells[row-1][column+2] = CellValue.EMPTY;
+        this.cells[row-2][column+2] = CellValue.EMPTY;
+        this.cells[row-3][column+3] = CellValue.EMPTY;
+        this.cells[row-1][column+4] = CellValue.EMPTY;
+        this.cells[row-2][column+4] = CellValue.EMPTY;
+        this.cells[row-3][column] = CellValue.EMPTY;
+    }
+
+    public void moveMoodler(String direction) {
+        undrawMoodler();
+        this.moodler.move(direction);
+        drawMoodler();
     }
 
     /**

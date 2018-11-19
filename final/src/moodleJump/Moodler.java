@@ -15,34 +15,116 @@ package moodleJump;
 import java.util.Random;
 
 public class Moodler {
-    /**
-     * Moves object to right by 1 unit
-     */
-    public void moveRight() {
 
+    private int row;
+    private int column;
+
+    public boolean side = true;
+    public int terminal_velocity = 5;
+    private int x_velocity;
+    private int y_velocity;
+    private int width;
+    private int height;
+
+    public Moodler(int numRows, int numColumns) {
+        Random random = new Random();
+        this.row = random.nextInt(numRows);
+        this.column = random.nextInt(numColumns);
+    }
+
+    public int getRow() {
+        return this.row;
+    }
+
+    public int getColumn() {
+        return this.column;
+    }
+
+
+    public int getX() {
+        return this.column;
+    }
+
+    public int getY() {
+        return this.row;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void changeX(int velocity) {
+        this.column = this.column + velocity;
+    }
+
+    public void changeY(int velocity) {
+        this.row = this.row + velocity;
     }
 
     /**
-     * Moves object to left by 1 unit
+     * Moves object
      */
-    public void moveLeft() {
+    public void move(String direction) {
+        //System.out.print(direction + "\n");
+        if (direction.equals("right")) {
+            if (x_velocity < 1) {
+                x_velocity = 1;
+            } else if (x_velocity < 5) {
+                x_velocity += 1;
+            }
+        }
 
+        if (direction.equals("left")) {
+            if (x_velocity > -1) {
+                x_velocity = -1;
+            } else if (x_velocity > -5) {
+                x_velocity -= 1;
+            }
+        }
+        changeX(x_velocity);
     }
 
-    /**
-     * Moves object up by 1 unit
-     */
-    public void moveUp() {
-
+    public void decelerate_x() {
+        x_velocity = 0;
+        changeX(x_velocity);
     }
 
-    /**
-     * Moves object down by 1 unit
-     */
-    public void moveDown() {
-
+    public void fall() {
+        if (y_velocity < 0) {
+            y_velocity = 1;
+        } else if (y_velocity < terminal_velocity) {
+            y_velocity += 1;
+        }
+        changeY(y_velocity);
     }
 
+    public boolean contact_platform(Platform obj) {
+        /*Platform other = obj;
+
+        if (getX() + getWidth() >= other.getX() &&
+                getX() <= other.getX() + other.getWidth() &&
+                getY() + getHeight() >= other.getY() &&
+                getY() + getHeight() <= other.getY() + other.getHeight()) {
+            return true;
+        }*/
+        return false;
+    }
+
+    public void jump() {
+        if (y_velocity > 0) {
+            y_velocity = -5;
+        } else if (y_velocity < 0) {
+            y_velocity = y_velocity + 1;
+        }
+        changeY(y_velocity);
+    }
+
+
+    //Extra stuff might not use
     /**
      * Check if Moodler is dead
      * @return True if Moodler is dead, false otherwise
@@ -96,21 +178,5 @@ public class Moodler {
      */
     public void applyPowerUp() {
         PowerUp example = new PowerUp(0);
-    }
-
-    /**
-     * Get Moodler position(height)
-     */
-    public void getHeight(){
-        int result = 0;
-        int currentHeight = result;
-    }
-
-    /**
-     * Get Moodler position (width)
-     */
-    public void getLatitude(){
-        int result = 0;
-        int currentLatitude = result;
     }
 }

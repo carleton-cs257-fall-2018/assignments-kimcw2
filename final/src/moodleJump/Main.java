@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 
 
 public class Main extends Application {
@@ -23,14 +24,15 @@ public class Main extends Application {
 
 
         Controller controller = loader.getController();
-        root.setOnKeyPressed(controller);
+        //root.setOnKeyPressed(controller);
         double sceneWidth = controller.getBoardWidth() + 20.0;
         double sceneHeight = controller.getBoardHeight() + 100.0;
 
 
         primaryStage.setScene(new Scene(root, sceneWidth, sceneHeight));
+        primaryStage.setOnCloseRequest(e -> System.exit(0));
         primaryStage.show();
-        //controller.start();
+        controller.start(primaryStage.getScene());
         root.requestFocus();
     }
 

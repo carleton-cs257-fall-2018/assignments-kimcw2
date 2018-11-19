@@ -26,11 +26,11 @@ public class Moodler {
     private int width;
     private int height;
 
-    /*public Moodler(int numRows, int numColumns) {
+    public Moodler(int numRows, int numColumns) {
         Random random = new Random();
         this.row = random.nextInt(numRows);
         this.column = random.nextInt(numColumns);
-    }*/
+    }
 
     public int getRow() {
         return this.row;
@@ -77,7 +77,7 @@ public class Moodler {
      * Moves object
      */
     public void move(String direction) {
-        //System.out.print(direction + "\n");
+        System.out.print(direction + "\n");
         if (direction.equals("right")) {
             if (x_velocity < 1) {
                 x_velocity = 1;

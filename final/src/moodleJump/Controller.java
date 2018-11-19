@@ -1,18 +1,165 @@
 package moodleJump;
 
+import java.awt.Dimension;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
-//import javafx.scene.input.KeyCode;
-//import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import java.awt.event.KeyAdapter;
+import javafx.event.EventHandler;
+import java.awt.image.BufferStrategy;
 import java.util.Random;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class Controller{ /*implements EventHandler<KeyEvent>{*/
+public class Controller extends JPanel implements Runnable, EventHandler<KeyEvent>{
 
-    Moodler moodler = new Moodler();
+    @FXML private Label scoreLabel;
+    @FXML private Label messageLabel;
+    @FXML private GameView gameView;
+
+    private Thread thread;
+    private boolean running = false;
+    private Scene scene;
+
+    private Model model;
+
+    public Controller() {
+
+    }
+
+    public void initialize() {
+        this.model = new Model(this.gameView.getRowCount(), this.gameView.getColumnCount());
+        this.update();
+    }
+
+
+    private void update() {
+        this.gameView.update(this.model);
+    }
+
+    public double getBoardWidth() {
+        return GameView.CELL_WIDTH * this.gameView.getColumnCount();
+    }
+
+    public double getBoardHeight() {
+        return GameView.CELL_WIDTH * this.gameView.getRowCount();
+    }
+
+
+     public void handle(KeyEvent keyEvent) {
+    }
+
+
+    public void start(Scene scene) {
+        thread = new Thread(this);
+        this.scene = scene;
+        thread.start();
+        running = true;
+
+        this.scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
+            boolean keyRecognized = true;
+            KeyCode code = key.getCode();
+
+            if (code == KeyCode.LEFT || code == KeyCode.A) {
+                this.model.moveMoodler("left");
+            } else if (code == KeyCode.RIGHT || code == KeyCode.D) {
+                this.model.moveMoodler("right");
+            } else {
+                keyRecognized = false;
+            }
+
+            if (keyRecognized) {
+                System.out.print("key recognized\n");
+                this.update();
+            }
+        });
+
+        this.scene.addEventHandler(KeyEvent.KEY_RELEASED, (key) -> {
+            boolean keyRecognized = true;
+            KeyCode code = key.getCode();
+
+            if (code == KeyCode.LEFT || code == KeyCode.A) {
+                this.model.moveMoodler("left");
+            } else if (code == KeyCode.RIGHT || code == KeyCode.D) {
+                this.model.moveMoodler("right");
+            } else {
+                keyRecognized = false;
+            }
+
+            if (keyRecognized) {
+                System.out.print("key released\n");
+                this.update();
+            }
+        });
+    }
+
+    public void stop() {
+        try {
+            thread.join();
+            running = false;
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void run() {
+        long lastTime = System.nanoTime();
+        double amountOfTicks = 60.0;
+        double ns = 1000000000 / amountOfTicks;
+        double delta = 0;
+        long timer = System.currentTimeMillis();
+        int frames = 0;
+        while(running) {
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
+            while (delta >= 1 ) {
+                tick();
+                delta--;
+            }
+            if (running) {
+
+            }
+            frames++;
+
+            if (System.currentTimeMillis() - timer > 1000) {
+                timer += 1000;
+                System.out.println("FPS: " + frames);
+                frames = 0;
+            }
+        }
+        stop();
+    }
+
+    public void tick() {
+
+    }
+
+    /*public void render() {
+        BufferStrategy bs = this.getBufferStrategy();
+        if(bs == null) {
+            this.createBufferStrategy(3);
+            return;
+        }
+
+        Graphics g = bs.getDrawGraphics();
+
+        g.dispose();
+        g.show();
+    }*/
+
+
+
+    /*
+    Moodler moodler;
     private ArrayList<Platform> myPlatforms = new ArrayList<Platform>();
     private Platform lastHitPlatform;
     private int score;
@@ -60,7 +207,7 @@ public class Controller{ /*implements EventHandler<KeyEvent>{*/
                     }
                     moodler.fall();
                     // if doodle stays on same platform, dont move platforms down
-                    lastHitPlatform = (Platform) myPlatforms.get(a);
+                    //lastHitPlatform = (Platform) myPlatforms.get(a);
                 }
             }
         }
@@ -73,7 +220,7 @@ public class Controller{ /*implements EventHandler<KeyEvent>{*/
     public void update(Graphics g) {
         if (gameOn == true) {
             //draw background
-            offScreenBuffer.drawImage(gridImg, 0, 0, this);
+            //offScreenBuffer.drawImage(gridImg, 0, 0, this);
 
             Moodler tempDoodle = moodler;
 
@@ -90,33 +237,34 @@ public class Controller{ /*implements EventHandler<KeyEvent>{*/
                 // #############################################################
                 // performs action for different platforms
                 // light blue - horizontal scroll\
-                updatePlat2(k, tempPlatform);
+                //updatePlat2(k, tempPlatform);
             }
-            offScreenBuffer.drawImage(myImages.get(tempPlatform.getId()), tempPlatform.getX(), tempPlatform.getY(), this);
+            //offScreenBuffer.drawImage(myImages.get(tempPlatform.getId()), tempPlatform.getX(), tempPlatform.getY(), this);
 
             // move platform down if doodle is moving up
             if ((shiftDown == true) && (samePlatform == false)) {
-                tempPlatform.changeY(BSDS);
+                //tempPlatform.changeY(BSDS);
                 score = score + 1;
             }
             // if platform moves off bottom of screen, create new platform
-            if (tempPlatform.getY() > 400) {
+            /*if (tempPlatform.getY() > 400) {
                 //interval for every Y to create new platform
                 if (creationCounter > ((int) (Math.random() * 7) + 5)) {
                     generateLiveRandomPlatform();
                     creationCounter = 0;
                 }
-            }
+            }*/
 
-            if (tempPlatform.getY() > 650) {
+            /*if (tempPlatform.getY() > 650) {
                 myPlatforms.remove(k);
                 //	generateLiveRandomPlatform();
             }
-        }
-
+        }*/
+        /*
         if (myPlatforms.size() < 13) {
             generateLiveRandomPlatform();
         }
+
 
         // draw doodle, last character
         offScreenBuffer.drawImage(myImages.get(tempDoodle.show()), tempDoodle.getX(), tempDoodle.getY(), this);
@@ -131,11 +279,9 @@ public class Controller{ /*implements EventHandler<KeyEvent>{*/
         checkDoodleGameOver();
     }
       g.drawImage(offScreenImage, 0, 0, this);
-}
-  }
+      */
 
-
-public void run() {
+    /*public void run() {
         // keep going as long as the thread is alive
         while (!gameOver2) {
         try {
@@ -146,100 +292,6 @@ public void run() {
         }
         repaint();
         }
-        }
-        }
-/*    @FXML private Label scoreLabel;
-    @FXML private Label messageLabel;
-    @FXML private GameView gameView;
-
-    private Thread thread;
-    private boolean running = false;
-
-    private Model model;
-
-    public Controller() {
-    }
-
-    public void initialize() {
-        this.model = new Model(this.gameView.getRowCount(), this.gameView.getColumnCount());
-        this.update();
-    }
-
-    private void update() {
-        this.gameView.update(this.model);
-    }
-
-    public double getBoardWidth() {
-        return GameView.CELL_WIDTH * this.gameView.getColumnCount();
-    }
-
-    public double getBoardHeight() {
-        return GameView.CELL_WIDTH * this.gameView.getRowCount();
-    }
-
-    @Override
-    public void handle(KeyEvent keyEvent) {
-        boolean keyRecognized = true;
-        KeyCode code = keyEvent.getCode();
-
-        if (code == KeyCode.LEFT || code == KeyCode.A) {
-            this.model.moveMoodler("left");
-        } else if (code == KeyCode.RIGHT || code == KeyCode.D) {
-            this.model.moveMoodler("right");
-        } else {
-            keyRecognized = false;
-        }*/
-        /*else if (code == KeyCode.UP || code == KeyCode.W) {
-            this.daleksModel.moveRunnerBy(-1, 0);
-        } else if (code == KeyCode.DOWN || code == KeyCode.X) {
-        *//*
-        if (keyRecognized) {
-            //System.out.print("key recognized\n");
-            this.update();
-            keyEvent.consume();
-        }
-    }*/
-    /*
-    public void start() {
-        thread = new Thread(this);
-        thread.start();
-        running = true;
-    }
-
-    public void stop() {
-        try {
-            thread.join();
-            running = false;
-        }catch(exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void run() {
-        long lastTime = System.nanoTime();
-        double ns = 1000000000 / amountOfTicks;
-        double delta = 0;
-        long timer = System.currentTimeMillis();
-        int frames = 0;
-        while(running) {
-            long now = System.nanoTime();
-            delta += (now - lastTime) / ns;
-            while (delta >= 1 ) {
-                tick();
-                delta--;
-            }
-            if (running) {
-                render();
-            }
-            frames++;
-
-            if (System.currentTimeMillis() - timer > 1000) {
-                timer += 1000;
-                System.out.println("FPS: " + frames);
-                frames = 0;
-            }
-        }
-        stop();
     }*/
 
 
